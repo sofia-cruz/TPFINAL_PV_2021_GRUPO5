@@ -30,16 +30,17 @@ public class TuristaServiceMySQL implements ITuristaService {
 	}
 
 	@Override
+	public List<Turista> obtenerTodosTuristas() {
+		// TODO Auto-generated method stub
+		return (List<Turista>) turistaDAO.findAll();
+	}
+
+	@Override
 	public Turista crearTurista() {
 		// TODO Auto-generated method stub
 		return unTurista;
 	}
 
-	@Override
-	public List<Turista> obtenerTodosTuristas() {
-		// TODO Auto-generated method stub
-		return (List<Turista>) turistaDAO.findAll();
-	}
 
 	@Override
 	public Turista encontrarUnTurista(int id) throws Exception {
@@ -47,7 +48,12 @@ public class TuristaServiceMySQL implements ITuristaService {
 		return turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Existe"));
 	}
 
-	
+	@Override
+	public void eliminarTurista(int id) throws Exception {
+		// TODO Auto-generated method stub
+		Turista turistaAEliminar= turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Fue encontrado"));
+		turistaDAO.delete(turistaAEliminar);
+	}
 	@Override
 	public void modificarTurista(Turista turistaModificado) throws Exception {
 		// TODO Auto-generated method stub
@@ -60,11 +66,6 @@ public class TuristaServiceMySQL implements ITuristaService {
 	hacia.setApellido(desde.getApellido());
 	hacia.setPaisProcedencia(desde.getPaisProcedencia());
 	}
-	@Override
-	public void eliminarTurista(int id) throws Exception {
-		// TODO Auto-generated method stub
-		Turista turistaAEliminar= turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Fue encontrado"));
-		turistaDAO.delete(turistaAEliminar);
-	}
+
 
 }

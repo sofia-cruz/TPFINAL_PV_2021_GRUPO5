@@ -1,3 +1,4 @@
+
 package ar.edu.unju.edm.model;
 
 import javax.persistence.Column;
@@ -30,11 +31,9 @@ public Turista() {
 	//constructor
 }
 
-
 public Integer getIdTurista() {
 	return idTurista;
 }
-
 
 public void setIdTurista(Integer idTurista) {
 	this.idTurista = idTurista;
@@ -50,16 +49,13 @@ public void setNombre(String nombre) {
 	this.nombre = nombre;
 }
 
-
 public String getApellido() {
 	return apellido;
 }
 
-
 public void setApellido(String apellido) {
 	this.apellido = apellido;
 }
-
 
 public String getPaisProcedencia() {
 	return paisProcedencia;
@@ -67,7 +63,5 @@ public String getPaisProcedencia() {
 public void setPaisProcedencia(String paisProcedencia) {
 	this.paisProcedencia = paisProcedencia;
 }
-
-
 
 }
