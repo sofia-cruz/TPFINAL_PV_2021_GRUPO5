@@ -25,7 +25,10 @@ private String apellido;
 	@Column
 private String paisProcedencia;
 //cuenta de google (como va? 
-
+	@Column
+private Double latitud;
+	@Column
+private Double longitud;
 
 public Turista() {
 	//constructor
@@ -47,6 +50,22 @@ public String getNombre() {
 
 public void setNombre(String nombre) {
 	this.nombre = nombre;
+}
+
+public Double getLatitud() {
+	return latitud;
+}
+
+public void setLatitud(Double latitud) {
+	this.latitud = latitud;
+}
+
+public Double getLongitud() {
+	return longitud;
+}
+
+public void setLongitud(Double longitud) {
+	this.longitud = longitud;
 }
 
 public String getApellido() {
