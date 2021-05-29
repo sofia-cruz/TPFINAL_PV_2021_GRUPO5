@@ -20,8 +20,6 @@ public class TuristaServiceMySQL implements ITuristaService {
 	@Autowired
 	ITuristaDAO turistaDAO; 
  
-
-	
 	
 	@Override
 	public void guardarTurista(Turista unTurista) {
@@ -65,6 +63,8 @@ public class TuristaServiceMySQL implements ITuristaService {
 	hacia.setNombre(desde.getNombre());
 	hacia.setApellido(desde.getApellido());
 	hacia.setPaisProcedencia(desde.getPaisProcedencia());
+	hacia.setLatitud(desde.getLatitud());
+	hacia.setLongitud(desde.getLongitud());
 	}
 
 
