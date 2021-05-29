@@ -23,9 +23,7 @@ private String nombre;
 	@Column
 private String apellido;
 	@Column
-private String paisProcedencia;
-//cuenta de google (como va? 
-	//agregar en editar turista
+private String paisProcedencia; 
 	@Column
 private Double latitud;
 	@Column
