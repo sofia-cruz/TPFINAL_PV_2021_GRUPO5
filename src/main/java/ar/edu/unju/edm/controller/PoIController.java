@@ -21,7 +21,7 @@ import ar.edu.unju.edm.service.IPoiService;
 public class PoIController {
 	private static final Log LOGGER = LogFactory.getLog(PoIController.class);
     @Autowired
-	@Qualifier("impmysql")
+	@Qualifier("impmysqlpoi")
     IPoiService iPoiService;
     
     @GetMapping("/poi/mostrar")
