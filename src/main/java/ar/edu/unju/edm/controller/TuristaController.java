@@ -24,7 +24,7 @@ public class TuristaController {
 	@Qualifier("impmysql")
 	ITuristaService turistaService;
 	
-	@PostMapping
+	@PostMapping("/turista/guardar/{idTurista}")
 	public String guardarTurista (@ModelAttribute("unTurista") Turista nuevoTurista, Model model) {
 
 		BELLA.info("METHOD: Ingresando al metodo Guardar");
@@ -32,7 +32,7 @@ public class TuristaController {
 		BELLA.info("Tamaño del listado: "+ turistaService.obtenerTodosTuristas().size());
 		return null;
 	}
-	@GetMapping
+	@GetMapping("/turista/mostrar")
 	public String crearTurista(Model model) {
 		model.addAttribute("modoEditar", false);
 		model.addAttribute("unTurista", turistaService.crearTurista());
@@ -40,13 +40,13 @@ public class TuristaController {
 		return "turista";
 	}
 	
-	@PostMapping
+	@PostMapping("/turista/modificar")
 	public String modificarTurista(@ModelAttribute("unTurista") Turista turistaModificado, Model model) throws Exception{
 		turistaService.modificarTurista(turistaModificado);
 		return "turista";
 	}
 	
-	@GetMapping
+	@GetMapping("/turista/eliminar/{idTurista}")
 	public String eliminarTurista(@PathVariable(name = "idTurista")int id, Model model) throws Exception{
 		try {
 			turistaService.eliminarTurista(id);
@@ -56,7 +56,7 @@ public class TuristaController {
 		return null;
 	}
 	
-	@GetMapping
+	@GetMapping("/turista/editar/{idTurista}")
 	public String editarTurista(Model model, @PathVariable(name = "idTurista") int id) throws Exception{
 		try{
 			Turista encontrado = turistaService.encontrarUnTurista(id);
