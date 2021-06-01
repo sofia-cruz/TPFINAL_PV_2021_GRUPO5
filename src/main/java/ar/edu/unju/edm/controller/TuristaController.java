@@ -30,20 +30,20 @@ public class TuristaController {
 		BELLA.info("METHOD: Ingresando al metodo Guardar");
 		turistaService.guardarTurista(nuevoTurista);
 		BELLA.info("Tamaño del listado: "+ turistaService.obtenerTodosTuristas().size());
-		return "redirect:/cliente/mostrar";
+		return "redirect:/turista/mostrar";
 	}
 	@GetMapping("/turista/mostrar")
 	public String crearTurista(Model model) {
 		model.addAttribute("modoEditar", false);
 		model.addAttribute("unTurista", turistaService.crearTurista());
 		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
-		return "turista";
+		return ("turista");
 	}
 	
 	@PostMapping("/turista/modificar")
 	public String modificarTurista(@ModelAttribute("unTurista") Turista turistaModificado, Model model) throws Exception{
 		turistaService.modificarTurista(turistaModificado);
-		return "redirect:/cliente/mostrar";
+		return "redirect:/turista/mostrar";
 	}
 	
 	@GetMapping("/turista/eliminar/{idTurista}")
@@ -53,7 +53,7 @@ public class TuristaController {
 		} catch (Exception e) {
 			model.addAttribute("usuarioErrorMensaje", e.getMessage());
 		}
-		return "redirect:/cliente/mostrar";
+		return "redirect:/turista/mostrar";
 	}
 	
 	@GetMapping("/turista/editar/{idTurista}")
@@ -68,6 +68,6 @@ public class TuristaController {
 			model.addAttribute("modoEditar", false);
 		}
 		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
-		return "turista";
+		return ("turista");
 	}
 }
