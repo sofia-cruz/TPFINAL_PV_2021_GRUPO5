@@ -34,10 +34,10 @@ public class TuristaController {
 	}
 	@GetMapping("/turista/mostrar")
 	public String crearTurista(Model model) {
-		model.addAttribute("modoEditar", false);
+		//model.addAttribute("modoEditar", false);
 		model.addAttribute("unTurista", turistaService.crearTurista());
 		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
-		return "turista";
+		return ("turista");
 	}
 	
 	@PostMapping("/turista/modificar")
