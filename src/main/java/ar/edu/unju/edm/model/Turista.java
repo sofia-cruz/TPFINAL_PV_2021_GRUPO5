@@ -28,7 +28,11 @@ private String paisProcedencia;
 private Double latitud;
 	@Column
 private Double longitud;
-
+	@Column
+private String password; 
+	@Column
+private Integer puntos;
+	//agregados password y puntos
 public Turista() {
 	//constructor
 }
@@ -69,6 +73,22 @@ public void setLongitud(Double longitud) {
 
 public String getApellido() {
 	return apellido;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+public Integer getPuntos() {
+	return puntos;
+}
+
+public void setPuntos(Integer puntos) {
+	this.puntos = puntos;
 }
 
 public void setApellido(String apellido) {
