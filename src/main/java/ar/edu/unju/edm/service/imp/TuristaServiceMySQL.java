@@ -65,6 +65,8 @@ public class TuristaServiceMySQL implements ITuristaService {
 	hacia.setPaisProcedencia(desde.getPaisProcedencia());
 	hacia.setLatitud(desde.getLatitud());
 	hacia.setLongitud(desde.getLongitud());
+	hacia.setPuntos(desde.getPuntos());
+	//hacia.setPassword(desde.getPassword());  //dudoso
 	}
 
 
