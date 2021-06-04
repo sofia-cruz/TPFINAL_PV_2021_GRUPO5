@@ -90,7 +90,7 @@
 			
 			<div class="form-group row">
 			<div class="col-sm-6">
-				<input type="submit" class="btn btn-success btn-block"  th:value="${editMode}?'Modificar Punto de Interes':'Crear Punto de Interses'">
+				<input type="submit" class="btn btn-success btn-block" th:href="@{/mispoi}" th:value="${editMode}?'Modificar Punto de Interes':'Crear Punto de Interses'">
 			</div>	
 			<div class="col-sm-6">
 		 			<a class="btn btn-secondary btn-block"  th:href="@{/poi/cancelar}">Cancelar</a>
