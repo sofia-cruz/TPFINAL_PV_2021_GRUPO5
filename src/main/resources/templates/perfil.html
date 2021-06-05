@@ -11,6 +11,15 @@
 </head>
 <body>
 	<div class="container">
+	<ul class="navbar-nav mt-2 mt-lg-0">
+				<li class="nav-item">
+				<a class="btn btn-outline-dark" href="#" th:href="@{/logout}"> 
+				<span th:text="${#authentication.getPrincipal().getUsername()}">
+				</span> - 
+				<span> Salir  </span><span class="float-right">
+				<i class="fas fa-sign-out-alt"></i></span></a>				   	
+				</li>
+				</ul>
 		<!--	<div th:insert="layouts/header :: header"></div> -->
 		<h1>Mi Perfil</h1>
 		<br>
