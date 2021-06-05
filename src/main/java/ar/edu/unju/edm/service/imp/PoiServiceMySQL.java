@@ -30,6 +30,10 @@ public class PoiServiceMySQL implements IPoiService{
 	@Override
 	public PoI crearPoi() {
 		// TODO Auto-generated method stub
+		Double valorEntero =  Math.floor(Math.random()*(24-65+1)+24);
+		Double valorEntero1 =  Math.floor(Math.random()*(20-65+1)+24);
+		unPoi.setLatitud(valorEntero);
+		unPoi.setLongitud(valorEntero1);
 		return unPoi;
 	}
 
