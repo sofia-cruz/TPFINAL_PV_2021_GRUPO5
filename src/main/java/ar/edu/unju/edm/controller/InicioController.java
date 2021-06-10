@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class InicioController {
-	@GetMapping({"/","/login","/home","/index", "/login?error=true"})
+	//saco  el home de la seguridad, el usuario debería poder ver el home facilmente
+	@GetMapping({"/","/login",/*"/home",*/"/index", "/login?error=true"})
 	public String mostrarInicio(Model model) {
 		return "inicio";
 	}
