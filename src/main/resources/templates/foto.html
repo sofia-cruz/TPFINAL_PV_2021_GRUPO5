@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+</head>
+
+<body>
+
+<div class="container">
+		<div class="row col-md-12">
+			<div th:each="c : ${pois}">
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;">
+						<img src="https://i0.wp.com/esferacreativa.com/wp-content/uploads/2017/05/fichas-tecnicas-de-productos-ecommerce-Teresa-Alba-MadridNYC.png?fit=640%2C320&ssl=1"
+							class="card-img-top" alt="hola">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
+							<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
+							<p class="card-text" th:text="${c.etiqueta}">Etiqueta</p>
+							<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
+							<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
+							<a href="#" th:href="@{'/poi/editar/'+${c.idPoi}}"><i class="fa fa-edit"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
+		src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
+		src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
+		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
