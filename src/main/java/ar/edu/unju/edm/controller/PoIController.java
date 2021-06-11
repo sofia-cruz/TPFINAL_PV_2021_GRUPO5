@@ -31,11 +31,11 @@ public class PoIController {
 	}
     
     @GetMapping("/poi/editar/{idPoi}")
-	public String editarPoi(Model model, @PathVariable(name="idPoi") int id) throws Exception{
-		try {
+	public String editarPoi(Model model, @PathVariable(name="idPoi") Integer id) throws Exception{
+		try {	LOGGER.info("METHOD: ingresando a editar Poi, id Poi:"+ id);
 			//permite realizar una accion, y si ocurre error no se cae el program
 			PoI poiEncontrado = iPoiService.encontrarUnPoi(id);
-			
+			LOGGER.info("METHOD: Dentro de editar, id: "+ poiEncontrado.getIdPoi());
 			model.addAttribute("unPoi", poiEncontrado);
 			model.addAttribute("editMode", "true");
 		}
@@ -45,7 +45,9 @@ public class PoIController {
 			model.addAttribute("unPoi", iPoiService.crearPoi());
 			model.addAttribute("editMode", "false");
 		}
+		
 		model.addAttribute("pois",iPoiService.obtenerTodosPoi());
+		LOGGER.info("METHOD: Salienjdo de editar Poi, id Poi:"+ id);
 		return("poi");
 	}
 
@@ -69,8 +71,11 @@ public class PoIController {
  
 	@PostMapping("/poi/modificar")
 	public String modificarPoi(@ModelAttribute("unPoi") PoI poiModificado, Model model) {
-	
-		try {LOGGER.info("METHOD: ingresando a modificar Poi, id Poi:"+poiModificado.getIdPoi());
+		LOGGER.error("METHOD: ingresando el metodo modificar, id: "+poiModificado.getIdPoi());
+		LOGGER.error("METHOD: ingresando el metodo modificar, nombre: "+poiModificado.getNombrePoi());
+		LOGGER.info("METHOD: ingresando el metodo modificar, numero: "+poiModificado.getNumero());
+		try {
+			LOGGER.info("METHOD: ingresando a modificar Poi, id Poi: "+poiModificado.getIdPoi());
 			
 			iPoiService.modificarPoi(poiModificado);
 			model.addAttribute("unPoi", new PoI());
