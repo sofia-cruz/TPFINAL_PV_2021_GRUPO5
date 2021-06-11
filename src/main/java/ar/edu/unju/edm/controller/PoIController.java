@@ -1,5 +1,4 @@
 package ar.edu.unju.edm.controller;
-
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -67,8 +66,7 @@ public class PoIController {
 		return "redirect:/poi/mostrar";
 	}
 	}
-    
-
+ 
 	@PostMapping("/poi/modificar")
 	public String modificarPoi(@ModelAttribute("unPoi") PoI poiModificado, Model model) {
 	
