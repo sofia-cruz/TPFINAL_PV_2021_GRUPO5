@@ -26,69 +26,48 @@ public class TuristaController {
 	
 	@PostMapping("/turista/guardar")
 	public String guardarTurista (@ModelAttribute("unTurista") Turista nuevoTurista, Model model) {
+
 		BELLA.info("METHOD: Ingresando al metodo Guardar");
 		turistaService.guardarTurista(nuevoTurista);
 		BELLA.info("Tamaño del listado: "+ turistaService.obtenerTodosTuristas().size());
-		return "redirect:/";
+		return "redirect:/turista/mostrar";
 	}
-	
-	
 	@GetMapping("/turista/mostrar")
 	public String crearTurista(Model model) {
+		//model.addAttribute("modoEditar", false);
 		model.addAttribute("unTurista", turistaService.crearTurista());
 		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
 		return ("turista");
 	}
 	
-
-/*@GetMapping("/turista/registrar")
-public String registrarTurista(Model modelo){
-    modelo.addAttribute("unTurista", turistaService.obtenerTurista());
-    BELLA.info("Nuevo turista generado");
-    return "registrar-turista";
-}
-*/
-
-	
-	
-	
 	@PostMapping("/turista/modificar")
 	public String modificarTurista(@ModelAttribute("unTurista") Turista turistaModificado, Model model) throws Exception{
 		turistaService.modificarTurista(turistaModificado);
-		BELLA.info("Turista "+ turistaModificado.getIdTurista()+ "modificado");
-		return "redirect:/turista/perfil";
+		return "redirect:/turista/mostrar";
 	}
 	
 	@GetMapping("/turista/eliminar/{idTurista}")
 	public String eliminarTurista(@PathVariable(name = "idTurista")int id, Model model) throws Exception{
 		try {
-			Turista existente = turistaService.encontrarUnTurista(id);
-			BELLA.info("Turista" + existente.getNombre() + "encontrado");
 			turistaService.eliminarTurista(id);
 		} catch (Exception e) {
 			model.addAttribute("usuarioErrorMensaje", e.getMessage());
 		}
-		return "redirect:/logout";
+		return "redirect:/turista/mostrar";
 	}
-	
-	
 	
 	@GetMapping("/turista/editar/{idTurista}")
 	public String editarTurista(Model model, @PathVariable(name = "idTurista") int id) throws Exception{
 		try{
 			Turista encontrado = turistaService.encontrarUnTurista(id);
 			model.addAttribute("unTurista", encontrado);
-			return "editar-turista";
+			model.addAttribute("modoEditar", true);
 		}
 		catch(Exception e){
 			model.addAttribute("usuarioErrorMensaje", e.getMessage());
+			model.addAttribute("modoEditar", false);
 		}
-		 return "redirect:/turista/perfil";
+		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
+		return ("turista");
 	}
-	
-
-	
 }
-
-
-
