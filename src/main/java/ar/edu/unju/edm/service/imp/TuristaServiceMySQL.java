@@ -52,7 +52,18 @@ public class TuristaServiceMySQL implements ITuristaService {
 	public Turista encontrarUnTurista(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Existe"));
+		
 	}
+	
+
+	//otro para buscar por string para ayudarme en el perfil
+	@Override
+	public Turista encontrarConCorreo(String email) throws Exception{
+		 
+		return turistaDAO.findByEmail(email).orElseThrow(()->new Exception("El turista No Existe"));       
+	}
+
+	
 
 	@Override
 	public void eliminarTurista(int id) throws Exception {
