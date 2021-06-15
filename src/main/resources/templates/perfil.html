@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
 <head>
-<link th:rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
-<link th:rel="stylesheet"
-	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}"/>
 <meta charset="UTF-8">
+        <link th:href="@{/css/estilo-perfil.css}" rel="stylesheet" type="text/css" href="/css/estilo-perfil.css"/>
+        <!--<link rel="icon" type="image/x-icon" href="img/hange.jpg" />-->
 
-<title>Mi Perfil</title>
-</head>
-<body>
-	<div class="container">
-	<ul class="navbar-nav mt-2 mt-lg-0">
+        <title>Mi Perfil</title>
+        <!-- Referencias para probar fuentes e íconos-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/perfil.jpg" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#infotur">Información personal</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#comentariostur">Comentarios</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#poitur">Puntos de interés</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+        	<ul class="navbar-nav mt-2 mt-lg-0">
 				<li class="nav-item">
 				<a class="btn btn-outline-dark" href="#" th:href="@{/logout}"> 
 				<span th:text="${#authentication.getPrincipal().getUsername()}">
@@ -20,41 +38,34 @@
 				<i class="fas fa-sign-out-alt"></i></span></a>				   	
 				</li>
 				</ul>
-		<!--	<div th:insert="layouts/header :: header"></div> -->
-		<h1>Mi Perfil</h1>
-		<br>
-
-		<table class="table">
-			<tbody>
-				<tr>
-					<th scope="row">Nombre</th>
-					<td>NombreUsuario</td>
-				</tr>
-				<tr>
-					<th scope="row">Apellido</th>
-					<td>ApellidoUsuario</td>
-				</tr>
-				<tr>
-					<th scope="row">País de Procedencia</th>
-					<td>PaísUsuario</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div>
-			<a class="btn btn-primary" href="#" role="button">Editar perfil</a> <a
-				class="btn btn-secondary" href="#" role="button">Eliminar perfil</a>
-		</div>
-
-		<!-- <div th:insert="layouts/footer :: footer"></div> -->
-	</div>
-
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+           </div>
+           <div class="container">
+                    <div class="card-header">
+                        <h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span><span class="text-primary" th:text="${turistaActual.apellido}"></span></h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <p>iD: <small th:text="${turistaActual.idTurista}"></small></p>
+                            <h5>Correo Electronico: <span th:text="${turistaActual.email}"></span></h5>
+                            <h5>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h5>
+                            <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center">
+                        <a href="#" class="btn btn-modificado btn-primary"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
+                    </div>
+                </div>
+         
+          
+           
+           
+         
+        <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+	    <script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
 		type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+	    <script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
+    </body>
 </html>
