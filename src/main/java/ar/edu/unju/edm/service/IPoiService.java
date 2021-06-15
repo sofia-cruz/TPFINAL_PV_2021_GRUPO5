@@ -8,6 +8,7 @@ import ar.edu.unju.edm.model.PoI;
 
 
 
+
 @Service
 public interface IPoiService {
 
@@ -17,4 +18,7 @@ public interface IPoiService {
 	public PoI encontrarUnPoi(Integer id) throws Exception;
 	public void modificarPoi(PoI poiModificado) throws Exception;
 	public void eliminarPoi(Integer id) throws Exception;
+	//nuevo
+	public PoI obtenerPoiID(Integer id);
+	
 }
