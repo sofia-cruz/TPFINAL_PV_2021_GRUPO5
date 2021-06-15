@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <div class="modal-header">
-	<h5 class="modal-title" id="editarModalTitulo">Vender</h5>
+	<h5 class="modal-title" id="editarModalTitulo">Valorar Punto de Interés</h5>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -32,6 +32,18 @@
 				<input type="text" id="numdoc" th:field="*{comentario}" class="form-control">
 			</div>
 			
+			<p class="calificacion">
+    <input class="inval" id="radio1" type="radio" name="estrellas" value="5"><!--
+    --><label class="val" for="radio1">★</label><!--
+    --><input class="inval" id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><label class="val" for="radio2">★</label><!--
+    --><input class="inval" id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><label class="val" for="radio3">★</label><!--
+    --><input class="inval" id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><label class="val" for="radio4">★</label><!--
+    --><input class="inval" id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><label class="val" for="radio5">★</label>
+  </p>
 			
 			<!--<label for="email" class="col-sm-2 col-form-label">Usuario</label>
 			<div class="col-sm-10">
