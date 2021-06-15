@@ -41,7 +41,7 @@ public class FotoController {
 	}
 	
 	
-	@GetMapping("/poi/foto/{idPoi}")	
+	@GetMapping("/poi/valorar/{idPoi}")	
 	public String realizarValoracion(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
 		Turistas_Pois valoracion = new Turistas_Pois();		
 		try {		
@@ -51,15 +51,15 @@ public class FotoController {
 			valoracion.setPoi(poiSeleccionado);
 		
 			model.addAttribute("valoracion",valoracion);
-			model.addAttribute("clientes", iTuristaService.obtenerTodosTuristas());
+			model.addAttribute("turistas", iTuristaService.obtenerTodosTuristas());
 		}
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
 		}		
-		return "modal-venta";
+		return "modal-valoracion";
 	}
 	
-	@PostMapping("/poi/foto/valorar")
+	@PostMapping("/poi/valorar")
 	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model){
 		iValoracion.guardarValoracion(unaValoracion);
 		return("redirect:/poi/foto");
