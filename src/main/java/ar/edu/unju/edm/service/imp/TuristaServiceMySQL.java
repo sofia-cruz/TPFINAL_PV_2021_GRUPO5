@@ -72,12 +72,10 @@ public class TuristaServiceMySQL implements ITuristaService {
 		turistaDAO.delete(turistaAEliminar);
 	}
 	@Override
-	public void modificarTurista(Turista turistaModificado) throws Exception {
-		// TODO Auto-generated method stub
-		Turista turistaAModificar = turistaDAO.findById(turistaModificado.getIdTurista()).orElseThrow(()->new Exception("El turista No Fue encontrado"));  
-		cambiarTurista(turistaModificado, turistaAModificar);
-		turistaDAO.save(turistaAModificar);
+	public void modificarTurista (Turista unTurista) {
+		turistaDAO.save(unTurista);
 	}
+	
 	private void cambiarTurista (Turista desde, Turista hacia) {
 	hacia.setNombre(desde.getNombre());
 	hacia.setApellido(desde.getApellido());

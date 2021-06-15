@@ -45,16 +45,18 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
-                            <p>iD: <small th:text="${turistaActual.idTurista}"></small></p>
+                            <p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
                             <h5>Correo Electronico: <span th:text="${turistaActual.email}"></span></h5>
                             <h5>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h5>
                             <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center">
-                        <a href="#" class="btn btn-modificado btn-primary"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
+                        <a href="#" class="btn btn-modificado btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
+                    
+                        <a href="#" class="btn btn-modificado btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fa fa-user-delete"></i>Eliminar Perfil</a>
                     </div>
-                </div>
+               </div>
          
           
            

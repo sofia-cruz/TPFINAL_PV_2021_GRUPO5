@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.controller;
 
+import java.security.Principal;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +44,13 @@ public class TuristaController {
 
 	
 	@PostMapping("/turista/modificar")
-	public String modificarTurista(@ModelAttribute("unTurista") Turista turistaModificado, Model model) throws Exception{
-		turistaService.modificarTurista(turistaModificado);
-		BELLA.info("Turista "+ turistaModificado.getIdTurista()+ "modificado");
+	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod){
+		turistaService.modificarTurista(turistaMod);
+		BELLA.info("Turista "+ turistaMod.getIdTurista()+ "modificado");
 		return "redirect:/turista/perfil";
 	}
+
+	
 	
 	@GetMapping("/turista/eliminar/{idTurista}")
 	public String eliminarTurista(@PathVariable(name = "idTurista")int id, Model model) throws Exception{
@@ -63,14 +67,17 @@ public class TuristaController {
 	
 	
 	@GetMapping("/turista/editar/{idTurista}")
-	public String editarTurista(Model model, @PathVariable(name = "idTurista") int id) throws Exception{
+	public String editarTurista(Model model, Principal principal) throws Exception{
 		try{
-			Turista encontrado = turistaService.encontrarUnTurista(id);
-			model.addAttribute("unTurista", encontrado);
+			Turista encontrado = turistaService.encontrarConCorreo(principal.getName());
+			BELLA.info("AHHHHHHHHHHHH");
+			model.addAttribute("turistaModificado", encontrado);
+			BELLA.info("EHHHHHHHHHHHH");
 			return "editar-turista";
 		}
 		catch(Exception e){
 			model.addAttribute("usuarioErrorMensaje", e.getMessage());
+			BELLA.info("el perfil no me quiere");
 		}
 		 return "redirect:/turista/perfil";
 	}
