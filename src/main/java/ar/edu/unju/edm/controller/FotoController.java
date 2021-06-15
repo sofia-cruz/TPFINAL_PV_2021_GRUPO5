@@ -2,6 +2,9 @@ package ar.edu.unju.edm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ar.edu.unju.edm.model.PoI;
+import ar.edu.unju.edm.model.Turista;
 import ar.edu.unju.edm.model.Turistas_Pois;
 
 import ar.edu.unju.edm.service.IPoiService;
@@ -50,8 +54,20 @@ public class FotoController {
 			//revisar esto, en caso de fallos
 			valoracion.setPoi(poiSeleccionado);
 		
-			model.addAttribute("valoracion",valoracion);
-			model.addAttribute("turistas", iTuristaService.obtenerTodosTuristas());
+			
+			Authentication auth = SecurityContextHolder
+		            .getContext()
+		            .getAuthentication();
+		    UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		   
+		    Turista turistaEnSesion =  iTuristaService.encontrarConCorreo(userDetail.getUsername());
+		    
+		    valoracion.setTurista(turistaEnSesion);
+		    valoracion.setTur(turistaEnSesion.getEmail());
+		    model.addAttribute("valoracion",valoracion);
+			
+		   
+		    		
 		}
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
@@ -60,7 +76,15 @@ public class FotoController {
 	}
 	
 	@PostMapping("/poi/valorar")
-	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model){
+	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model) throws Exception{
+		//repito este proceso, porque en realizarValoracion, no me guardaba nada en tur.
+		Authentication auth = SecurityContextHolder
+	            .getContext()
+	            .getAuthentication();
+	    UserDetails userDetail = (UserDetails) auth.getPrincipal();
+	   
+	    Turista turistaEnSesion =  iTuristaService.encontrarConCorreo(userDetail.getUsername());
+		unaValoracion.setTur(turistaEnSesion.getEmail());		
 		iValoracion.guardarValoracion(unaValoracion);
 		return("redirect:/poi/foto");
 	}

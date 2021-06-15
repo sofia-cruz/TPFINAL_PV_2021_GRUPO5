@@ -35,7 +35,15 @@
   transition: .2s;
   
 }
-
+.usuario{
+	color: black;
+}
 .inval[type="radio"]:checked ~ .val {
   color: orange;
+}
+.btn{
+	background-color: lightblue;
+}
+.btn:hover{
+	color: white;
 }

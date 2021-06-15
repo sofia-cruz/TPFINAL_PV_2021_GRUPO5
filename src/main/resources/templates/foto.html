@@ -24,10 +24,16 @@
 							<p class="card-text" th:text="${c.etiqueta}">Etiqueta</p>
 							<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
 							<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
+						<div>
 							<a href="#" th:href="@{'/poi/editar/'+${c.idPoi}}"><i class="fa fa-edit"></i></a>
-						    <a class="stretched-link btn link-valorar" th:href="@{'/poi/valorar/'+${c.idPoi}}">Valorar</a>
+						</div>
+						   
+						<div class="btn">
+						 <a class="stretched-link btn link-valorar" style="position: relative;" th:href="@{'/poi/valorar/'+${c.idPoi}}">Valorar</a>
+						</div>
 							
 						</div>
+						
 					</div>
 				</div>
 			</div>
