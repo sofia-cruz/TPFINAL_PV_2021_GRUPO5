@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.model;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +26,8 @@ public class Turistas_Pois {
 	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "eMail")
 	private Turista turista;
+	@Column
+	private String tur;
 	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "codigoPoi")
 	private PoI poi;
@@ -38,6 +40,12 @@ public class Turistas_Pois {
 	
 	
 	
+	public String getTur() {
+		return tur;
+	}
+	public void setTur(String tur) {
+		this.tur = tur;
+	}
 	public Turistas_Pois() {
 		
 	}
