@@ -74,6 +74,12 @@ public class PoiServiceMySQL implements IPoiService{
 	
 	}
 
+	@Override
+	public PoI obtenerPoiID(Integer id) {
+		// TODO Auto-generated method stub
+		return poiDAO.findById(id).orElseThrow();
+	}
+
 
 	
 
