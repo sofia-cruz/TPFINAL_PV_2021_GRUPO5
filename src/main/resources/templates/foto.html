@@ -6,6 +6,7 @@
 	<title>Insert title here</title>
 	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+	<link th:href="@{/css/estilos_valoracion.css}" rel="stylesheet" type="text/css" href="/static/css/estilos_valoracion.css">
 </head>
 
 <body>
@@ -24,7 +25,8 @@
 							<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
 							<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
 							<a href="#" th:href="@{'/poi/editar/'+${c.idPoi}}"><i class="fa fa-edit"></i></a>
-							<button type="submit" value="Valorar"class="btn btn-primary">Valorar</button>
+						    <a class="stretched-link btn link-valorar" th:href="@{'/poi/valorar/'+${c.idPoi}}">Valorar</a>
+							
 						</div>
 					</div>
 				</div>
@@ -33,12 +35,30 @@
 </div>
 
 
+<!--Modal Editar-->
+		<div class="modal fade" id="modalValorar" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" >
+				<div class="modal-content">
+				
+				</div>
+			</div>
+		</div>
+
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
 		src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
 		src="webjars/popper.js/1.16.0/popper.min.js"></script>
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+			$(document).ready(function() { $(".link-valorar").on("click", function(event) {
+									event.preventDefault();
+									$("#modalValorar").modal("show").find(".modal-content").load($(this).attr("href"));
+								});
+					});
+		</script>
+
 </body>
 
 </html>

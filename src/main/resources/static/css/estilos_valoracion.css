@@ -1,0 +1,41 @@
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form .calificacion {
+  text-align: center;
+}
+
+#form .val {
+  font-size: 20px;
+}
+
+.inval[type="radio"] {
+  display: none;
+}
+
+.val {
+	font-size: 22px;
+  color: grey;
+   transition: .4s; 
+   width: 20px;
+}
+
+.calificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.val:hover,
+.val:hover ~ .val {
+  color: orange;
+     width: 21px;
+  transition: .2s;
+  
+}
+
+.inval[type="radio"]:checked ~ .val {
+  color: orange;
+}
