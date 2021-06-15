@@ -23,10 +23,10 @@ public class Turistas_Pois {
 	@Column
 	private Integer idTuristas_Pois;
 	//revisar si es ManyToOne o OneToMany,
-	@ManyToOne//(cascade = {CascadeType.ALL})
+	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "eMail")
 	private Turista turista;
-	@ManyToOne//(cascade = {CascadeType.ALL})
+	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "codigoPoi")
 	private PoI poi;
 	@Column
