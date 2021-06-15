@@ -6,17 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Turistas_Pois;
+import ar.edu.unju.edm.repository.IValoracionDAO;
 import ar.edu.unju.edm.service.IValoracionService;
 @Service
 public class ValoracionServiceMySQL implements IValoracionService{
 @Autowired
 Turistas_Pois valoracion;
-	
+
+@Autowired
+IValoracionDAO valoracionDAO;
 	
 	@Override
 	public void guardarValoracion(Turistas_Pois unaValoracion) {
 		// TODO Auto-generated method stub
-		
+		valoracionDAO.save(unaValoracion);
 	}
 
 	@Override

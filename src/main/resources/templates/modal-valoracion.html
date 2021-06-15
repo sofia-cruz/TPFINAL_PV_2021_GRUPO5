@@ -18,17 +18,30 @@
 				<input type="text" id="numdoc" th:field="*{poi.nombrePoi}" class="form-control">
 			</div>
 			
-			<label for="cantidad" class="col-sm-2 col-form-label">Valoracion</label>
+			<!--  <input type="hidden" th:field="*{idTurista}">-->
+			
+		
+			
+			<label for="valoracion" class="col-sm-2 col-form-label">Valoracion</label>
 			<div class="col-sm-10">
-				<input type="number" id="cantidad" class="form-control" th:field="*{valoracion}">
+				<input type="number" id="valoracion" class="form-control" th:field="*{valoracion}">
 			</div>
-			<label for="cantidad" class="col-sm-2 col-form-label">Usuario</label>
+			
+			<label for="numdoc" class="col-sm-2 col-form-label">Comentario</label>
+			<div class="col-sm-10">
+				<input type="text" id="numdoc" th:field="*{comentario}" class="form-control">
+			</div>
+			
+			
+			<label for="email" class="col-sm-2 col-form-label">Usuario</label>
 			<div class="col-sm-10">
 			<div>
-			<select th:field="*{turista.idTurista}" class="custom-select mt-3 mb-3 border-info" required>
-			<option th:each="c :${turistas}" th:value="${c.idTurista}" th:text="${c.nombre+c.apellido}" value="----"></option> 
+			<select th:field="*{turista.email}" class="custom-select mt-3 mb-3 border-info" required>
+			<option th:each="c :${turistas}" th:value="${c.email}" th:text="${c.email}" value="----"></option>
 			</select>
-			</div>
+			
+			
+			</div>	
 			</div>
 		</div>
 		<div class="modal-footer">
