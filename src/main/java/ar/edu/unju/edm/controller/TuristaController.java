@@ -26,6 +26,11 @@ public class TuristaController {
 	@Qualifier("impmysql")
 	ITuristaService turistaService;
 	
+	
+	@GetMapping("/registro")
+	public String registrar(Model model) {
+		return "registro-rapido";
+	}
 	@PostMapping("/turista/guardar")
 	public String guardarTurista (@ModelAttribute("unTurista") Turista nuevoTurista, Model model) {
 		BELLA.info("METHOD: Ingresando al metodo Guardar");
