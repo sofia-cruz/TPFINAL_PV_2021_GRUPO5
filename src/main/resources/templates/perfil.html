@@ -4,7 +4,7 @@
 		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
 	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}"/>
 <meta charset="UTF-8">
-        <link th:href="@{/css/estilo-perfil.css}" rel="stylesheet" type="text/css" href="/css/estilo-perfil.css"/>
+        <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
         <!--<link rel="icon" type="image/x-icon" href="img/hange.jpg" />-->
 
         <title>Mi Perfil</title>
@@ -17,48 +17,43 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                
                 <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/perfil.jpg" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#infotur">Información personal</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#comentariostur">Comentarios</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#poitur">Puntos de interés</a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/turista/perfil}">Información personal</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/poi/mostrar}">Cargar Punto de Interés</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/poi/foto}">Valorar Puntos de Interés</a></li>
             </div>
         </nav>
-        <div class="container">
-        	<ul class="navbar-nav mt-2 mt-lg-0">
-				<li class="nav-item">
-				<a class="btn btn-outline-dark" href="#" th:href="@{/logout}"> 
-				<span th:text="${#authentication.getPrincipal().getUsername()}">
-				</span> - 
-				<span> Salir  </span><span class="float-right">
-				<i class="fas fa-sign-out-alt"></i></span></a>				   	
-				</li>
-				</ul>
-           </div>
-           <div class="container">
+        <div class="resume-section resume-section-content">
                     <div class="card-header">
-                        <h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span><span class="text-primary" th:text="${turistaActual.apellido}"></span></h1>
+                        <h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span>&nbsp;<span class="text-primary" th:text="${turistaActual.apellido}"></span></h1>
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
-                            <h5>Correo Electronico: <span th:text="${turistaActual.email}"></span></h5>
-                            <h5>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h5>
+                            <h4 href="mailto:name@email.com">Correo Electronico: <span th:text="${turistaActual.email}"></span></h4>
+                            <h4>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h4>
+                            <h4>Ubicación: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span th:text="${turistaActual.longitud}"></span></h4>
+
                             <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center">
-                        <a href="#" class="btn btn-modificado btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
-                    
-                        <a href="#" class="btn btn-modificado btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fa fa-user-delete"></i>Eliminar Perfil</a>
+                        <a href="#" class="btn btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
+                    	&nbsp; &nbsp;
+                        <a href="#" class="btn btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fab fa-dashcube"></i>Eliminar Perfil</a>
+                        &nbsp; &nbsp;
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="btn btn-primary" href="#" th:href="@{/logout}"><span class="float-right"><i class="fas fa-sign-out-alt"></i></span><span th:text="${#authentication.getPrincipal().getUsername()}"></span> - <span> Cerrar Sesión </span></a>				   	
+                            </li>
+                        </ul>
                     </div>
-               </div>
-         
-          
+        </div>
            
            
          
@@ -69,5 +64,10 @@
 	    <script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
     </body>
 </html>
