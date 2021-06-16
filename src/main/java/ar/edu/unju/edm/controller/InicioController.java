@@ -11,4 +11,6 @@ public class InicioController {
 	public String mostrarInicio(Model model) {
 		return "inicio";
 	}
+
+
 }
