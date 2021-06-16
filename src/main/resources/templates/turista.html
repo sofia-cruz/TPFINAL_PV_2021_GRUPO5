@@ -10,11 +10,15 @@
 
 <title>Registrarse</title>
 <link th:href="@{/css/estilos.css}" rel="stylesheet" type="text/css" href="/static/css/estilos.css">
+
+ <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
 </head>
 
 <body>
 	<div class="container">
-	<!--	<div th:insert="layouts/header :: header"></div> -->
+<!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
 		<h1>Registrarse</h1>
 		<br>
 		
