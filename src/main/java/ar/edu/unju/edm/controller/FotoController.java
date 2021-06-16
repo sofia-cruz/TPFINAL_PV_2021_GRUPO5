@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
@@ -24,7 +26,7 @@ import ar.edu.unju.edm.service.IValoracionService;
 @Controller
 public class FotoController {
 // este controller cuenta como valoración contrller,
-	
+	private static final Log LOGGER = LogFactory.getLog(PoIController.class);
 	@Autowired 
 	@Qualifier("impmysqlpoi")
 	IPoiService iPoiService;
@@ -52,9 +54,7 @@ public class FotoController {
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
 			valoracion = iValoracion.crearValoracion();	
 			//revisar esto, en caso de fallos
-			valoracion.setPoi(poiSeleccionado);
-		
-			
+			valoracion.setPoi(poiSeleccionado);			
 			Authentication auth = SecurityContextHolder
 		            .getContext()
 		            .getAuthentication();
@@ -64,7 +64,10 @@ public class FotoController {
 		    
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
+		    
 		    model.addAttribute("valoracion",valoracion);
+		    LOGGER.error("METHOD: Saliendo de Valorar: "+turistaEnSesion.getEmail()+" "+turistaEnSesion.getNombre());
+		    LOGGER.error("METHOD: valor de valoracion: "+valoracion.getValoracion()+" , id turistas_pois: "+valoracion.getIdTuristas_Pois());
 			
 		   
 		    		
@@ -78,14 +81,19 @@ public class FotoController {
 	@PostMapping("/poi/valorar")
 	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model) throws Exception{
 		//repito este proceso, porque en realizarValoracion, no me guardaba nada en tur.
-		Authentication auth = SecurityContextHolder
+		/*Authentication auth = SecurityContextHolder
 	            .getContext()
 	            .getAuthentication();
 	    UserDetails userDetail = (UserDetails) auth.getPrincipal();
 	   
 	    Turista turistaEnSesion =  iTuristaService.encontrarConCorreo(userDetail.getUsername());
-		unaValoracion.setTur(turistaEnSesion.getEmail());		
-		iValoracion.guardarValoracion(unaValoracion);
+		unaValoracion.setTur(turistaEnSesion.getEmail());		*/
+		
+	    LOGGER.error("METHOD: Entrando en PostMapping de Valorar, vontenido de tur: "+unaValoracion.getTur());
+	    LOGGER.error("METHOD: La valoracion: "+unaValoracion.getValoracion());
+	    LOGGER.error("METHOD: id turistas:pois: "+unaValoracion.getIdTuristas_Pois());
+
+	    iValoracion.guardarValoracion(unaValoracion);
 		return("redirect:/poi/foto");
 	}
 	
