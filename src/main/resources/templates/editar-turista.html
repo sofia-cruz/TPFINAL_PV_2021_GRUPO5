@@ -26,19 +26,24 @@
                 <form class="card-body" id="form-registro" th:object="${turistaModificado}" th:action="@{/turista/modificar}" method="POST">
                     <input type="hidden" th:field="*{idTurista}">
                     <div class="form-row my-2">
-                        <div class="form-group col-md-6">
+                        <div class="form-group my-2">
                             <label class="form-label user-select-none" for="nombre">Nombre <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="nombre" th:field="*{nombre}">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group my-2">
                             <label class="form-label user-select-none" for="apellido">Apellido <span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="apellido" th:field="*{apellido}">
                         </div>
+                        
                     </div>
                     <div class="form-group my-2">
                         <label class="form-label user-select-none" for="email"> Correo Electronico <span class="text-danger">*</span></label>
                         <input class="form-control" type="email" id="email" th:field="*{email}">
                     </div>
+                   <!-- <div class="form-group my-2">
+                            <label class="form-label user-select-none" for="apellido">Contraseña <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="password" th:field="*{password}">
+                      </div>-->
                     <div class="form-group my-2">
                         <label class="form-label user-select-none" for="password">Pais de Procedencia <span class="text-danger">*</span></label>
                         <select class="form-control" name="Pais" id="seleccion-pois" th:field="*{paisProcedencia}">
@@ -73,7 +78,8 @@
                             <option value="Portugal">Portugal</option>
                             <option value="Rusia">Rusia</option>
                             <option value="Austria">Austria</option>
-                            <option value="Costa Rica">Costa Rica</option>
+                            <!--<option value="Costa Rica">Costa Rica</option>-->
+                            
                         </select>
                     </div>
                     <div class="d-flex justify-content-center my-4">
