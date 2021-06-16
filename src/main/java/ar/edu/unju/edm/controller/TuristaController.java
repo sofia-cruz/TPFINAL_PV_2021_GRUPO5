@@ -44,10 +44,11 @@ public class TuristaController {
 	public String crearTurista(Model model) {
 		model.addAttribute("unTurista", turistaService.crearTurista());
 		model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
-		return ("turista");
+		BELLA.info("Nuevo turista generado");
+		return "turista";
 	}
 
-	
+
 	@PostMapping("/turista/modificar")
 	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod){
 		turistaService.modificarTurista(turistaMod);

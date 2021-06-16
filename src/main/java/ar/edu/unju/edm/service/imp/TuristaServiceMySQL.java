@@ -25,6 +25,10 @@ public class TuristaServiceMySQL implements ITuristaService {
 	@Override
 	public void guardarTurista(Turista unTurista) {
 		// TODO Auto-generated method stub
+		Double valorLat =  Math.floor(Math.random()*(24-65+1)+24);
+		Double valorLong =  Math.floor(Math.random()*(20-65+1)+24);
+		unTurista.setLatitud(valorLat);
+		unTurista.setLongitud(valorLong);
 		String pw = unTurista.getPassword();
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
@@ -43,10 +47,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 		
 		// revisar
 		// TODO Auto-generated method stub
-		Double valorLat =  Math.floor(Math.random()*(24-65+1)+24);
-		Double valorLong =  Math.floor(Math.random()*(20-65+1)+24);
-		unTurista.setLatitud(valorLat);
-		unTurista.setLongitud(valorLong);
+		
 		unTurista.setRol("normal");
 		return unTurista;
 	}
@@ -77,18 +78,20 @@ public class TuristaServiceMySQL implements ITuristaService {
 	}
 	@Override
 	public void modificarTurista (Turista unTurista) {
+		String pw = unTurista.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
 		turistaDAO.save(unTurista);
 	}
-	/*
-	private void cambiarTurista (Turista desde, Turista hacia) {
+	/*private void cambiarTurista (Turista desde, Turista hacia) {
 	hacia.setNombre(desde.getNombre());
 	hacia.setApellido(desde.getApellido());
 	hacia.setPaisProcedencia(desde.getPaisProcedencia());
 	hacia.setLatitud(desde.getLatitud());
 	hacia.setLongitud(desde.getLongitud());
 	hacia.setPuntos(desde.getPuntos());
-	//hacia.setPassword(desde.getPassword());  //dudoso
+	hacia.setPassword(desde.getPassword());  //dudoso
 	}
-*/
 
+*/
 }
