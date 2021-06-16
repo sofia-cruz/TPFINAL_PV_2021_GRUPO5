@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ar.edu.unju.edm.model.Turista;
+import ar.edu.unju.edm.service.IPoiService;
 import ar.edu.unju.edm.service.ITuristaService;
 
 
@@ -21,6 +22,9 @@ public class PerfilController {
 	@Autowired
 	@Qualifier("impmysql")
 	ITuristaService turistaService;
+	@Autowired
+	@Qualifier("impmysqlpoi")
+    IPoiService iPoiService;
 	
 	
 	@GetMapping("/turista/perfil")
