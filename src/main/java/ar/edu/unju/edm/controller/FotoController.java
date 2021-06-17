@@ -58,7 +58,7 @@ public class FotoController {
 			//poiSeleccionado.setNumeroDeComentarios(cantidadValoraciones);
 		
 			//System.out.println("cantidad de comentarios guardao: "+ poiSeleccionado.getNumeroDeComentarios());
-	       iValoracion.contarValoraciones(id);
+	      // iValoracion.contarValoraciones(id);
 			//fin de la actualizacion de poi
 			
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
@@ -96,6 +96,8 @@ public class FotoController {
 	    LOGGER.error("METHOD: Email de usuario que valora: "+unaValoracion.getTur());
 
 	    iValoracion.guardarValoracion(unaValoracion);
+	    //esto manda el id del poi, y actualiza cantidad de comentarios
+	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());
 		return("redirect:/poi/foto");
 	}
 	
