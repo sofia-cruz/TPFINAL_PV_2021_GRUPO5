@@ -46,7 +46,8 @@ public class AutenticationSuccessHandler implements AuthenticationSuccessHandler
 	}
 		if (normal) {  
 			System.out.println("--despues de login-> me lleva a...");
-			redirectStrategy.sendRedirect(request, response, "/turista/perfil");
+			//aquí es donde entro por defecto
+			redirectStrategy.sendRedirect(request, response, "/home");
 		} else {
 			if (userConsultor) {
 				redirectStrategy.sendRedirect(request, response, "/consultor");
