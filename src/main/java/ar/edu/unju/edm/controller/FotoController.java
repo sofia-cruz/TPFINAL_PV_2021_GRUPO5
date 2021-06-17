@@ -49,22 +49,17 @@ public class FotoController {
 	
 	@GetMapping("/poi/valorar/{idPoi}")	
 	public String realizarValoracion(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
-		Turistas_Pois valoracion = new Turistas_Pois();		
+		//Turistas_Pois valoracion = new Turistas_Pois();		
 		try {	
+			/// solo es una prueba		
+			//Manda el id del poi, y debe contar cuantas valoraciones tiene
+			int cantidadValoraciones = iValoracion.contarValoraciones(id);
+			System.out.println("Este poi tiene: "+cantidadValoraciones);
 			
-			
-			/// solo es una prueba
-			
-			Integer valo= iValoracion.contarValoraciones(id);
-			
-			LOGGER.error("METHOD: Valoraciones totales de este punto: "+ valo);
-		
-			///  fin de la prueba
-			
-			
+	
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
-			valoracion = iValoracion.crearValoracion();	
-			//revisar esto, en caso de fallos
+			Turistas_Pois valoracion = iValoracion.crearValoracion();	
+			
 			valoracion.setPoi(poiSeleccionado);			
 			Authentication auth = SecurityContextHolder
 		            .getContext()
@@ -75,11 +70,10 @@ public class FotoController {
 		    
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
-		    
-		    
+	    
 		    model.addAttribute("valoracion",valoracion);
-		    LOGGER.error("METHOD: Saliendo de Valorar: "+turistaEnSesion.getEmail()+" "+turistaEnSesion.getNombre());
-		    LOGGER.error("METHOD: valor de valoracion: "+valoracion.getValoracion()+" , id turistas_pois: "+valoracion.getIdTuristas_Pois());
+		    LOGGER.error("METHOD: Saliendo de Valorar, el usuario guardado: "+valoracion.getTur());
+		    LOGGER.error("METHOD: valor de valoracion: "+valoracion.getValoracion_user()+" , id turistas_pois: "+valoracion.getIdTuristas_Pois());
 			
 		   
 		    		
@@ -92,18 +86,10 @@ public class FotoController {
 	
 	@PostMapping("/poi/valorar")
 	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model) throws Exception{
-	
-		/*Authentication auth = SecurityContextHolder
-	            .getContext()
-	            .getAuthentication();
-	    UserDetails userDetail = (UserDetails) auth.getPrincipal();
-	   
-	    Turista turistaEnSesion =  iTuristaService.encontrarConCorreo(userDetail.getUsername());
-		unaValoracion.setTur(turistaEnSesion.getEmail());		*/
 		
-	    LOGGER.error("METHOD: Entrando en PostMapping de Valorar, vontenido de tur: "+unaValoracion.getTur());
-	    LOGGER.error("METHOD: La valoracion: "+unaValoracion.getValoracion());
+	    LOGGER.error("METHOD: La valoracion: "+unaValoracion.getValoracion_user());
 	    LOGGER.error("METHOD: id turistas:pois: "+unaValoracion.getIdTuristas_Pois());
+	    LOGGER.error("METHOD: Email de usuario que valora: "+unaValoracion.getTur());
 
 	    iValoracion.guardarValoracion(unaValoracion);
 		return("redirect:/poi/foto");
