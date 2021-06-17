@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <div class="modal-header">
-	<h5 class="modal-title" id="editarModalTitulo">Valorar Punto de Interés</h5>
+	<h5 class="modal-title" id="editarModalTitulo">Valoración de
+	<label th:object="${valoracion}" th:text="*{tur}" class="col-form-label">
+	 </h5>
+		
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -9,48 +12,62 @@
 <div class="modal-body">
 	<form id="formProducto" th:object="${valoracion}" th:action="@{/poi/valorar}" method="post">
 		<div class="form-group row">
-		<label for="numid" class="col-sm-2 col-form-label">Usuario:</label>
+
+		<!--	Si lo libero da error D:
+			
+			<input th:field="*{idTuristas_Pois}" type="hidden"> -->
+
+
+		<!--	<label for="numid" class="col-sm-2 col-form-label">Usuario:</label>
 			<div class="col-sm-10">
-	<label  th:text="*{tur}" class="col-form-label">
-			</div>
-		
-			<label for="numid" class="col-sm-2 col-form-label">Id Poi</label>
+				<label th:text="*{tur}" class="col-form-label">
+			</div>-->
+
+		<!-- no veo necesario que se muestre el id
+			<label for="numid" class="col-sm-2 col-form-label">Id Poi</label> 
 			<div class="col-sm-10">
-				<label type="number" id="elid" th:text="*{poi.idPoi}"class="col-form-label" readonly>
-			</div>
+				<label type="number" id="elid" th:text="*{poi.idPoi}" class="col-form-label" readonly>
+			</div>  -->
+			
+			<input type="hidden" id="elid" th:field="*{poi.idPoi}" class="col-form-label">
 			<label for="numdoc" class="col-sm-2 col-form-label">Nombre de Poi</label>
 			<div class="col-sm-10">
-				<label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label" readonly> 
-			</div>
-			
-			<!--<input type="hidden" th:field="*{idTuristas_Pois}">-->
-		
-			
-			
-			<label for="numdoc" class="col-sm-2 col-form-label">Comentario</label>
-			<div class="col-sm-10">
-				<input type="text" id="numdoc" th:field="*{comentario}" class="form-control">
+				<label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label" readonly>
 			</div>
 			
 			<label for="valoracion" class="col-sm-2 col-form-label">Valoracion</label>
 			<div class="col-sm-10">
-				<!--  <input type="number" id="valoracion" class="form-control" th:field="*{valoracion}">-->
-
-			<p class="calificacion">
-        <input  th:field="*{valoracion}" class="inval" id="radio1" type="radio" name="estrellas" value="5"><!--
-    --><label class="val" for="radio1">★</label><!--
-    --><input  th:field="*{valoracion}" class="inval" id="radio2" type="radio" name="estrellas" value="4"><!--
-    --><label class="val" for="radio2">★</label><!--
-    --><input  th:field="*{valoracion}" class="inval" id="radio3" type="radio" name="estrellas" value="3"><!--
-    --><label class="val" for="radio3">★</label><!--
-    --><input  th:field="*{valoracion}" class="inval" id="radio4" type="radio" name="estrellas" value="2"><!--
-    --><label class="val" for="radio4">★</label><!--
-    --><input  th:field="*{valoracion}" class="inval" id="radio5" type="radio" name="estrellas" value="1"><!--
-    --><label class="val" for="radio5">★</label>
-           </p>
-          </div>     
 			
-		
+			<p class="calificacion">
+					<input th:field="*{valoracion}" class="inval" id="radio1" type="radio" name="estrellas" value="5">
+					<!--
+    --><label class="val" for="radio1">★</label>
+					<!--
+    --><input th:field="*{valoracion}" class="inval" id="radio2" type="radio" name="estrellas" value="4">
+					<!--
+    --><label class="val" for="radio2">★</label>
+					<!--
+    --><input th:field="*{valoracion}" class="inval" id="radio3" type="radio" name="estrellas" value="3">
+					<!--
+    --><label class="val" for="radio3">★</label>
+					<!--
+    --><input th:field="*{valoracion}" class="inval" id="radio4" type="radio" name="estrellas" value="2">
+					<!--
+    --><label class="val" for="radio4">★</label>
+					<!--
+    --><input th:field="*{valoracion}" class="inval" id="radio5" type="radio" name="estrellas" value="1">
+					<!--
+    --><label class="val" for="radio5">★</label>
+				</p>
+			</div>
+
+
+			<label for="comentario" class="col-sm-2 col-form-label">Comentario</label>
+			<div class="col-sm-10">
+				<input type="text" id="comentario" th:field="*{comentario}" class="form-control">
+			</div>
+
+
 
 		</div>
 		<div class="modal-footer">
