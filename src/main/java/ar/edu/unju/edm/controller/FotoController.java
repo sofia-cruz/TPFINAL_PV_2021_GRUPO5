@@ -65,6 +65,7 @@ public class FotoController {
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
 		    
+		    
 		    model.addAttribute("valoracion",valoracion);
 		    LOGGER.error("METHOD: Saliendo de Valorar: "+turistaEnSesion.getEmail()+" "+turistaEnSesion.getNombre());
 		    LOGGER.error("METHOD: valor de valoracion: "+valoracion.getValoracion()+" , id turistas_pois: "+valoracion.getIdTuristas_Pois());
@@ -80,7 +81,7 @@ public class FotoController {
 	
 	@PostMapping("/poi/valorar")
 	public String guardarNuevaValoracion(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model) throws Exception{
-		//repito este proceso, porque en realizarValoracion, no me guardaba nada en tur.
+	
 		/*Authentication auth = SecurityContextHolder
 	            .getContext()
 	            .getAuthentication();
