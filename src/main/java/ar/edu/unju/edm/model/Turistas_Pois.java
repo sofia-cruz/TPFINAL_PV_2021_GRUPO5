@@ -32,7 +32,7 @@ public class Turistas_Pois {
 	@JoinColumn(name = "codigoPoi")
 	private PoI poi;
 	@Column
-	private Integer valoracion;
+	private Integer valoracion_user;
 	@Column
 	private String comentario;
 	
@@ -67,11 +67,12 @@ public class Turistas_Pois {
 	public void setPoi(PoI poi) {
 		this.poi = poi;
 	}
-	public Integer getValoracion() {
-		return valoracion;
+	
+	public Integer getValoracion_user() {
+		return valoracion_user;
 	}
-	public void setValoracion(Integer valoracion) {
-		this.valoracion = valoracion;
+	public void setValoracion_user(Integer valoracion_user) {
+		this.valoracion_user = valoracion_user;
 	}
 	public String getComentario() {
 		return comentario;
