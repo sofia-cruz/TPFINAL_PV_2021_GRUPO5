@@ -34,7 +34,7 @@ public class FotoController {
 	@Autowired 
 	@Qualifier("impmysql")
 	ITuristaService iTuristaService;
-	
+		
 	@Autowired
 	PoI poiSeleccionado;
 	@Autowired
@@ -50,7 +50,18 @@ public class FotoController {
 	@GetMapping("/poi/valorar/{idPoi}")	
 	public String realizarValoracion(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
 		Turistas_Pois valoracion = new Turistas_Pois();		
-		try {		
+		try {	
+			
+			
+			/// solo es una prueba
+			
+			Integer valo= iValoracion.contarValoraciones(id);
+			
+			LOGGER.error("METHOD: Valoraciones totales de este punto: "+ valo);
+		
+			///  fin de la prueba
+			
+			
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
 			valoracion = iValoracion.crearValoracion();	
 			//revisar esto, en caso de fallos
