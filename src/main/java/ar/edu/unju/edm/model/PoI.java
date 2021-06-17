@@ -37,6 +37,8 @@ public class PoI {
     private Double latitud;
 	@Column
     private Double longitud;
+	@Column
+	private Integer numeroDeComentarios;
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
@@ -107,6 +109,13 @@ public class PoI {
 	}
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
+	}
+	// esto se actualiza cada vez que valoro un poi
+	public Integer getNumeroDeComentarios() {
+		return numeroDeComentarios;
+	}
+	public void setNumeroDeComentarios(Integer numeroDeComentarios) {
+		this.numeroDeComentarios = numeroDeComentarios;
 	}
 	
 	
