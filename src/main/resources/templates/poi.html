@@ -7,12 +7,20 @@
 	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 <link th:rel="stylesheet"
 	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+	
+	 <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
 </head>
 <body>
 	<div class="container">
+	<!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
+	
 	<form id="formProducto" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
 			 method="post">
 			<div class="form-group row">
+
+				    <input type="hidden" th:field="*{idPoi}"th:if="${editMode}">
 			<label for="name" class="col-sm-2 col-form-label">Nombre</label> 
 			<div class="col-sm-10">
 			<input type="text"id="name" th:field="*{nombrePoi}"class="form-control" placeholder="ej: Hornocal">
@@ -98,7 +106,8 @@
 				</div>
 			</div>
 			-->
-			 <button type="submit" class="btn btn-primary">Submit</button>
+			 <input type="submit" class="btn btn-danger btn-block"  th:value="${editMode}?'Modificar Poi':'Crear Poi'">
+			 <!--<button type="submit" class="btn btn-primary">Submit</button>-->
 	</form>
 	</div>
 	
