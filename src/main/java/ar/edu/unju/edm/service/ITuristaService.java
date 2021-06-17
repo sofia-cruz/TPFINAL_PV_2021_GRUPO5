@@ -16,7 +16,6 @@ public interface ITuristaService {
 	public Turista crearTurista();
 	public List<Turista> obtenerTodosTuristas();
 	public Turista encontrarUnTurista(int id) throws Exception;
-	public Turista encontrarConCorreo(String email) throws Exception;
-	public void modificarTurista(Turista unTurista);
+	public void modificarTurista(Turista turistaModificado) throws Exception;
 	public void eliminarTurista(int id) throws Exception;
 }

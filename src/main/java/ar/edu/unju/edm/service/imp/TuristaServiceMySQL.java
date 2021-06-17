@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Turista;
@@ -25,14 +24,6 @@ public class TuristaServiceMySQL implements ITuristaService {
 	@Override
 	public void guardarTurista(Turista unTurista) {
 		// TODO Auto-generated method stub
-		Double valorLat =  Math.floor(Math.random()*(24-65+1)+24);
-		Double valorLong =  Math.floor(Math.random()*(20-65+1)+24);
-		unTurista.setLatitud(valorLat);
-		unTurista.setLongitud(valorLong);
-		String pw = unTurista.getPassword();
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
-		
 		turistaDAO.save(unTurista);
 	}
 
@@ -44,11 +35,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 
 	@Override
 	public Turista crearTurista() {
-		
-		// revisar
 		// TODO Auto-generated method stub
-		
-		unTurista.setRol("normal");
 		return unTurista;
 	}
 
@@ -57,18 +44,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 	public Turista encontrarUnTurista(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Existe"));
-		
 	}
-	
-
-	//otro para buscar por string para ayudarme en el perfil
-	@Override
-	public Turista encontrarConCorreo(String email) throws Exception{
-		 
-		return turistaDAO.findByEmail(email).orElseThrow(()->new Exception("El turista No Existe"));       
-	}
-
-	
 
 	@Override
 	public void eliminarTurista(int id) throws Exception {
@@ -77,21 +53,19 @@ public class TuristaServiceMySQL implements ITuristaService {
 		turistaDAO.delete(turistaAEliminar);
 	}
 	@Override
-	public void modificarTurista (Turista unTurista) {
-		String pw = unTurista.getPassword();
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
-		turistaDAO.save(unTurista);
+	public void modificarTurista(Turista turistaModificado) throws Exception {
+		// TODO Auto-generated method stub
+		Turista turistaAModificar = turistaDAO.findById(turistaModificado.getIdTurista()).orElseThrow(()->new Exception("El turista No Fue encontrado"));  
+		cambiarTurista(turistaModificado, turistaAModificar);
+		turistaDAO.save(turistaAModificar);
 	}
-	/*private void cambiarTurista (Turista desde, Turista hacia) {
+	private void cambiarTurista (Turista desde, Turista hacia) {
 	hacia.setNombre(desde.getNombre());
 	hacia.setApellido(desde.getApellido());
 	hacia.setPaisProcedencia(desde.getPaisProcedencia());
 	hacia.setLatitud(desde.getLatitud());
 	hacia.setLongitud(desde.getLongitud());
-	hacia.setPuntos(desde.getPuntos());
-	hacia.setPassword(desde.getPassword());  //dudoso
 	}
 
-*/
+
 }

@@ -1,4 +1,7 @@
 package ar.edu.unju.edm.controller;
+import java.io.IOException;
+import java.util.Base64;
+
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unju.edm.model.PoI;
 import ar.edu.unju.edm.service.IPoiService;
@@ -53,8 +58,8 @@ public class PoIController {
 
     
 
-	@PostMapping("/poi/guardar")
-	public String guardarNuevoPoi(@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado, Model model) {
+	@PostMapping(value="/poi/guardar",  consumes = "multipart/form-data")
+	public String guardarNuevoPoi(@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado, Model model)throws IOException {
 		LOGGER.info("METHOD: ingresando a Guardar Poi");
 	if (resultado.hasErrors())
 	{
@@ -64,6 +69,9 @@ public class PoIController {
 	}
 	else {
 	//deberia haber try
+		byte[] content = file.getBytes();
+		String base64 = Base64.getEncoder().encodeToString(content);
+		nuevoPoi.setImagen(base64);
 	iPoiService.guardarPoi(nuevoPoi);
 		return "redirect:/poi/mostrar";
 	}

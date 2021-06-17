@@ -8,93 +8,47 @@
 	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
 <meta charset="UTF-8">
 
-<title>Registrarse</title>}
-
- <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
+<title>Registrarse</title>
+<!-- <link th:rel="icon" th:href="#"/>-->
 </head>
 
 <body>
 	<div class="container">
-<!--Este es el header-->
-<div th:insert="layout/header :: header" class="cabeza"></div>
-    <!--Fin de el header-->
-		<h1 class="mb-0">Crea tu <span class="text-primary">cuenta</span></h1>
+	<!--	<div th:insert="layouts/header :: header"></div> -->
+		<h1>Registrarse</h1>
 		<br>
-		<p>La siguiente información es requerida para que pueda disfrutar de nuestros servicios: </p>
+		
 		<form id="formTurista" th:object="${unTurista}"
 			th:action="${editMode}?@{/turista/modificar}:@{/turista/guardar}"
 			method="post">
-			 <input type="hidden" name="rol" id="rol" th:field="*{rol}">
-                    <div class="form-row my-2">
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="nombre">Nombre <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="nombre" th:field="*{nombre}">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="apellido">Apellido <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="apellido" th:field="*{apellido}">
-                        </div>
-                    </div>
-
-                    <div class="form-group my-2">
-                        <label class="form-label user-select-none" for="email"> Correo Electronico <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" id="email" th:field="*{email}">
-                    </div>
-                    <div class="form-row my-2">
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="password">Constraseña <span class="text-danger">*</span></label>
-                            <input class="form-control" type="password" id="password" th:field="*{password}">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="password"> Pais de procedencia <span class="text-danger">*</span></label>
-                            <select class="form-control" name="País" id="seleccion-pois" th:field="*{paisProcedencia}">
-                                    <option value="-- Seleccione su pais --" selected disabled>-- Seleccione su pais --</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Brasil">Brasil</option>
-                                    <option value="Chile">Chile</option>
-                                    <option value="Paraguay">Paraguay</option>
-                                    <option value="Uruguay">Uruguay</option>
-                                    <option value="Bolivia">Bolivia</option>
-                                    <option value="Estados Unidos">Estados Unidos</option>
-                                    <option value="España">España</option>
-                                    <option value="Perú">Perú</option>
-                                    <option value="Colombia">Colombia</option>
-                                    <option value="Francia">Francia</option>
-                                    <option value="Italia">Italia</option>
-                                    <option value="Alemania">Alemania</option>
-                                    <option value="Reino Unido">Reino Unido</option>
-                                    <option value="México">México</option>
-                                    <option value="Venezuela">Venezuela</option>
-                                    <option value="China">China</option>
-                                    <option value="Canadá">Canadá</option>
-                                    <option value="Ecuador">Ecuador</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Israel">Israel</option>
-                                    <option value="Suiza">Suiza</option>
-                                    <option value="Países Bajos">Paises Bajos</option>
-                                    <option value="Corea del Sur">Corea del Sur</option>
-                                    <option value="Japón">Japón</option>
-                                    <option value="Nueva Zelanda">Nueva Zelanda</option>
-                                    <option value="Bélgica">Bélgica</option>
-                                    <option value="Portugal">Portugal</option>
-                                    <option value="Rusia">Rusia</option>
-                                    <option value="Austria">Austria</option>
-                                    <option value="Costa Rica">Costa Rica</option>
-                                </select>
-                        </div>
-                        <input type="hidden" th:field="*{idTurista}">
-                        <div class="form-group my-2">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label text-muted">Acepto terminos de privacidad y seguridad</label>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column align-items-center my-2">
-                            <button id="btn-modificado" class="btn btn-danger" type="submit" value="Registrarse"> Registrarse</button>
-                        </div>
-                    </div>
-                </form>
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+				<div class=" col-sm-10">
+					<input type="text" id="nombre" th:field="*{nombre}"
+						class="form-control">
+				</div>
+			</div>
+			
+		<div class="form-group row">
+				<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+				<div class=" col-sm-10">
+					<input type="text" id="apellido" th:field="*{apellido}"
+						class="form-control">
+				</div>
+			</div>
+		
+		<div class="form-group row">
+				<label for="pais" class="col-sm-2 col-form-label">Pais</label>
+				<div class=" col-sm-10">
+					<input type="text" id="pais" th:field="*{paisProcedencia}"
+						class="form-control">
+				</div>
+			</div>
+		<br>
+		<div>
+			   <button type="submit" value="Registrarse" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+		</div>
+		</form>
 		
 		<!-- <div th:insert="layouts/footer :: footer"></div> -->
 	</div>
@@ -109,5 +63,3 @@
 		
 </body>
 </html>
-
-
