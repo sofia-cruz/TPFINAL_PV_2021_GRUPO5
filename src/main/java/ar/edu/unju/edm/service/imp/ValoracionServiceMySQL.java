@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.service.imp;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,17 @@ import ar.edu.unju.edm.service.IValoracionService;
 @Service
 @Qualifier("impmysqlValoracion")
 public class ValoracionServiceMySQL implements IValoracionService{
+	
+
+	
 @Autowired
 Turistas_Pois valoracion;
+
 
 @Autowired
 IValoracionDAO valoracionDAO;
 	
+private ArrayList<Turistas_Pois> lasValoraciones;
 	@Override
 	public void guardarValoracion(Turistas_Pois unaValoracion) {
 		// TODO Auto-generated method stub
@@ -33,7 +40,7 @@ IValoracionDAO valoracionDAO;
 	@Override
 	public List<Turistas_Pois> obtenerTodaValoracion() {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<Turistas_Pois>) valoracionDAO.findAll();
 	}
 
 	@Override
@@ -43,15 +50,24 @@ IValoracionDAO valoracionDAO;
 	}
 
 	@Override
-	public Integer contarValoraciones(Integer id) {
+	public  Integer contarValoraciones(Integer idDeLaValoracion) {
 		//el id debe ser de poi, para contar cuantas veces se valoró ese poi
-		
+		lasValoraciones= (ArrayList<Turistas_Pois>) valoracionDAO.findAll();
 		//private List<Turistas_Pois> listaDeValoraciones = ;
 		
-		Integer cuanta=(int) valoracionDAO.count();
-		//esto no está bien, no se me ocurre como hacerlo
+	int contador=0;
+		for(int i=0; i<valoracionDAO.count();i++) {
+			
+		//System.out.println( lasValoraciones.get(i).getComentario());
+		if(lasValoraciones.get(i).getPoi().getIdPoi()==idDeLaValoracion)
+		{
+			contador=contador+1;
+			
+		}
+		}
+	
 		
-		return cuanta;
+		return contador;
 	}
 
 }

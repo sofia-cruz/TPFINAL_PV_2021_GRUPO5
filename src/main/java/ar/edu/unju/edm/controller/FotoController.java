@@ -51,8 +51,11 @@ public class FotoController {
 	public String realizarValoracion(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
 		//Turistas_Pois valoracion = new Turistas_Pois();		
 		try {	
-			/// solo es una prueba		Integer valo= iValoracion.contarValoraciones(id);	
-			//LOGGER.error("METHOD: Valoraciones totales de este punto: "+ valo);
+			/// solo es una prueba		
+			//Manda el id del poi, y debe contar cuantas valoraciones tiene
+			int cantidadValoraciones = iValoracion.contarValoraciones(id);
+			System.out.println("Este poi tiene: "+cantidadValoraciones);
+			
 	
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
 			Turistas_Pois valoracion = iValoracion.crearValoracion();	
