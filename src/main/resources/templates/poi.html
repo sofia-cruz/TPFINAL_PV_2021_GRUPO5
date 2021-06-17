@@ -3,21 +3,41 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
 <link th:rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 <link th:rel="stylesheet"
 	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+	
+	 <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
+	<!--  <link th:rel="stylesheet" type="text/css"
+	th:href="@{/css/car.css}"> -->
 </head>
 <body>
 	<div class="container">
-	<form id="formProducto" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
-			 method="post">
+	<!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
+	<div>
+	<form class="formulario"id="formProducto" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
+			 method="post"  enctype="multipart/form-data">
 			<div class="form-group row">
+
+				    <input type="hidden" th:field="*{idPoi}"th:if="${editMode}">
 			<label for="name" class="col-sm-2 col-form-label">Nombre</label> 
 			<div class="col-sm-10">
 			<input type="text"id="name" th:field="*{nombrePoi}"class="form-control" placeholder="ej: Hornocal">
 			</div>
 			</div>
+			
+			
+			<div class="form-group row">
+			<label for="email" class="col-sm-2 col-form-label">email</label> 
+			<div class="col-sm-10">
+			<input type="email"id="email" th:field="*{email}"class="form-control" placeholder="">
+			</div>
+			</div>
+			
 			<div class="form-group row">
 			<label for="calle" class="col-sm-2 col-form-label">Calle</label> 
 			<div class="col-sm-10">
@@ -48,14 +68,47 @@
 			<input type="text"id="descripcion" th:field="*{descripcion}"class="form-control" placeholder="">
 			</div>
 			</div>
-			
+		<!--  	
 			 <div class="form-group">
    			 <label for="exampleFormControlFile1">Example file input</label>
    			 <input type="file" class="form-control-file" id="exampleFormControlFile1">
   			</div>
 			
-			
-			
+			-->
+			<div class="form-group row">
+										<label for="file" class="col-sm-4 col-form-label">
+											Subir Imagen </label>
+										<div class="col-sm-10">
+											<input type="file" name="file" class="form-control-file"
+												id="file"
+												accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
+												onchange="loadFile(event)">
+											<img id="output" style="padding-top: 2px; width: 146px;" />
+										</div>
+									</div>
+			<div class="form-group row">
+										<label for="file" class="col-sm-4 col-form-label">
+											Subir Imagen </label>
+										<div class="col-sm-10">
+											<input type="file" name="file" class="form-control-file"
+												id="file"
+												accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
+												onchange="loadFile(event)">
+											<img id="output" style="padding-top: 2px; width: 146px;" />
+										</div>
+									</div>
+									
+		 <div class="form-group row">
+										<label for="file" class="col-sm-4 col-form-label">
+											Subir Imagen </label>
+										<div class="col-sm-10">
+											<input type="file" name="file" class="form-control-file"
+												id="file"
+												accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
+												onchange="loadFile(event)">
+											<img id="output" style="padding-top: 2px; width: 146px;" />
+										</div>
+									</div>
 			<div class="form-group row">
 				<label for="etiquetas" class="col-sm-2 col-form-label">Etiquetas</label> 
 				<div class="col-sm-10">
@@ -106,10 +159,16 @@
 				 -->
 				
 				
+		<!-- 	
 			
-			-->
+ HEAD
 			 
+======= -->
+			 <input type="submit" class="btn btn-danger btn-block"  th:value="${editMode}?'Modificar Poi':'Crear Poi'">
+			 <!--<button type="submit" class="btn btn-primary">Submit</button>
+>>>>>>> branch 'master' of https://github.com/sofia-cruz/TPFINAL_PV_2021_GRUPO5.git-->
 	</form>
+	</div>
 	</div>
 	
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"

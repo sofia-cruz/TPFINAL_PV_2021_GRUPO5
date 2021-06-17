@@ -1,4 +1,6 @@
 package ar.edu.unju.edm.controller;
+import java.io.IOException;
+import java.util.Base64;
 
 import javax.validation.Valid;
 
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unju.edm.model.PoI;
 import ar.edu.unju.edm.service.IPoiService;
@@ -32,11 +36,11 @@ public class PoIController {
 	}
     
     @GetMapping("/poi/editar/{idPoi}")
-	public String editarPoi(Model model, @PathVariable(name="idPoi") int id) throws Exception{
-		try {
+	public String editarPoi(Model model, @PathVariable(name="idPoi") Integer id) throws Exception{
+		try {	LOGGER.info("METHOD: ingresando a editar Poi, id Poi:"+ id);
 			//permite realizar una accion, y si ocurre error no se cae el program
 			PoI poiEncontrado = iPoiService.encontrarUnPoi(id);
-			
+			LOGGER.info("METHOD: Dentro de editar, id: "+ poiEncontrado.getIdPoi());
 			model.addAttribute("unPoi", poiEncontrado);
 			model.addAttribute("editMode", "true");
 		}
@@ -46,14 +50,16 @@ public class PoIController {
 			model.addAttribute("unPoi", iPoiService.crearPoi());
 			model.addAttribute("editMode", "false");
 		}
+		
 		model.addAttribute("pois",iPoiService.obtenerTodosPoi());
+		LOGGER.info("METHOD: Salienjdo de editar Poi, id Poi:"+ id);
 		return("poi");
 	}
 
     
 
-	@PostMapping("/poi/guardar")
-	public String guardarNuevoPoi(@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado, Model model) {
+	@PostMapping(value="/poi/guardar",  consumes = "multipart/form-data")
+	public String guardarNuevoPoi(@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado, Model model)throws IOException {
 		LOGGER.info("METHOD: ingresando a Guardar Poi");
 	if (resultado.hasErrors())
 	{
@@ -63,16 +69,21 @@ public class PoIController {
 	}
 	else {
 	//deberia haber try
+		byte[] content = file.getBytes();
+		String base64 = Base64.getEncoder().encodeToString(content);
+		nuevoPoi.setImagen(base64);
 	iPoiService.guardarPoi(nuevoPoi);
 		return "redirect:/poi/mostrar";
 	}
 	}
-    
-
+ 
 	@PostMapping("/poi/modificar")
 	public String modificarPoi(@ModelAttribute("unPoi") PoI poiModificado, Model model) {
-	
-		try {LOGGER.info("METHOD: ingresando a modificar Poi, id Poi:"+poiModificado.getIdPoi());
+		LOGGER.error("METHOD: ingresando el metodo modificar, id: "+poiModificado.getIdPoi());
+		LOGGER.error("METHOD: ingresando el metodo modificar, nombre: "+poiModificado.getNombrePoi());
+		LOGGER.info("METHOD: ingresando el metodo modificar, numero: "+poiModificado.getNumero());
+		try {
+			LOGGER.info("METHOD: ingresando a modificar Poi, id Poi: "+poiModificado.getIdPoi());
 			
 			iPoiService.modificarPoi(poiModificado);
 			model.addAttribute("unPoi", new PoI());
