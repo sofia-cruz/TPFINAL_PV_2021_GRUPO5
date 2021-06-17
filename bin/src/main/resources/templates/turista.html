@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+<meta charset="UTF-8">
+
+<title>Registrarse</title>
+<!-- <link th:rel="icon" th:href="#"/>-->
+</head>
+
+<body>
+	<div class="container">
+	<!--	<div th:insert="layouts/header :: header"></div> -->
+		<h1>Registrarse</h1>
+		<br>
+		
+		<form id="formTurista" th:object="${unTurista}"
+			th:action="${editMode}?@{/turista/modificar}:@{/turista/guardar}"
+			method="post">
+			<div class="form-group row">
+				<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+				<div class=" col-sm-10">
+					<input type="text" id="nombre" th:field="*{nombre}"
+						class="form-control">
+				</div>
+			</div>
+			
+		<div class="form-group row">
+				<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+				<div class=" col-sm-10">
+					<input type="text" id="apellido" th:field="*{apellido}"
+						class="form-control">
+				</div>
+			</div>
+		
+		<div class="form-group row">
+				<label for="pais" class="col-sm-2 col-form-label">Pais</label>
+				<div class=" col-sm-10">
+					<input type="text" id="pais" th:field="*{paisProcedencia}"
+						class="form-control">
+				</div>
+			</div>
+		<br>
+		<div>
+			   <button type="submit" value="Registrarse" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+		</div>
+		</form>
+		
+		<!-- <div th:insert="layouts/footer :: footer"></div> -->
+	</div>
+	
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+		type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+		type="text/javascript"
+		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+</body>
+</html>

@@ -30,6 +30,10 @@ public class PoiServiceMySQL implements IPoiService{
 	@Override
 	public PoI crearPoi() {
 		// TODO Auto-generated method stub
+		Double valorEntero =  Math.floor(Math.random()*(24-65+1)+24);
+		Double valorEntero1 =  Math.floor(Math.random()*(20-65+1)+24);
+		unPoi.setLatitud(valorEntero);
+		unPoi.setLongitud(valorEntero1);
 		return unPoi;
 	}
 
@@ -40,7 +44,7 @@ public class PoiServiceMySQL implements IPoiService{
 	}
 
 	@Override
-	public PoI encontrarUnPoi(int id) throws Exception {
+	public PoI encontrarUnPoi(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		return poiDAO.findById(id).orElseThrow(()->new Exception("El punto de interes no fue encontrado"));
 	}
@@ -48,6 +52,7 @@ public class PoiServiceMySQL implements IPoiService{
 	@Override
 	public void modificarPoi(PoI poiModificado) throws Exception {
 		// TODO Auto-generated method stub
+	System.out.println("Dentro de service imp, modifica. Id= "+ poiModificado.getIdPoi());
 		PoI poiAModificar = poiDAO.findById(poiModificado.getIdPoi()).orElseThrow(()->new Exception("El turista No Fue encontrado"));  
 		cambiarPoi(poiModificado, poiAModificar);
 		poiDAO.save(poiAModificar);
@@ -62,11 +67,20 @@ public class PoiServiceMySQL implements IPoiService{
 	}
 
 	@Override
-	public void eliminarPoi(int id) throws Exception {
+	public void eliminarPoi(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		PoI poiAEliminar= poiDAO.findById(id).orElseThrow(()->new Exception("El punto de interes no fue encontrado"));
 		poiDAO.delete(poiAEliminar);
 	
 	}
+
+	@Override
+	public PoI obtenerPoiID(Integer id) {
+		// TODO Auto-generated method stub
+		return poiDAO.findById(id).orElseThrow();
+	}
+
+
+	
 
 }

@@ -19,6 +19,8 @@ public class Turista {
 	@Column
 private Integer idTurista;
 	@Column
+private String email;
+	@Column
 private String nombre;
 	@Column
 private String apellido;
@@ -32,6 +34,8 @@ private Double longitud;
 private String password; 
 	@Column
 private Integer puntos;
+	@Column
+private String rol;
 	//agregados password y puntos
 public Turista() {
 	//constructor
@@ -45,6 +49,14 @@ public void setIdTurista(Integer idTurista) {
 	this.idTurista = idTurista;
 }
 
+
+public String getRol() {
+	return rol;
+}
+
+public void setRol(String rol) {
+	this.rol = rol;
+}
 
 public String getNombre() {
 	return nombre;
@@ -85,6 +97,14 @@ public void setPassword(String password) {
 
 public Integer getPuntos() {
 	return puntos;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
 }
 
 public void setPuntos(Integer puntos) {
