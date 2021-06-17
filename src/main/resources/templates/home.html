@@ -8,8 +8,12 @@
 <meta charset="UTF-8">
 <title>Home</title>
 <link th:rel="icon" th:href="@{/img/producto.jpg}" />
+ <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
 </head>
 <body>
+<!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
 	<div class="container">
 	<img src="../img/cerros.jpg" class="img-fluid">
 	</div>
