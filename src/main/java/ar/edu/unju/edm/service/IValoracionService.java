@@ -14,4 +14,5 @@ public interface IValoracionService {
 	public List<Turistas_Pois> obtenerTodaValoracion();
 	//revisar id ,Interger
 	public Turistas_Pois encontrarUnaValoracion(Integer id) throws Exception;
+	public Integer contarValoraciones(Integer id);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ar.edu.unju.edm.model.PoI;
 import ar.edu.unju.edm.service.IPoiService;
+import ar.edu.unju.edm.service.IValoracionService;
 
 @Controller
 public class PoIController {
@@ -22,7 +23,7 @@ public class PoIController {
     @Autowired
 	@Qualifier("impmysqlpoi")
     IPoiService iPoiService;
-    
+
     @GetMapping("/poi/mostrar")
 	public String cargarPoi(Model model) {
     	model.addAttribute("unPoi", iPoiService.crearPoi());
@@ -38,6 +39,7 @@ public class PoIController {
 			LOGGER.info("METHOD: Dentro de editar, id: "+ poiEncontrado.getIdPoi());
 			model.addAttribute("unPoi", poiEncontrado);
 			model.addAttribute("editMode", "true");
+		
 		}
 		catch(Exception e)
 		{//pasar excepcione a html
