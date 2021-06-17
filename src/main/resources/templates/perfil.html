@@ -27,12 +27,12 @@
                             <p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
                             <h4 href="mailto:name@email.com">Correo Electronico: <span th:text="${turistaActual.email}"></span></h4>
                             <h4>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h4>
-                            <h4>Ubicación: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span th:text="${turistaActual.longitud}"></span></h4>
+                            <h4>Ubicación actual: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span th:text="${turistaActual.longitud}"></span></h4>
 
                             <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-center">
+                    <div class="card-footer d-flex justify-content-center mt-xxl-4">
                         <a href="#" class="btn btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
                     	&nbsp; &nbsp;
                         <a href="#" class="btn btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fab fa-dashcube"></i>Eliminar Perfil</a>
@@ -43,10 +43,12 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="card-header justify-content-center">
+                    <h1>Mis Puntos de <span class="text-primary">Interés</span></h1>
+                    
+                    </div>
         </div>
            
-           
-         
         <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	    <script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
