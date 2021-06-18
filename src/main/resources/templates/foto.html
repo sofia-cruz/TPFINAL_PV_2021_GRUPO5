@@ -3,13 +3,13 @@
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Valorar puntos de interes</title>
 	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
 	<link th:href="@{/css/estilos_valoracion.css}" rel="stylesheet" type="text/css"
 		href="/static/css/estilos_valoracion.css">
 	<link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css" />
-	<link th:href="@{/css/estilo-foto.css}" rel="stylesheet" type="text/css" href="/css/estilo-foto.css" />
+	<link th:href="@{/css/estilos-foto.css}" rel="stylesheet" type="text/css" href="/css/estilos-foto.css" />
 </head>
 
 <body>
@@ -53,7 +53,7 @@
 					<div class="card-body">
 						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
 						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
-						<p class="card-text" th:text="${c.etiqueta}">Etiqueta</p>
+						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
 						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
 						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
 						<div>
