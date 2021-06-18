@@ -8,15 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.edm.model.PoI;
 import ar.edu.unju.edm.model.Turistas_Pois;
+import ar.edu.unju.edm.repository.IPoiDAO;
 import ar.edu.unju.edm.repository.IValoracionDAO;
 import ar.edu.unju.edm.service.IValoracionService;
 @Service
 @Qualifier("impmysqlValoracion")
 public class ValoracionServiceMySQL implements IValoracionService{
 	
-
+	@Autowired
+	PoI unPoi;
 	
+	@Autowired
+	IPoiDAO poiDAO; 
 @Autowired
 Turistas_Pois valoracion;
 
@@ -50,14 +55,14 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 	}
 
 	@Override
-	public  Integer contarValoraciones(Integer idDeLaValoracion) {
+	public  void contarValoraciones(Integer idDeLaValoracion) throws Exception {
 		//el id debe ser de poi, para contar cuantas veces se valoró ese poi
 		lasValoraciones= (ArrayList<Turistas_Pois>) valoracionDAO.findAll();
 		//private List<Turistas_Pois> listaDeValoraciones = ;
 		
 	int contador=0;
 		for(int i=0; i<valoracionDAO.count();i++) {
-			
+			//aquí retorno l cantidad de comentarios que tiene este poi que se manda
 		//System.out.println( lasValoraciones.get(i).getComentario());
 		if(lasValoraciones.get(i).getPoi().getIdPoi()==idDeLaValoracion)
 		{
@@ -65,9 +70,23 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 			
 		}
 		}
-	
 		
-		return contador;
+		PoI poiAModificar = poiDAO.findById(idDeLaValoracion).orElseThrow(()->new Exception("El turista No Fue encontrado"));
+		
+		 poiAModificar.setNumeroDeComentarios(contador);
+		
+		poiDAO.save(poiAModificar);
+		
+		//unPoi.setNumeroDeComentarios(contador);
+			
+		
+		
+	}
+	
+	private void cambiarPoi(PoI poiModificado, PoI poiAModificar) {
+		// TODO Auto-generated method stub
+		poiAModificar.setNombrePoi(poiModificado.getNombrePoi());
+		
 	}
 
 }

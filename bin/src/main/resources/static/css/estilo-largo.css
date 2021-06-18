@@ -10980,16 +10980,4 @@ section.resume-section .resume-section-content {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
-  
-.imagen-sola{
-	margin: 30px auto;
-	width: 700px;
-	height: 400px;
-	background-image: url(/img/pastel.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-} 
-  
 }

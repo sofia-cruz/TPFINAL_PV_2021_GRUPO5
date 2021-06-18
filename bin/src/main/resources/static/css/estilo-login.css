@@ -1,5 +1,5 @@
 body{
-	background: url(/img/norte.jpg);
+	background: url(/img/fondo-inicio.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -65,27 +65,4 @@ body{
 	background-color:#86615C;
 	color: white;
 	transition: .2s;
-}
-.registrar{
-	border:0;
-    background:none;
-    display: block;
-    width: 300px;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #AFE0CE;
-    padding: 12px 40px;
-    outline: none;
-	color: #0D1231;
-	font-size: 18px;
-	border-radius: 16px;
-    transition: 0.25s;
-	cursor: pointer;
-	
-}
-.registrar:hover{
-	background-color:#AFE0CA;
-	color: #0D1231;
-	transition: .2s;
-	text-decoration: none;
 }

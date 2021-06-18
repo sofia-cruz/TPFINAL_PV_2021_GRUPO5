@@ -53,10 +53,14 @@ public class FotoController {
 		try {	
 			/// solo es una prueba		
 			//Manda el id del poi, y debe contar cuantas valoraciones tiene
-			int cantidadValoraciones = iValoracion.contarValoraciones(id);
-			System.out.println("Este poi tiene: "+cantidadValoraciones);
+			//int cantidadValoraciones = iValoracion.contarValoraciones(id);
+			//System.out.println("Este poi tiene: "+cantidadValoraciones);
+			//poiSeleccionado.setNumeroDeComentarios(cantidadValoraciones);
+		
+			//System.out.println("cantidad de comentarios guardao: "+ poiSeleccionado.getNumeroDeComentarios());
+	      // iValoracion.contarValoraciones(id);
+			//fin de la actualizacion de poi
 			
-	
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
 			Turistas_Pois valoracion = iValoracion.crearValoracion();	
 			
@@ -92,6 +96,8 @@ public class FotoController {
 	    LOGGER.error("METHOD: Email de usuario que valora: "+unaValoracion.getTur());
 
 	    iValoracion.guardarValoracion(unaValoracion);
+	    //esto manda el id del poi, y actualiza cantidad de comentarios
+	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());
 		return("redirect:/poi/foto");
 	}
 	

@@ -20,5 +20,6 @@ public interface IPoiService {
 	public void eliminarPoi(Integer id) throws Exception;
 	//nuevo
 	public PoI obtenerPoiID(Integer id);
+	public PoI cambiarCantidadDeComentarios(Integer cant) throws Exception;
 	
 }
