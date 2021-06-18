@@ -129,6 +129,7 @@ public class PoI {
 	}
 	public void setNumeroDeComentarios(Integer numeroDeComentarios) {
 		this.numeroDeComentarios = numeroDeComentarios;
+	}
 //=======
 	public String getImagen() {
 		return imagen;
