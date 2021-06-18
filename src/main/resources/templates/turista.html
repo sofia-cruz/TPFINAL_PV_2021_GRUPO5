@@ -20,35 +20,36 @@
     <!--Fin de el header-->
 		<h1 class="mb-0">Crea tu <span class="text-primary">cuenta</span></h1>
 		<br>
-		<p>La siguiente información es requerida para que pueda disfrutar de nuestros servicios: </p>
+		<p> &nbsp;&nbsp;&nbsp; La siguiente información es requerida para que pueda disfrutar de nuestros servicios: </p>
 		<form id="formTurista" th:object="${unTurista}"
 			th:action="${editMode}?@{/turista/modificar}:@{/turista/guardar}"
 			method="post">
 			 <input type="hidden" name="rol" id="rol" th:field="*{rol}">
-                    <div class="form-row my-2">
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="nombre">Nombre <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="nombre" th:field="*{nombre}">
+                    
+					<div class="form-row my-2">
+                        <div class="form-group col-md-4">
+                            <label class="form-label user-select-none " for="nombre">Nombre <span class="text-danger">*</span></label>
+                            <input class="form-control mx-sm-3" type="text" id="nombre" th:field="*{nombre}">
                         </div>
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="apellido">Apellido <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="apellido" th:field="*{apellido}">
+                        <div class="form-group col-md-4">
+                            <label class="form-label user-select-none mx-sm-2" for="apellido">Apellido <span class="text-danger">*</span></label>
+                            <input class="form-control mx-sm-3" type="text" id="apellido" th:field="*{apellido}">
                         </div>
                     </div>
-
-                    <div class="form-group my-2">
-                        <label class="form-label user-select-none" for="email"> Correo Electronico <span class="text-danger">*</span></label>
-                        <input class="form-control" type="email" id="email" th:field="*{email}">
-                    </div>
                     <div class="form-row my-2">
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="password">Constraseña <span class="text-danger">*</span></label>
-                            <input class="form-control" type="password" id="password" th:field="*{password}">
+                        <div class="form-group col-md-4">
+                            <label class="form-label user-select-none " for="email">Correo electrónico <span class="text-danger">*</span></label>
+                            <input class="form-control mx-sm-3" type="email" id="email" th:field="*{email}">
                         </div>
-
-                        <div class="form-group col-md-6">
-                            <label class="form-label user-select-none" for="password"> Pais de procedencia <span class="text-danger">*</span></label>
-                            <select class="form-control" name="País" id="seleccion-pois" th:field="*{paisProcedencia}">
+                        <div class="form-group col-md-4">
+                            <label class="form-label user-select-none mx-sm-2" for="password">Contraseña <span class="text-danger">*</span></label>
+                            <input class="form-control mx-sm-3" type="password" id="password" th:field="*{password}">
+                        </div>
+                    </div>
+					<div class="form-row my-2">
+                        <div class="form-group col-md-4">
+                            <label class="form-label user-select-none mx-sm-3" for="password"> Pais de procedencia <span class="text-danger">*</span></label>
+                            <select class="form-control mx-sm-3" name="País" id="seleccion-pois" th:field="*{paisProcedencia}">
                                     <option value="-- Seleccione su pais --" selected disabled>-- Seleccione su pais --</option>
                                     <option value="Argentina">Argentina</option>
                                     <option value="Brasil">Brasil</option>
@@ -86,12 +87,14 @@
                         <input type="hidden" th:field="*{idTurista}">
                         <div class="form-group my-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label text-muted">Acepto terminos de privacidad y seguridad</label>
+                                <input class="form-check-input mx-sm-3 my-lg-5" type="checkbox">
+                                &nbsp;&nbsp;&nbsp;
+                                <label class="form-check-label text-muted mx-sm-4 my-lg-4">Acepto terminos de privacidad y seguridad</label>
                             </div>
                         </div>
-                        <div class="d-flex flex-column align-items-center my-2">
-                            <button id="btn-modificado" class="btn btn-danger" type="submit" value="Registrarse"> Registrarse</button>
+                     <div class="form-row my-2">
+                        <div class="form-group col-md-4 align-items-center my-2">
+                            <button class="btn btn-primary" type="submit" value="Registrarse"> Registrarse</button>
                         </div>
                     </div>
                 </form>
@@ -106,6 +109,11 @@
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	<!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
 		
 </body>
 </html>
