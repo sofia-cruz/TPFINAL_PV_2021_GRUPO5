@@ -61,7 +61,7 @@ public class PoIController {
     
 
 	@PostMapping(value="/poi/guardar",consumes = "multipart/form-data")
-	public String guardarNuevoPoi(@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado,@RequestParam("file") MultipartFile file, Model model) throws IOException{
+	public String guardarNuevoPoi(@Valid @ModelAttribute("unPoi") PoI nuevoPoi,BindingResult resultado,@RequestParam("file") MultipartFile file,@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2, Model model) throws IOException{
 		LOGGER.info("METHOD: ingresando a Guardar Poi");
 	if (resultado.hasErrors())
 	{
@@ -71,9 +71,27 @@ public class PoIController {
 	}
 	else {
 	//deberia haber try
-		byte[] content = file.getBytes();
-		String base64 = Base64.getEncoder().encodeToString(content);
-		nuevoPoi.setImagen(base64);
+		if(!file.isEmpty()|| file==null)
+		{	//obtenemos los bite que el usuario va mandando
+			byte[] content = file.getBytes();
+			///ruta del achivo o get crea el archivo y colocal los bite en el nuevo archivo a la  ruta 
+			String base64 = Base64.getEncoder().encodeToString(content);
+			
+			nuevoPoi.setImagen(base64);
+		}
+		if(!file.isEmpty()|| file==null)
+		{
+			
+			byte[] content1 = file1.getBytes();
+			String base641 = Base64.getEncoder().encodeToString(content1);
+			nuevoPoi.setImagen(base641);
+		}
+		if(!file.isEmpty()|| file==null)
+		{
+		byte[] content2 = file2.getBytes();
+		String base642 = Base64.getEncoder().encodeToString(content2);
+		nuevoPoi.setImagen(base642);
+		}
 	iPoiService.guardarPoi(nuevoPoi);
 		return "redirect:/poi/mostrar";
 	}
