@@ -80,6 +80,17 @@ public class PoiServiceMySQL implements IPoiService{
 		return poiDAO.findById(id).orElseThrow();
 	}
 
+	@Override
+	public PoI cambiarCantidadDeComentarios(Integer cant) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+	private void cambiarCantcomentario(PoI poiModificado, PoI poiAModificar) {
+		//poiAModificar.setNumeroDeComentarios(poiModificado.getNumeroDeComentarios());
+		
+	}
+
 
 	
 
