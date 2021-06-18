@@ -18,22 +18,25 @@
 		<!--Este es el header-->
 		<div th:insert="layout/header :: header" class="cabeza"></div>
 		<!--Fin de el header-->
-		<div class="row col-md-12">
-			<div th:each="c : ${pois}">
-				<div class="col-md-4">
+		 <div class="card-header justify-content-center">
+                    <h2>Todos los puntos de <span class="text-primary">Interés</span></h2> 
+          </div>
+		<div class="col-md-12 my-sm-4 d-md-flex">
+			<div class="mb-5" th:each="c : ${pois}">
+				<div class="col-md-4 mb-5">
 					<div class="card" style="width: 18rem;">
 						<!--  	<img src="https://i0.wp.com/esferacreativa.com/wp-content/uploads/2017/05/fichas-tecnicas-de-productos-ecommerce-Teresa-Alba-MadridNYC.png?fit=640%2C320&ssl=1"
 							class="card-img-top" alt="hola">-->
 						<!--<img th:src="*{'data:;base64,'+c.imagen}" class="card-img-top" alt="hola">-->
 						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
+								<div class="carousel-item active mb-5">
 									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100" alt="First slide">
 								</div>
-								<div class="carousel-item ">
+								<div class="carousel-item mb-5">
 									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100" alt="Second slide">
 								</div>
-								<div class="carousel-item ">
+								<div class="carousel-item mb-5">
 									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100" alt="Third slide">
 								</div>
 							</div>
