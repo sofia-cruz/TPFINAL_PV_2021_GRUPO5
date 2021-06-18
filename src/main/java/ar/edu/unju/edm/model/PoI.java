@@ -52,6 +52,8 @@ public class PoI {
 	@ManyToOne
 	@JoinColumn(name = "email")
 	private Turista turista;
+	@Column
+	private Integer numeroDeComentarios;
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
@@ -149,6 +151,11 @@ public class PoI {
 		this.turista = turista;
 	}
 	
-	
+	// esto se actualiza cada vez que valoro un poi
+		public Integer getNumeroDeComentarios() {
+			return numeroDeComentarios;
+		}
+		public void setNumeroDeComentarios(Integer numeroDeComentarios) {
+			this.numeroDeComentarios = numeroDeComentarios;}
 
 }
