@@ -1,6 +1,4 @@
-//<<<<<<< HEAD
 package ar.edu.unju.edm.model;
-
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,17 +40,18 @@ public class PoI {
     private Double latitud;
 	@Column
     private Double longitud;
-
-	@Column
-	private Integer numeroDeComentarios;
-
 	@Lob
 	@Column(name = "prod_imagen", columnDefinition = "LONGBLOB")
 	private String imagen;
+	@Lob
+	@Column(name = "prod_imagen2", columnDefinition = "LONGBLOB")
+	private String imagen2;
+	@Lob
+	@Column(name = "prod_imagen3", columnDefinition = "LONGBLOB")
+	private String imagen3;
 	@ManyToOne
 	@JoinColumn(name = "email")
 	private Turista turista;
-
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
@@ -124,27 +123,32 @@ public class PoI {
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
-
-	// esto se actualiza cada vez que valoro un poi
-	public Integer getNumeroDeComentarios() {
-		return numeroDeComentarios;
-	}
-	public void setNumeroDeComentarios(Integer numeroDeComentarios) {
-		this.numeroDeComentarios = numeroDeComentarios;}
-
 	public String getImagen() {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+	
+	public String getImagen2() {
+		return imagen2;
+	}
+	public void setImagen2(String imagen2) {
+		this.imagen2 = imagen2;
+	}
+	public String getImagen3() {
+		return imagen3;
+	}
+	public void setImagen3(String imagen3) {
+		this.imagen3 = imagen3;
+	}
 	public Turista getTurista() {
 		return turista;
 	}
 	public void setTurista(Turista turista) {
 		this.turista = turista;
-
 	}
 	
 	
+
 }
