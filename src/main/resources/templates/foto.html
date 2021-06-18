@@ -59,6 +59,9 @@
 						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
 						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
 						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
+						<a th:href="@{'/poi/foto'}"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
+						
+					
 						<div>
 							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
                     	&nbsp; &nbsp;
