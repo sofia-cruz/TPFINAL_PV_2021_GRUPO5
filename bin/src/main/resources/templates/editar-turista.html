@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+    <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/5.15.2/css/all.css}">
+    <link th:rel="stylesheet" th:href="@{/css/estilo-largo.css}" type="text/css" href="../static/css/estilo-largo.css">
+</head>
+
+<body>
+
+	<!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
+    <div class="resume-section resume-section-content">
+        <div>
+          <!--  <div th:insert="layout/header :: header"></div>-->
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-12 d-flex flex-column">
+                <h2 class="mb-0">Edición de su perfil: </h2>
+                <form class="card-body" id="form-registro" th:object="${turistaModificado}" th:action="@{/turista/modificar}" method="POST">
+                    <input type="hidden" th:field="*{idTurista}">
+                    <div class="form-row my-2">
+                        <div class="form-group my-2">
+                            <label class="form-label user-select-none" for="nombre">Nombre <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="nombre" th:field="*{nombre}">
+                        </div>
+                        <div class="form-group my-2">
+                            <label class="form-label user-select-none" for="apellido">Apellido <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="apellido" th:field="*{apellido}">
+                        </div>
+                        
+                    </div>
+                    <div class="form-group my-2">
+                        <label class="form-label user-select-none" for="email"> Correo Electronico <span class="text-danger">*</span></label>
+                        <input class="form-control" type="email" id="email" th:field="*{email}">
+                    </div>
+                   <!-- <div class="form-group my-2">
+                            <label class="form-label user-select-none" for="apellido">Contraseña <span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="password" th:field="*{password}">
+                      </div>-->
+                    <div class="form-group my-2">
+                        <label class="form-label user-select-none" for="password">Pais de Procedencia <span class="text-danger">*</span></label>
+                        <select class="form-control" name="Pais" id="seleccion-pois" th:field="*{paisProcedencia}">
+                            <option value="-- Seleccione su pais --" selected disabled>-- Seleccione su pais --</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="España">España</option>
+                            <option value="Perú">Perú</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Francia">Francia</option>
+                            <option value="Italia">Italia</option>
+                            <option value="Alemania">Alemania</option>
+                            <option value="Reino Unido">Reino Unido</option>
+                            <option value="México">México</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="China">China</option>
+                            <option value="Canadá">Canadá</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Suiza">Suiza</option>
+                            <option value="Paises Bajos">Paises Bajos</option>
+                            <option value="Corea del Sur">Corea del Sur</option>
+                            <option value="Japon">Japón</option>
+                            <option value="Nueva Zelanda">Nueva Zelanda</option>
+                            <option value="Belgica">Bélgica</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Rusia">Rusia</option>
+                            <option value="Austria">Austria</option>
+                            <!--<option value="Costa Rica">Costa Rica</option>-->
+                            
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-center my-4">
+                        <button href="#" class="btn btn-primary" type="submit" value="Registrarse">Guardar Datos Nuevos</button>
+                    	
+                        <!--<a href="#" class="btn btn-primary" th:href="@{'/turista/perfil)">Cancelar</a>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+          <!--  <div th:insert="layout/footer :: footer"></div>-->
+        </div>
+        <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.6.0/jquery.min.js"></script>
+        <script th:src="@{/webjars/popper.js/1.16.1/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.1/popper.min.js"></script>
+        <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+        <script th:src="@{/js/app.js}" type="text/javascript" src="../static/js/app.js"></script>
+</body>
+
+</html>

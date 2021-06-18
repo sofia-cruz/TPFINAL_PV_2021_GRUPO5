@@ -1,60 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
 <head>
-<link th:rel="stylesheet" type="text/css"
-	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
-<link th:rel="stylesheet"
-	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}"/>
 <meta charset="UTF-8">
+        <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
+        <!--<link rel="icon" type="image/x-icon" href="img/hange.jpg" />-->
 
-<title>Mi Perfil</title>
-</head>
-<body>
-	<div class="container">
-	<ul class="navbar-nav mt-2 mt-lg-0">
-				<li class="nav-item">
-				<a class="btn btn-outline-dark" href="#" th:href="@{/logout}"> 
-				<span th:text="${#authentication.getPrincipal().getUsername()}">
-				</span> - 
-				<span> Salir  </span><span class="float-right">
-				<i class="fas fa-sign-out-alt"></i></span></a>				   	
-				</li>
-				</ul>
-		<!--	<div th:insert="layouts/header :: header"></div> -->
-		<h1>Mi Perfil</h1>
-		<br>
+        <title>Mi Perfil</title>
+        <!-- Referencias para probar fuentes e íconos-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        
+    </head>
+    <body>
+    <!--Este es el header-->
+<div th:insert="layout/header :: header" class="cabeza"></div>
+    <!--Fin de el header-->
+        <div class="resume-section resume-section-content">
+                    <div class="card-header">
+                        <h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span>&nbsp;<span class="text-primary" th:text="${turistaActual.apellido}"></span></h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
+                            <h4 href="mailto:name@email.com">Correo Electronico: <span th:text="${turistaActual.email}"></span></h4>
+                            <h4>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h4>
+                            <h4>Ubicación actual: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span th:text="${turistaActual.longitud}"></span></h4>
 
-		<table class="table">
-			<tbody>
-				<tr>
-					<th scope="row">Nombre</th>
-					<td>NombreUsuario</td>
-				</tr>
-				<tr>
-					<th scope="row">Apellido</th>
-					<td>ApellidoUsuario</td>
-				</tr>
-				<tr>
-					<th scope="row">País de Procedencia</th>
-					<td>PaísUsuario</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div>
-			<a class="btn btn-primary" href="#" role="button">Editar perfil</a> <a
-				class="btn btn-secondary" href="#" role="button">Eliminar perfil</a>
-		</div>
-
-		<!-- <div th:insert="layouts/footer :: footer"></div> -->
-	</div>
-
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+                            <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-center mt-xxl-4">
+                        <a href="#" class="btn btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
+                    	&nbsp; &nbsp;
+                        <a href="#" class="btn btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fab fa-dashcube"></i>Eliminar Perfil</a>
+                        &nbsp; &nbsp;
+                        <ul class="navbar-nav mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="btn btn-primary" href="#" th:href="@{/logout}"><span class="float-right"><i class="fas fa-sign-out-alt"></i></span><span th:text="${#authentication.getPrincipal().getUsername()}"></span> - <span> Cerrar Sesión </span></a>				   	
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-header justify-content-center">
+                    <h1>Mis Puntos de <span class="text-primary">Interés</span></h1>
+                    
+                    </div>
+        </div>
+           
+        <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+	    <script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
 		type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+	    <script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
