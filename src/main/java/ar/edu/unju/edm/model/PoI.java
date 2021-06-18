@@ -43,6 +43,12 @@ public class PoI {
 	@Lob
 	@Column(name = "prod_imagen", columnDefinition = "LONGBLOB")
 	private String imagen;
+	@Lob
+	@Column(name = "prod_imagen2", columnDefinition = "LONGBLOB")
+	private String imagen2;
+	@Lob
+	@Column(name = "prod_imagen3", columnDefinition = "LONGBLOB")
+	private String imagen3;
 	@ManyToOne
 	@JoinColumn(name = "email")
 	private Turista turista;
@@ -122,6 +128,19 @@ public class PoI {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+	
+	public String getImagen2() {
+		return imagen2;
+	}
+	public void setImagen2(String imagen2) {
+		this.imagen2 = imagen2;
+	}
+	public String getImagen3() {
+		return imagen3;
+	}
+	public void setImagen3(String imagen3) {
+		this.imagen3 = imagen3;
 	}
 	public Turista getTurista() {
 		return turista;

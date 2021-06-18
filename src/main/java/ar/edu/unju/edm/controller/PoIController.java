@@ -84,13 +84,13 @@ public class PoIController {
 			
 			byte[] content1 = file1.getBytes();
 			String base641 = Base64.getEncoder().encodeToString(content1);
-			nuevoPoi.setImagen(base641);
+			nuevoPoi.setImagen2(base641);
 		}
 		if(!file.isEmpty()|| file==null)
 		{
 		byte[] content2 = file2.getBytes();
 		String base642 = Base64.getEncoder().encodeToString(content2);
-		nuevoPoi.setImagen(base642);
+		nuevoPoi.setImagen3(base642);
 		}
 	iPoiService.guardarPoi(nuevoPoi);
 		return "redirect:/poi/mostrar";

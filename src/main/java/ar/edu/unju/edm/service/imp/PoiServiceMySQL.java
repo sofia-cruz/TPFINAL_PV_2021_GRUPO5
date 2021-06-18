@@ -64,6 +64,9 @@ public class PoiServiceMySQL implements IPoiService{
 		poiAModificar.setSitioWeb(poiModificado.getSitioWeb());
 		poiAModificar.setDescripcion(poiModificado.getDescripcion());
 		poiAModificar.setEtiqueta(poiModificado.getEtiqueta());
+		poiAModificar.setImagen(poiModificado.getImagen());
+		poiAModificar.setImagen2(poiModificado.getImagen2());
+		poiAModificar.setImagen3(poiModificado.getImagen3());
 	}
 
 	@Override
