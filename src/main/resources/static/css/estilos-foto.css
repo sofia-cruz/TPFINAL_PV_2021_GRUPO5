@@ -2,3 +2,9 @@
 .container .card {
 	border-radius: 0.25rem;
 }
+ .container  .card .card-body .card-title h5{
+	color: black;
+	display: block;
+	text-align: center;
+    margin-top: 10px;
+}
