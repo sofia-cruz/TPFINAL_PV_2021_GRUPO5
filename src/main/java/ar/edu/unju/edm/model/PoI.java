@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -37,8 +40,17 @@ public class PoI {
     private Double latitud;
 	@Column
     private Double longitud;
+//<<<<<<< cesar_solis
 	@Column
 	private Integer numeroDeComentarios;
+//=======
+	@Lob
+	@Column(name = "prod_imagen", columnDefinition = "LONGBLOB")
+	private String imagen;
+	@ManyToOne
+	@JoinColumn(name = "email")
+	private Turista turista;
+//>>>>>>> master
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
@@ -110,12 +122,26 @@ public class PoI {
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
+//<<<<<<< cesar_solis
 	// esto se actualiza cada vez que valoro un poi
 	public Integer getNumeroDeComentarios() {
 		return numeroDeComentarios;
 	}
 	public void setNumeroDeComentarios(Integer numeroDeComentarios) {
 		this.numeroDeComentarios = numeroDeComentarios;
+//=======
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public Turista getTurista() {
+		return turista;
+	}
+	public void setTurista(Turista turista) {
+		this.turista = turista;
+//>>>>>>> master
 	}
 	
 	
