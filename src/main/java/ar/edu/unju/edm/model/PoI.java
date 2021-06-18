@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -42,7 +43,7 @@ public class PoI {
 	@Lob
 	@Column(name = "prod_imagen", columnDefinition = "LONGBLOB")
 	private String imagen;
-	
+	@ManyToOne
 	@JoinColumn(name = "email")
 	private Turista turista;
 	
@@ -121,6 +122,12 @@ public class PoI {
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+	public Turista getTurista() {
+		return turista;
+	}
+	public void setTurista(Turista turista) {
+		this.turista = turista;
 	}
 	
 	
