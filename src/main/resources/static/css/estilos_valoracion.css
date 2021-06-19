@@ -41,9 +41,9 @@
 .inval[type="radio"]:checked ~ .val {
   color: orange;
 }
-.btn{
+/*.btn{
 	background-color: lightblue;
 }
 .btn:hover{
 	color: white;
-}
+}*/

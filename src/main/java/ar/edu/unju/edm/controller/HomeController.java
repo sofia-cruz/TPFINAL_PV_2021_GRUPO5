@@ -31,15 +31,16 @@ public class HomeController {
 	IValoracionService iValoracion;
 	
 	@GetMapping("/home")
-	public String cargarHome() {
+	public String cargarHome(Model model) throws Exception{
+		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
 		return ("home");	
 	}
-	
+	//borrar lo que sigue
 	@GetMapping("/home/masc")
 	public String mostrarcomentado(Model model) throws Exception {
 		
 		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
-		return("pois-mas-comentados");
+		return("po");
 	}
 
 }
