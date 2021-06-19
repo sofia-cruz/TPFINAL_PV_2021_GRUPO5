@@ -100,60 +100,67 @@ public class PoiServiceMySQL implements IPoiService{
 	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception {
 		// TODO Auto-generated method stub
 		
-		int contador=0, pri=0, sec=0, ter=0;
+		int uno=0,dos=0, tres=0, pri=0, sec=0, ter=0;
 	
 		//esta va a ser la lista de todos los pois, para revisar uno por uno
 		ArrayList<PoI> losPois= (ArrayList<PoI>) poiDAO.findAll();
 		//esta va a ser la lista de los poi mas  comentados
 		List<PoI> losmasc = new ArrayList<>();
 
-		//do {
 		for(int i=0; i<poiDAO.count();i++) {
-		
-		
-			if(losPois.get(i).getNumeroDeComentarios()>pri) {
-				ter=sec;
-				sec=pri;
-				pri=losPois.get(i).getIdPoi();
-				System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-				System.out.println("sec:"+sec+"comentarios: "+losPois.get(sec).getNumeroDeComentarios());
-				System.out.println("ter:"+ter+"comentarios: "+losPois.get(ter).getNumeroDeComentarios());
-			}
-			/*else {
+			for(int j=0; j<poiDAO.count();j++) {
 				
-				if(losPois.get(i).getNumeroDeComentarios()>sec) {
-					ter=sec;
-					sec=losPois.get(i).getIdPoi();
-					System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-					System.out.println("sec:"+sec+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-					System.out.println("ter:"+ter+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+				if(losPois.get(i).getNumeroDeComentarios()>pri) {
+				
+					uno=losPois.get(i).getIdPoi();
+					pri=losPois.get(i).getNumeroDeComentarios();
 				}
-				else {
+				if(losPois.get(i).getNumeroDeComentarios()>sec) {
+					if(losPois.get(i).getNumeroDeComentarios()<pri) {
+						dos=losPois.get(i).getIdPoi();
+						sec=losPois.get(i).getNumeroDeComentarios();
+					}
 					
-					if(losPois.get(i).getNumeroDeComentarios()>ter)
-					{   
-						ter=losPois.get(i).getIdPoi();	
-						System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-						System.out.println("sec:"+sec+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-						System.out.println("ter:"+ter+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
-					}		
-				}				
-			}//fin de las condiciones	*/
-		//	contador++;	}}while(contador<poiDAO.count());
+				}
+				
+				if(losPois.get(i).getIdPoi()>ter) {
+					if(losPois.get(i).getIdPoi()<pri) {
+						if(losPois.get(i).getIdPoi()<sec) {
+							tres=losPois.get(i).getIdPoi();
+							ter=losPois.get(i).getNumeroDeComentarios();
+						}
+					}
+				}
+				
+				
+			}
+
+
 		}
+	
+		
+		
+		
+
+		
 		//seria util una variable que dependiendo de la cantidad de pois, cmabie de 1 a 3
-		System.out.println("id de pos mas valorados con id: "+pri+" "+sec+" "+ter);
-		int id=pri;
+		System.out.println("id de pos mas valorados con id: uno: "+uno+" ,dos: "+dos+" ,tres: "+tres);
+		int id=uno;
 		for(int i=0; i<3;i++) {
 		System.out.println("estamos avanzando en los pois mas valorado"+i);
 	//	ArrayList<PoI> losmasc = (ArrayList<PoI>) poiDAO.findById(id);
 			losmasc.add(i, poiDAO.findById(id).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			if(id==pri) {
-				id=sec;			
+			if(id==uno) {
+				System.out.println("Entrando a id==uno, id: "+id);
+				id=dos;			
+				System.out.println("Saliendo de id==uno, id: "+id);
 			}
-			else if(id==sec){
-				id=ter;
+			else if(id==dos){
+				System.out.println("Entrando a id==dos, id: "+id);
+				id=tres;
+				System.out.println("Saliendo de id==dos, id: "+id);
 			}
+			System.out.println("["+i+"]"+"el id a buscar es: "+id);
 				
 		}
 		

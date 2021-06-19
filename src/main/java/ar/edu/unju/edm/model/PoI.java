@@ -53,7 +53,7 @@ public class PoI {
 	@JoinColumn(name = "email")
 	private Turista turista;
 	@Column
-	private Integer numeroDeComentarios;
+	private Integer numeroDeComentarios=0;
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
