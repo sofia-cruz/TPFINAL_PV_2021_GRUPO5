@@ -107,10 +107,10 @@ public class PoiServiceMySQL implements IPoiService{
 		//esta va a ser la lista de los poi mas  comentados
 		List<PoI> losmasc = new ArrayList<>();
 
-		
+		do {
 		for(int i=0; i<poiDAO.count();i++) {
 		
-		do {
+		
 			if(losPois.get(i).getNumeroDeComentarios()>pri) {
 				ter=sec;
 				sec=pri;
@@ -119,7 +119,7 @@ public class PoiServiceMySQL implements IPoiService{
 				System.out.println("sec:"+sec+"comentarios: "+losPois.get(sec).getNumeroDeComentarios());
 				System.out.println("ter:"+ter+"comentarios: "+losPois.get(ter).getNumeroDeComentarios());
 			}
-			else {
+			/*else {
 				
 				if(losPois.get(i).getNumeroDeComentarios()>sec) {
 					ter=sec;
@@ -138,10 +138,10 @@ public class PoiServiceMySQL implements IPoiService{
 						System.out.println("ter:"+ter+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
 					}		
 				}				
-			}//fin de las condiciones	
+			}//fin de las condiciones	*/
 			contador++;
-			}while(contador<poiDAO.count());
-		}
+			
+		}}while(contador<poiDAO.count());
 		//seria util una variable que dependiendo de la cantidad de pois, cmabie de 1 a 3
 		System.out.println("id de pos mas valorados con id: "+pri+" "+sec+" "+ter);
 		int id=pri;
