@@ -1,5 +1,6 @@
 package ar.edu.unju.edm.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.PoI;
+import ar.edu.unju.edm.model.Turistas_Pois;
 import ar.edu.unju.edm.repository.IPoiDAO;
 import ar.edu.unju.edm.service.IPoiService;
 
@@ -92,6 +94,71 @@ public class PoiServiceMySQL implements IPoiService{
 	private void cambiarCantcomentario(PoI poiModificado, PoI poiAModificar) {
 		//poiAModificar.setNumeroDeComentarios(poiModificado.getNumeroDeComentarios());
 		
+	}
+	@SuppressWarnings("null")
+	@Override
+	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception {
+		// TODO Auto-generated method stub
+		
+		int contador=0, pri=0, sec=0, ter=0;
+	
+		//esta va a ser la lista de todos los pois, para revisar uno por uno
+		ArrayList<PoI> losPois= (ArrayList<PoI>) poiDAO.findAll();
+		//esta va a ser la lista de los poi mas  comentados
+		List<PoI> losmasc = new ArrayList<>();
+
+		
+		for(int i=0; i<poiDAO.count();i++) {
+		
+		do {
+			if(losPois.get(i).getNumeroDeComentarios()>pri) {
+				ter=sec;
+				sec=pri;
+				pri=losPois.get(i).getIdPoi();
+				System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+				System.out.println("sec:"+sec+"comentarios: "+losPois.get(sec).getNumeroDeComentarios());
+				System.out.println("ter:"+ter+"comentarios: "+losPois.get(ter).getNumeroDeComentarios());
+			}
+			else {
+				
+				if(losPois.get(i).getNumeroDeComentarios()>sec) {
+					ter=sec;
+					sec=losPois.get(i).getIdPoi();
+					System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+					System.out.println("sec:"+sec+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+					System.out.println("ter:"+ter+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+				}
+				else {
+					
+					if(losPois.get(i).getNumeroDeComentarios()>ter)
+					{   
+						ter=losPois.get(i).getIdPoi();	
+						System.out.println("pri:"+pri+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+						System.out.println("sec:"+sec+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+						System.out.println("ter:"+ter+"comentarios: "+losPois.get(i).getNumeroDeComentarios());
+					}		
+				}				
+			}//fin de las condiciones	
+			contador++;
+			}while(contador<poiDAO.count());
+		}
+		//seria util una variable que dependiendo de la cantidad de pois, cmabie de 1 a 3
+		System.out.println("id de pos mas valorados con id: "+pri+" "+sec+" "+ter);
+		int id=pri;
+		for(int i=0; i<3;i++) {
+		System.out.println("estamos avanzando en los pois mas valorado"+i);
+	//	ArrayList<PoI> losmasc = (ArrayList<PoI>) poiDAO.findById(id);
+			losmasc.add(i, poiDAO.findById(id).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+			if(id==pri) {
+				id=sec;			
+			}
+			else if(id==sec){
+				id=ter;
+			}
+				
+		}
+		
+		return (ArrayList<PoI>) losmasc;
 	}
 
 

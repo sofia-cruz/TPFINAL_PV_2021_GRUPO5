@@ -1,5 +1,6 @@
 package ar.edu.unju.edm.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -21,5 +22,6 @@ public interface IPoiService {
 	//nuevo
 	public PoI obtenerPoiID(Integer id);
 	public PoI cambiarCantidadDeComentarios(Integer cant) throws Exception;
+	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception;
 	
 }
