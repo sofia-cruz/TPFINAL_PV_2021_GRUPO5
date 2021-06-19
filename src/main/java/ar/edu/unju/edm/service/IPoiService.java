@@ -23,5 +23,6 @@ public interface IPoiService {
 	public PoI obtenerPoiID(Integer id);
 	public PoI cambiarCantidadDeComentarios(Integer cant) throws Exception;
 	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception;
-	
+	//
+	public PoI poiPorDefecto();
 }

@@ -21,6 +21,10 @@ public class HomeController {
 	@Qualifier("impmysqlpoi")
 	IPoiService iPoiService;
 	
+	@Autowired
+	PoI unPoi;
+
+	
 	@Autowired 
 	@Qualifier("impmysql")
 	ITuristaService iTuristaService;
@@ -32,17 +36,14 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String cargarHome(Model model) throws Exception{
-		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
+		if(iPoiService.encontrarPoisMasComentados()==null) {
+			//en caso de no haber pois	
+			model.addAttribute("pois", iPoiService.poiPorDefecto());
+		}	
+	    else{
+		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());}
 		return ("home");	
 	}
-	//borrar lo que sigue
-	@GetMapping("/home/masc")
-	public String mostrarcomentado(Model model) throws Exception {
-		
-		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
-		return("po");
 	}
-
-}
 
 
