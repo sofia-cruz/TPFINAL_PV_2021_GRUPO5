@@ -10,6 +10,7 @@
 		href="/static/css/estilos_valoracion.css">
 	<link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css" />
 	<link th:href="@{/css/estilos-foto.css}" rel="stylesheet" type="text/css" href="/css/estilos-foto.css" />
+	<link th:href="@{/css/estilo-home.css}" rel="stylesheet" type="text/css" href="/css/estilo-home.css" />
 </head>
 
 <body>
@@ -18,53 +19,41 @@
 		<!--Este es el header-->
 		<div th:insert="layout/header :: header" class="cabeza"></div>
 		<!--Fin de el header-->
-		 <div class="card-header justify-content-center">
-                    <h2>Los puntos de Interés <span class="text-primary">Más</span> Comentados</h2> 
-          </div>
+		<div class="card-header justify-content-center">
+			<h2>Los puntos de Interés <span class="text-primary">Más</span> Comentados</h2>
+		</div>
+
+
+
+		<!-- el slider-->
 		<div class="col-md-12 my-sm-4 d-md-flex">
 			<div class="mb-5" th:each="c : ${pois}">
-				<div class="col-md-4 mb-5">
-					<div class="card" style="width: 18rem;">
-					
+				<div class="col-md-12 mb-5">
+
+					<div class="card" style="width: 21rem;">
+
 						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
 								<div class="carousel-item active mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100" alt="First slide">
+									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100 slider-mc" alt="First slide">
 								</div>
 								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100" alt="Second slide">
+									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100 slider-mc" alt="Second slide">
 								</div>
 								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100" alt="Third slide">
+									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100 slider-mc" alt="Third slide">
 								</div>
 							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
 
 						</div>
 
 					<div class="card-body">
+					<a th:href="@{'/poi/foto'}" class="comentario-logo"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
 						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
 						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
 						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
-						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
-						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
-						<a th:href="@{'/poi/foto'}"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
 						
-					
-						<div>
-							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
-                    	&nbsp; &nbsp;
-
-						</div>
+						
 
 						<div class="btn">
 						<a class="stretched-link btn link-valorar" style="position: relative;"  th:href="@{'/poi/valorar/'+${c.idPoi}}" ><i class="fas fa-star"></i>Valorar</a>
@@ -74,210 +63,18 @@
 					</div>
 
 					</div>
-
 				</div>
 			</div>
 		</div>
-		
-		
-		<!-- el slider-->
-			<div class="col-md-12 my-sm-4 d-md-flex">
-			 <div class="mb-5" th:each="c : ${pois}">
-			
-									<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active mb-5">
-									<div width="200" height="200" class="d-block w-100" alt="First slide">
-									
-														<div class="card" style="width: 18rem;">
-					
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100" alt="First slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100" alt="Second slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100" alt="Third slide">
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
 
-						</div>
 
-					<div class="card-body">
-						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
-						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
-						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
-						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
-						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
-						<a th:href="@{'/poi/foto'}"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
-						
-					
-						<div>
-							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
-                    	&nbsp; &nbsp;
 
-						</div>
 
-						<div class="btn">
-						<a class="stretched-link btn link-valorar" style="position: relative;"  th:href="@{'/poi/valorar/'+${c.idPoi}}" ><i class="fas fa-star"></i>Valorar</a>
-								&nbsp; &nbsp;
 
-						</div>
-					</div>
 
-					</div>
-									</div>
-									
-									
-								</div>
-								<div class="carousel-item mb-5">
-									<div width="200" height="200" class="d-block w-100" alt="Second slide">
-														<div class="card" style="width: 18rem;">
-					
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100" alt="First slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100" alt="Second slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100" alt="Third slide">
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
 
-						</div>
 
-					<div class="card-body">
-						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
-						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
-						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
-						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
-						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
-						<a th:href="@{'/poi/foto'}"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
-						
-					
-						<div>
-							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
-                    	&nbsp; &nbsp;
 
-						</div>
-
-						<div class="btn">
-						<a class="stretched-link btn link-valorar" style="position: relative;"  th:href="@{'/poi/valorar/'+${c.idPoi}}" ><i class="fas fa-star"></i>Valorar</a>
-								&nbsp; &nbsp;
-
-						</div>
-					</div>
-
-					</div>
-									</div>
-									
-								</div>
-								<div class="carousel-item mb-5">
-								<div width="200" height="200" class="d-block w-100" alt="Third slide">
-													<div class="card" style="width: 18rem;">
-					
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen}" width="200" height="200" class="d-block w-100" alt="First slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen2}" width="200" height="200" class="d-block w-100" alt="Second slide">
-								</div>
-								<div class="carousel-item mb-5">
-									<img th:src="*{'data:;base64,'+c.imagen3}" width="200" height="200" class="d-block w-100" alt="Third slide">
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-
-						</div>
-
-					<div class="card-body">
-						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
-						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
-						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
-						<p class="card-text" th:text="${'Latitud:  '+c.latitud}">Latitud</p>
-						<p class="card-text" th:text="${'Longitud: '+c.longitud}">Longitud</p>
-						<a th:href="@{'/poi/foto'}"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
-						
-					
-						<div>
-							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
-                    	&nbsp; &nbsp;
-
-						</div>
-
-						<div class="btn">
-						<a class="stretched-link btn link-valorar" style="position: relative;"  th:href="@{'/poi/valorar/'+${c.idPoi}}" ><i class="fas fa-star"></i>Valorar</a>
-								&nbsp; &nbsp;
-
-						</div>
-					</div>
-
-					</div>
-								</div>
-								
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-
-						</div>
-			
-			 </div>
-			</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	</div>
 	</div>
 
@@ -290,6 +87,9 @@
 			</div>
 		</div>
 	</div>
+
+
+
 
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
