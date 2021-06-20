@@ -1,7 +1,10 @@
 package ar.edu.unju.edm.service.imp;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -201,11 +204,13 @@ public class PoiServiceMySQL implements IPoiService{
 	@Override
 	public PoI poiPorDefecto() {
 		// TODO Auto-generated method stub
-	
+	   //unPoi.setImagen2(new File("/img/pastel.jpg"));
 		unPoi.setNumeroDeComentarios(0);
-		unPoi.setNombrePoi("PoiPorDefecto");
-		unPoi.setEtiqueta(null);
+		unPoi.setNombrePoi("Un Punto de Interés");
+		unPoi.setEtiqueta("Aventura");
 		unPoi.setIdPoi(0);
+		unPoi.setLatitud(-60.1);
+		unPoi.setLongitud(-10.3);
 		//unNuevoPoi.setImagen(null);
 		
 		
