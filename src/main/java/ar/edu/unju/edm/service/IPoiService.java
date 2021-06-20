@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.PoI;
+import ar.edu.unju.edm.model.Turista;
 
 
 
@@ -25,4 +26,5 @@ public interface IPoiService {
 	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception;
 	//
 	public PoI poiPorDefecto();
+	public List<PoI> obtenerMisPois(Turista turista);
 }

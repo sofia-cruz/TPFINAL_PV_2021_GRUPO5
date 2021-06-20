@@ -5766,7 +5766,7 @@ textarea.form-control-lg {
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-item {
@@ -10936,10 +10936,10 @@ p.lead {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: #495057;
-  color: #fff;
+  height: 3rem;
+  width: 3rem;
+  background-color: #C5D86D;
+  color: #0D1321;
   border-radius: 100%;
   font-size: 1.5rem;
   margin-right: 1.5rem;
@@ -10948,7 +10948,8 @@ p.lead {
   margin-right: 0;
 }
 .social-icons .social-icon:hover {
-  background-color: #bd5d38;
+  background-color: #0D1321;
+  color: #FFEDDF;
 }
 
 .dev-icons {

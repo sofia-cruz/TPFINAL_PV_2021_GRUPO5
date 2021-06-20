@@ -30,11 +30,11 @@ public class FotoController {
 	@Autowired 
 	@Qualifier("impmysqlpoi")
 	IPoiService iPoiService;
-	
-	@Autowired 
-	@Qualifier("impmysql")
-	ITuristaService iTuristaService;
 		
+	@Autowired
+	@Qualifier("impmysql")
+	ITuristaService turistaService;
+	
 	@Autowired
 	PoI poiSeleccionado;
 	@Autowired
@@ -70,7 +70,7 @@ public class FotoController {
 		            .getAuthentication();
 		    UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		   
-		    Turista turistaEnSesion =  iTuristaService.encontrarConCorreo(userDetail.getUsername());
+		    Turista turistaEnSesion =  turistaService.encontrarConCorreo(userDetail.getUsername());
 		    
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
