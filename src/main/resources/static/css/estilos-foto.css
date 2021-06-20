@@ -1,10 +1,33 @@
 
-.container .card {
-	border-radius: 0.25rem;
-}
- .container  .card .card-body .card-title h5{
-	color: black;
-	display: block;
+h1{
 	text-align: center;
-    margin-top: 10px;
+	font-size: 5rem;
+}
+section{
+	padding: 1rem 0;
+	max-width: 700px;
+	margin-left: 300px;
+	margin-block-end: 160px;
+	border-radius: 20px;
+	background-color: #AFE0CE;
+	box-shadow: 7px 13px 37px #000;
+	
+}
+form{
+	padding: 30px;
+	margin-left: 20px ;
+	justify-content: space-between;
+	
+}
+input,
+label,
+ [type=submit]
+  {
+	font-size: 1.1rem;
+	padding: 0.75rem 1.2rem;
+	
+}
+label{
+	text-transform: uppercase;
+	font-weight: bold;
 }
