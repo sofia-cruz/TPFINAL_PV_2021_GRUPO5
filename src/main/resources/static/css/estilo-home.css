@@ -4,6 +4,12 @@ color: gray;
 
 }
 
+.sub-titulo{
+	text-align: center;
+	margin: 30px auto;
+    padding: 1cm;
+    
+}
 .img-sl-1{
 width: 700px;	
 text-align: center;
@@ -32,7 +38,6 @@ text-align: center;
 	width: 50%;
 	height: 330px;
   text-align: center;
-  margin: 2px auto;
   display: inline;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -41,10 +46,19 @@ text-align: center;
 }
 .duo1:hover, .duo2:hover, .duo3:hover, .duo4:hover{
 	color: gray;
-	opacity: 83%;
+	opacity: 90%;
 	transition: .4s;
 	
 }
+.duo1 h4:hover, .duo2 h4:hover, .duo3 h4:hover, .duo4 h4:hover{
+	   background-color: #86615C;
+	   opacity: 30%;
+	   color: #FFEDDF;
+	transition: 1s;
+	 text-decoration: underline;
+	opacity: 80%;
+	border-radius: .1cm;
+	}
 .duo1{
 
    float: left;
@@ -67,21 +81,23 @@ float: left;
   text-align: center;
  display: inline;
   background-image: url(/img/salinas-agua.jpg);
-	
+	 margin-bottom: 2cm;
 }
 .duo4{
  float: right;
   text-align: center;
   display: inline;
  background-image: url(/img/norte.jpg);
+ margin-bottom: 2cm;
 		
 }
 
 
 .mini-titulo{
 	text-align: center;
-   color: white;
-	margin-top: 70px;
+	color: #FFEDDF;
+  padding:30px;
+	margin-top: 30px;
 }
 
 .uno-t{color: #09D4BF;}
