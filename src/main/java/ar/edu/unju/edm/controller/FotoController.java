@@ -78,7 +78,7 @@ public class FotoController {
 		    model.addAttribute("valoracion",valoracion);
 		    LOGGER.error("METHOD: Saliendo de Valorar, el usuario guardado: "+valoracion.getTur());
 		    LOGGER.error("METHOD: valor de valoracion: "+valoracion.getValoracion_user()+" , id turistas_pois: "+valoracion.getIdTuristas_Pois());
-			
+			//ayuda a maii
 		   
 		    		
 		}
