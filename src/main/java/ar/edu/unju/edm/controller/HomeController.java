@@ -37,11 +37,12 @@ public class HomeController {
 	@GetMapping("/home")
 	public String cargarHome(Model model) throws Exception{
 		if(iPoiService.encontrarPoisMasComentados()==null) {
-			//en caso de no haber pois	
+		//en caso de no haber pois	
 			model.addAttribute("pois", iPoiService.poiPorDefecto());
 		}	
 	    else{
-		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());}
+		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
+		}
 		return ("home");	
 	}
 	}
