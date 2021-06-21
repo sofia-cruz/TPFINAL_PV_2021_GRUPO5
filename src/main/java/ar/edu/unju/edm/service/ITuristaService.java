@@ -19,4 +19,9 @@ public interface ITuristaService {
 	public Turista encontrarConCorreo(String email) throws Exception;
 	public void modificarTurista(Turista unTurista);
 	public void eliminarTurista(int id) throws Exception;
+	public void puntosPorPoi(Turista unTurista);
+	public void puntosPorValoracion(Turista unTurista);
+	public void puntosPorComentario(Turista unTurista);
+
+
 }

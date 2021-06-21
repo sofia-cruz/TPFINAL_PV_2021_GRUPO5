@@ -49,6 +49,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 		// TODO Auto-generated method stub
 		
 		unTurista.setRol("normal");
+		unTurista.setPuntos(0);
 		return unTurista;
 	}
 
@@ -98,4 +99,27 @@ public class TuristaServiceMySQL implements ITuristaService {
 	}
 
 */
+
+	@Override
+	public void puntosPorPoi(Turista unTurista) {
+		// TODO Auto-generated method stub
+		unTurista.setPuntos(unTurista.getPuntos() +10);
+		turistaDAO.save(unTurista);
+	}
+
+	@Override
+	public void puntosPorValoracion(Turista unTurista) {
+		// TODO Auto-generated method stub
+		unTurista.setPuntos(unTurista.getPuntos() +5);
+		turistaDAO.save(unTurista);
+
+		
+	}
+
+	@Override
+	public void puntosPorComentario(Turista unTurista) {
+		// TODO Auto-generated method stub
+		unTurista.setPuntos(unTurista.getPuntos() +8);
+		turistaDAO.save(unTurista);
+	}
 }

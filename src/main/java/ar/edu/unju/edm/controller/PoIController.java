@@ -109,6 +109,7 @@ import ar.edu.unju.edm.service.IValoracionService;
 					//turistaActual.setPuntos(turistaActual.getPuntos() + 10);
 					nuevoPoi.setTurista(turistaActual);
 					iPoiService.guardarPoi(nuevoPoi);
+					turistaService.puntosPorPoi(turistaActual);
 					}
 			 } catch (Exception e) {
 				 
