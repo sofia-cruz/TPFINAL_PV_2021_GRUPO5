@@ -27,4 +27,5 @@ public interface IPoiService {
 	//
 	public PoI poiPorDefecto();
 	public List<PoI> obtenerMisPois(Turista turista);
+	
 }
