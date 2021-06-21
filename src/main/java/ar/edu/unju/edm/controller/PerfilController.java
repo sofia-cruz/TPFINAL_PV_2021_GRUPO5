@@ -24,7 +24,7 @@ public class PerfilController {
 	ITuristaService turistaService;
 	@Autowired
 	@Qualifier("impmysqlpoi")
-    IPoiService iPoiService;
+    IPoiService poiService;
 	
 	
 	@GetMapping("/turista/perfil")
@@ -33,10 +33,14 @@ public class PerfilController {
 			Turista existente = turistaService.encontrarConCorreo(principal.getName());
 			BELLA.info("Turista " + existente.getIdTurista() + "encontrado");
 			model.addAttribute("turistaActual", existente);
+			model.addAttribute("poisActual", poiService.obtenerMisPois(existente));
 			return "perfil";
 		}
 		catch(Exception e){
 			model.addAttribute("usuarioErrorMensaje", e.getMessage());
 		}
     return "redirect:/inicio";
-	}}
+	}
+	
+
+}

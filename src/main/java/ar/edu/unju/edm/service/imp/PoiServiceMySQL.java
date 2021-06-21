@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.PoI;
+import ar.edu.unju.edm.model.Turista;
 import ar.edu.unju.edm.model.Turistas_Pois;
 import ar.edu.unju.edm.repository.IPoiDAO;
 import ar.edu.unju.edm.service.IPoiService;
@@ -219,6 +220,11 @@ public class PoiServiceMySQL implements IPoiService{
 	}
 	
 
-
+/*Encontrar mis pois*/
+	@Override
+	public List<PoI> obtenerMisPois(Turista turista) {
+		// TODO Auto-generated method stub
+		return (List<PoI>) poiDAO.findAllByTurista(turista) ;
+	}
 
 }
