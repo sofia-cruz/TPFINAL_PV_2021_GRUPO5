@@ -73,12 +73,30 @@
 
 		</div>
 		<div class="modal-footer">
+		
 			<button type="button" class="cancelar btn-secondary" data-dismiss="modal">Cancelar</button>
 			<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
 		</div>
 
 
 	</form>
+		<div>
+			<h2>Comentarios anteriores</h2>
+	<form id="formProducto" th:object="${loscom}" method="post">
+		<div class="form-group row">
+
+			<div th:each="com : ${loscom}">
+				<label th:text="${com.comentario}"></label>
+				
+				<input th:text="${com.valoracion_user}"  class="inval" id="radio3" type="radio" name="estrellas"></input>
+		<label class="val" for="radio1">★</label>
+			</div>
+
+		</div>
+
+	
+	</form>
+		</div>
 </div>
 
 

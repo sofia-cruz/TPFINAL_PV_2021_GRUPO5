@@ -96,32 +96,35 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 				ArrayList<Turistas_Pois> lasValoraciones= (ArrayList<Turistas_Pois>) valoracionDAO.findAll();
 				//esta va a ser la lista de los comentarios de un poi
 				List<Turistas_Pois> loscom = new ArrayList<>();
-				System.out.println("entrando a obtener comentarios");
+				System.out.println("entrando a obtener comentarios, service imp");
 				int contador=0;
 				if(valoracionDAO.count()==0) {
 					
 					loscom=null;
 				}
 				else{
-					int laid=0;
+					int laid=0,direccion=0;
 				
 				System.out.println("Hay: "+valoracionDAO.count()+" comentarios cargados");
 						
 						for(int i=0; i<valoracionDAO.count();i++) {
 							System.out.println("["+i+"]"+"los comentarios: "+lasValoraciones.get(i).getComentario());
+							
 							if(lasValoraciones.get(i).getPoi().getIdPoi()==id) {
 								laid=lasValoraciones.get(i).getIdTuristas_Pois();
 								//loscom.set(i, lasValoraciones.get(i));
-						loscom.add(i, valoracionDAO.findById(laid).orElseThrow(()->new Exception("La valoracion No Fue encontrada, poiserviceimp")));
 								
-								System.out.println("los devueltos: "+lasValoraciones.get(i).getComentario());
-								System.out.println("los guardados: "+loscom.get(i).getComentario());
-								contador++;
+						loscom.add(direccion, valoracionDAO.findById(laid).orElseThrow(()->new Exception("La valoracion No Fue encontrada, poiserviceimp")));
+								
+							//	System.out.println("los devueltos: "+lasValoraciones.get(i).getComentario());
+							//	System.out.println("los guardados: "+loscom.get(i).getComentario());
+						direccion++;		
+						contador++;
 								
 						}
 						}								
 
-
+						System.out.println("-----segunda parte, muestra: ");
 						for(int j=0; j<contador;j++) {
 					
 						//	losmasc.add(i, poiDAO.findById(ide).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
@@ -132,7 +135,7 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 						
 						
 					}
-				
+				System.out.println("saliendo de service imp");
 
 				return (ArrayList<Turistas_Pois>) loscom;
 	}
