@@ -207,15 +207,15 @@ public class PoiServiceMySQL implements IPoiService{
 		// TODO Auto-generated method stub
 	   //unPoi.setImagen2(new File("/img/pastel.jpg"));
 		unPoi.setNumeroDeComentarios(0);
-		unPoi.setNombrePoi("Un Punto de Interés");
+		unPoi.setNombrePoi("Aún No hay puntos de interés cargados");
 		unPoi.setEtiqueta("Aventura");
 		unPoi.setIdPoi(0);
 		unPoi.setLatitud(-60.1);
 		unPoi.setLongitud(-10.3);
 		//unNuevoPoi.setImagen(null);
 		
-		
-		guardarPoi(unPoi);
+		//no necesito guardarlo
+		// guardarPoi(unPoi);
 		return unPoi;
 	}
 	
