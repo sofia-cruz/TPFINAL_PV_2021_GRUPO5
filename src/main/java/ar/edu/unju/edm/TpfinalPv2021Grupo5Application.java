@@ -25,7 +25,7 @@ public class TpfinalPv2021Grupo5Application implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 	
-		
+		/*esto debe estar comentado luego de usar, va a dar error en bd
 		turista.setApellido("Solis");
 		turista.setEmail("a@a");
 		turista.setIdTurista(2);
@@ -35,7 +35,7 @@ public class TpfinalPv2021Grupo5Application implements CommandLineRunner{
 		turista.setPuntos(1);
 		turista.setRol("normal");
 		turistaService.guardarTurista(turista);
-		
+		*/
 
 	}
 

@@ -1,5 +1,8 @@
 package ar.edu.unju.edm.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +102,42 @@ public class FotoController {
 	    //esto manda el id del poi, y actualiza cantidad de comentarios
 	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());
 		return("redirect:/poi/foto");
+	}
+	@GetMapping("/poi/com/{idPoi}")	
+	public String verComentarios(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
+		   LOGGER.info("METHOD: Entrando a Ver comentarios, GetMapping ");
+		try {	
+			
+		    LOGGER.info("METHOD: Entrando a Ver comentarios ");
+			//Manda el id del poi, y debe devolver sus comentarios
+			poiSeleccionado = iPoiService.obtenerPoiID(id);			
+			if(iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi())==null) {
+				System.out.println("no hay comentarios cargados");
+				 model.addAttribute("comentarios",iValoracion.valoracionBasica());
+				
+			}else {
+				 LOGGER.info("METHOD: Entrando a Ver comentarios, con mas de 1 comentario ");
+				//  model.addAttribute("comentarios",iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi()));	
+				  LOGGER.info("METHOD: saliendo de Ver comentarios, con mas de 1 comentario ");
+				  List<Turistas_Pois> loscom = iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi());	
+				  for(int i=0;i<3;i++) {
+					  System.out.println("contenido: "+loscom.get(i).getComentario());
+					 // model.addAttribute(loscom);
+					  model.addAttribute("loscom", loscom);
+				  }
+			}
+		 
+		
+		   LOGGER.info("METHOD: Saliendo de Ver comentarios ");
+
+		   
+		    		
+		}
+		catch (Exception e) {
+			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
+		}		
+		
+		return "modal-comentarios";	
 	}
 	
 }

@@ -134,23 +134,23 @@ public class PoiServiceMySQL implements IPoiService{
 				
 				for(int i=0; i<poiDAO.count();i++) {
 					for(int j=0; j<poiDAO.count();j++) {
-						if(losPois.get(i).getNumeroDeComentarios()>pri) {
-							uno=losPois.get(i).getIdPoi();
-							pri=losPois.get(i).getNumeroDeComentarios();
+						if(losPois.get(j).getNumeroDeComentarios()>pri) {
+							uno=losPois.get(j).getIdPoi();
+							pri=losPois.get(j).getNumeroDeComentarios();
 						}
-						if(losPois.get(i).getNumeroDeComentarios()>sec) {
-							if(losPois.get(i).getNumeroDeComentarios()<pri) {
-								dos=losPois.get(i).getIdPoi();
-								sec=losPois.get(i).getNumeroDeComentarios();
+						if(losPois.get(j).getNumeroDeComentarios()>sec) {
+							if(losPois.get(j).getNumeroDeComentarios()<pri) {
+								dos=losPois.get(j).getIdPoi();
+								sec=losPois.get(j).getNumeroDeComentarios();
 							}
 							
 						}
 						
-						if(losPois.get(i).getIdPoi()>ter) {
-							if(losPois.get(i).getIdPoi()<pri) {
-								if(losPois.get(i).getIdPoi()<sec) {
-									tres=losPois.get(i).getIdPoi();
-									ter=losPois.get(i).getNumeroDeComentarios();
+						if(losPois.get(j).getIdPoi()>ter) {
+							if(losPois.get(j).getIdPoi()<pri) {
+								if(losPois.get(j).getIdPoi()<sec) {
+									tres=losPois.get(j).getIdPoi();
+									ter=losPois.get(j).getNumeroDeComentarios();
 								}
 							}
 						}	
@@ -226,5 +226,6 @@ public class PoiServiceMySQL implements IPoiService{
 		// TODO Auto-generated method stub
 		return (List<PoI>) poiDAO.findAllByTurista(turista) ;
 	}
+
 
 }
