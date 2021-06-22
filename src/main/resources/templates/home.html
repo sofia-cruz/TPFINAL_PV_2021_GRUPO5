@@ -78,7 +78,8 @@
 						</div>
 
 					<div class="card-body">
-					<a th:href="@{'/poi/foto'}" class="comentario-logo"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
+					
+					<a th:href="@{'/poi/comentar/'+${c.idPoi}}" class="comentario-logo"><i class="far fa-comments"></i><label class="card-text" th:text="${c.numeroDeComentarios}"></label></a>
 						<h5 class="card-title" th:text="${'ID:  '+c.idPoi}">ID</h5>
 						<p class="card-text" th:text="${c.nombrePoi}">Nombre</p>
 						<p class="card-text" th:text="${'Etiqueta:  '+c.etiqueta}">Etiqueta</p>
