@@ -32,7 +32,8 @@ public class TuristaServiceMySQL implements ITuristaService {
 		String pw = unTurista.getPassword();
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
-		
+		unTurista.setPuntos(0);
+
 		turistaDAO.save(unTurista);
 	}
 
@@ -79,9 +80,9 @@ public class TuristaServiceMySQL implements ITuristaService {
 	}
 	@Override
 	public void modificarTurista (Turista unTurista) {
-		String pw = unTurista.getPassword();
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
+		//String pw = unTurista.getPassword();
+		//BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		//unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
 		Double valorLat =  Math.floor(Math.random()*(24-65+1)+24);
 		Double valorLong =  Math.floor(Math.random()*(20-65+1)+24);
 		unTurista.setLatitud(valorLat);
