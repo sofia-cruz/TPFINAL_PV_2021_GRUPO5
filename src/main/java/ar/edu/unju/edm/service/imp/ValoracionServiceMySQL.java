@@ -1,6 +1,9 @@
 package ar.edu.unju.edm.service.imp;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +36,17 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 	@Override
 	public void guardarValoracion(Turistas_Pois unaValoracion) {
 		// TODO Auto-generated method stub
+		LocalDateTime fechaHoy = LocalDateTime.now();
+		unaValoracion.setComentime(fechaHoy);
+		System.out.println("dias: "+ fechaHoy );
+	
 		valoracionDAO.save(unaValoracion);
 	}
 
 	@Override
 	public Turistas_Pois crearValoracion() {
 		// TODO Auto-generated method stub
+		
 		return valoracion;
 	}
 
@@ -147,6 +155,14 @@ System.out.println("haciendo valoracion básica, serviceimp");
 		valoracion.setComentario("aun no hay comentarios");
 		valoracion.setValoracion_user(0);
 		return valoracion;
+	}
+
+	@Override
+	public Turistas_Pois promediovaloraciones(Integer id) {
+		
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
 }

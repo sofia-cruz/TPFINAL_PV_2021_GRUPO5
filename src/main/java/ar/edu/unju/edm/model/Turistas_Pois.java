@@ -1,6 +1,8 @@
 package ar.edu.unju.edm.model;
 
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,11 +37,21 @@ public class Turistas_Pois {
 	private Integer valoracion_user;
 	@Column
 	private String comentario;
-	
+	@Column
+	private LocalDateTime comentime;
+/*	@Column
+	private LocalDateTime valortime;
+	*/
 	
 	
 	public String getTur() {
 		return tur;
+	}
+	public LocalDateTime getComentime() {
+		return comentime;
+	}
+	public void setComentime(LocalDateTime comentime) {
+		this.comentime = comentime;
 	}
 	public void setTur(String tur) {
 		this.tur = tur;
