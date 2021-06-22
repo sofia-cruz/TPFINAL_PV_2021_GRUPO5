@@ -72,6 +72,10 @@ padding-right: 3px;
 	margin: 3px;
 	
 }
+.modal-header{
+	background-color: #C5D86D;
+}
+
 /*.btn{
 	background-color: lightblue;
 }
