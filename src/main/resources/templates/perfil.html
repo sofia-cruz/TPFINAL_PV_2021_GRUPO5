@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
+
 <head>
-		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
-	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}"/>
-<meta charset="UTF-8">
-        <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
-        <!--<link rel="icon" type="image/x-icon" href="img/hange.jpg" />-->
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+	<meta charset="UTF-8">
+	<link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css" />
+	<!--<link rel="icon" type="image/x-icon" href="img/hange.jpg" />-->
 
-        <title>Mi Perfil</title>
-        <!-- Referencias para probar fuentes e íconos-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        
-    </head>
-    <body>
-    <!--Este es el header-->
-		<div th:insert="layout/header :: header" class="cabeza"></div>
-    <!--Fin de el header-->
-        <div class="resume-section resume-section-content">
-                   <div class="card">
-                    <div class="card-header">
-                        <h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span>&nbsp;<span class="text-primary" th:text="${turistaActual.apellido}"></span></h1>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex flex-column">
-                            <p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
-                            <h4 href="mailto:name@email.com">Correo Electronico: <span th:text="${turistaActual.email}"></span></h4>
-                            <h4>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h4>
-                            <h4>Ubicación actual: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span th:text="${turistaActual.longitud}"></span></h4>
+	<title>Mi Perfil</title>
+	<!-- Referencias para probar fuentes e íconos-->
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+		type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
 
-                            <p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center mt-xxl-4">
-                        <a href="#" class="btn btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i class="fa fa-user-edit"></i> Editar Perfil</a>
-                    	&nbsp; &nbsp;
-                        <a href="#" class="btn btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i class="fab fa-dashcube"></i>Eliminar Perfil</a>
-                        &nbsp; &nbsp;
-                        <ul class="navbar-nav mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="#" th:href="@{/logout}"><span class="float-right"><i class="fas fa-sign-out-alt"></i></span><span th:text="${#authentication.getPrincipal().getUsername()}"></span> - <span> Cerrar Sesión </span></a>				   	
+</head>
+
+<body>
+	<!--Este es el header-->
+	<div th:insert="layout/header :: header" class="cabeza"></div>
+	<!--Fin de el header-->
+	<div class="resume-section resume-section-content">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="mb-0"><span th:text="${turistaActual.nombre}"></span>&nbsp;<span class="text-primary"
+						th:text="${turistaActual.apellido}"></span></h1>
+			</div>
+			<div class="card-body">
+				<div class="d-flex flex-column">
+					<p>ID: <small th:text="${turistaActual.idTurista}"></small></p>
+					<h4 href="mailto:name@email.com">Correo Electronico: <span th:text="${turistaActual.email}"></span>
+					</h4>
+					<h4>Pais: <span th:text="${turistaActual.paisProcedencia}"></span></h4>
+					<h4>Ubicación actual: <span th:text="${turistaActual.latitud}"></span>,&nbsp;<span
+							th:text="${turistaActual.longitud}"></span></h4>
+
+					<p>Puntos: <span th:text="${turistaActual.puntos}"></span></p>
+				</div>
+			</div>
+			<div class="card-footer d-flex justify-content-center mt-xxl-4">
+				<a href="#" class="btn btn-primary" th:href="@{'/turista/editar/'+${turistaActual.idTurista}}"> <i
+						class="fa fa-user-edit"></i> Editar Perfil</a>
+				&nbsp; &nbsp;
+				<a href="#" class="btn btn-primary" th:href="@{'/turista/eliminar/'+${turistaActual.idTurista}}"><i
+						class="fab fa-dashcube"></i>Eliminar Perfil</a>
+				&nbsp; &nbsp;
+				<ul class="navbar-nav mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="btn btn-primary" href="#" th:href="@{/logout}"><span class="float-right"><i
+									class="fas fa-sign-out-alt"></i></span><span th:text="${#authentication.getPrincipal().getUsername()}"></span> - <span> Cerrar Sesión </span></a>				   	
                             </li>
                         </ul>
                     </div>
@@ -61,7 +70,7 @@
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<img th:src="*{'data:;base64,'+c.imagen}" class="d-block w-100" alt="First slide">
-								</div>
+	      					</div>
 								<div class="carousel-item">
 									<img th:src="*{'data:;base64,'+c.imagen2}" class="d-block w-100" alt="Second slide">
 								</div>
@@ -79,8 +88,10 @@
 							</a>
 
 						</div>
+						<br>
 						<div>
 							 <a href="#" class="btn btn-primary" th:href="@{'/poi/editar/'+${c.idPoi}}"> <i class="fa fa-edit"></i> Editar Mi POI</a>
+							 <a th:onclick="'javascript:confirmarEliminar(\''+${c.idPoi}+'\');'"><i class="fas fa-trash"></i></a>
                     	&nbsp; &nbsp;
 
 						</div>
@@ -93,7 +104,44 @@
 						         <!--Este es el div de resumen section-->
                     
         </div>
+         <!--Modal Eliminar-->
+		<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="eliminarModal"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="eliminarModalTitulo">Confirmar Eliminar</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h6>¿Esta seguro que desea eliminar este producto?</h6>
+					</div>
+					<input type="hidden" id="identificadorPoi" name="poiId" />
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary" th:onclick="eliminarPoi()">Borrar mi Poi</button>
+					</div>
+				</div>
+			</div>
+		</div>
          
+         
+         
+         
+         
+            <script type="text/javascript">
+				function confirmarEliminar(id) {
+					$('#modalEliminar').modal('show');
+					$("#identificadorPoi").val(id);
+				}
+
+				function eliminarPoi() {
+					var id = $("#identificadorPoi").val();
+					window.location = "eliminarPoi/" + id;
+				}
+			</script>
         <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	    <script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
@@ -101,10 +149,17 @@
 	    <script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+		
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        
+      
+       
+        
+        
     </body>
 </html>
