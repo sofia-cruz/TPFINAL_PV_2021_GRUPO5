@@ -24,6 +24,7 @@ import ar.edu.unju.edm.model.Turistas_Pois;
 import ar.edu.unju.edm.service.IPoiService;
 import ar.edu.unju.edm.service.ITuristaService;
 import ar.edu.unju.edm.service.IValoracionService;
+import ar.edu.unju.edm.service.IVerificacionService;
 
 
 @Controller
@@ -42,7 +43,9 @@ public class FotoController {
 	PoI poiSeleccionado;
 	@Autowired
 	IValoracionService iValoracion;
-
+    @Autowired
+    IVerificacionService iVerif;
+    
 	@GetMapping("/poi/foto")
 	public String cargarPoi(Model model) {
 		model.addAttribute("pois", iPoiService.obtenerTodosPoi());
@@ -52,7 +55,8 @@ public class FotoController {
 	
 	@GetMapping("/poi/valorar/{idPoi}")	
 	public String realizarValoracion(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
-		//Turistas_Pois valoracion = new Turistas_Pois();		
+		//Turistas_Pois valoracion = new Turistas_Pois();
+		String vista="modal-valoracion";
 		try {	
 			/// solo es una prueba		
 			//Manda el id del poi, y debe contar cuantas valoraciones tiene
@@ -74,7 +78,17 @@ public class FotoController {
 		    UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		   
 		    Turista turistaEnSesion =  turistaService.encontrarConCorreo(userDetail.getUsername());
-		    
+		    //no tocar esto, es para verificar cuantas veces valoró un turista un PoI
+		    Integer permiso= iVerif.verificarValoracionAnterio(turistaEnSesion,id);
+		   if(permiso>0) {
+		    	vista="modal-no";
+		    	System.out.println("este poi ya fue valorado por este usuario");
+		    }
+		  /*  else {
+		    	vista="modal-valoracion";
+		    }*/
+		   
+		    //
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
 		    model.addAttribute("valoracion",valoracion);
@@ -101,7 +115,8 @@ public class FotoController {
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
 		}		
-		return "modal-valoracion";
+		//return "modal-valoracion";
+		return vista;
 	}
 	
 	@PostMapping("/poi/valorar")
