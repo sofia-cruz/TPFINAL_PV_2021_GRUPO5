@@ -119,15 +119,15 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 							System.out.println("["+i+"]"+"los comentarios: "+lasValoraciones.get(i).getComentario());
 							
 							if(lasValoraciones.get(i).getPoi().getIdPoi()==id) {
-								laid=lasValoraciones.get(i).getIdTuristas_Pois();
-								//loscom.set(i, lasValoraciones.get(i));
+								if(lasValoraciones.get(i).getComentario()!=null) {
+									laid=lasValoraciones.get(i).getIdTuristas_Pois();
+									//loscom.set(i, lasValoraciones.get(i));		
+         							loscom.add(direccion, valoracionDAO.findById(laid).orElseThrow(()->new Exception("La valoracion No Fue encontrada, poiserviceimp")));
+
+							direccion++;		
+							contador++;	
+								}
 								
-						loscom.add(direccion, valoracionDAO.findById(laid).orElseThrow(()->new Exception("La valoracion No Fue encontrada, poiserviceimp")));
-								
-							//	System.out.println("los devueltos: "+lasValoraciones.get(i).getComentario());
-							//	System.out.println("los guardados: "+loscom.get(i).getComentario());
-						direccion++;		
-						contador++;
 								
 						}
 						}								
