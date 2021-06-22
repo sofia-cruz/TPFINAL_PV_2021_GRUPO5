@@ -137,6 +137,13 @@ public class FotoController {
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
 		    model.addAttribute("valoracion",valoracion);
+		    model.addAttribute("poiPorComentar", poiSeleccionado);
+		    
+		    /*Turista existente = turistaService.encontrarConCorreo(principal.getName());
+			BELLA.info("Turista " + existente.getIdTurista() + "encontrado");
+			model.addAttribute("turistaActual", existente);
+			model.addAttribute("poisActual", poiService.obtenerMisPois(existente));
+			return "*/
 //ahora la parte de mostrar comentarios
 			if(iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi())==null) {
 				System.out.println("no hay comentarios cargados");
