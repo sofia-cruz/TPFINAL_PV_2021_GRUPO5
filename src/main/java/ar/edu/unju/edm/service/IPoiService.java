@@ -13,6 +13,7 @@ import ar.edu.unju.edm.model.Turista;
 
 @Service
 public interface IPoiService {
+	/*Ayuda a Aylen*/
 
 	public void guardarPoi(PoI unPoi);
 	public PoI crearPoi();

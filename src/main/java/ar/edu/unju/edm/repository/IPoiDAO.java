@@ -18,4 +18,6 @@ public interface IPoiDAO extends CrudRepository<PoI, Integer>{
 	
 	public List<PoI> findAllByTurista(Turista turista);
 	
+	/*Ayuda a Aylen*/
+	
 }
