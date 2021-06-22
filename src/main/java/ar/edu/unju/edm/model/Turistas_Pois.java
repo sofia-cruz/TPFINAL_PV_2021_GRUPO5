@@ -38,8 +38,6 @@ public class Turistas_Pois {
 	
 	
 	
-	
-	
 	public String getTur() {
 		return tur;
 	}

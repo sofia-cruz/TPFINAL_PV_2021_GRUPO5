@@ -1,13 +1,20 @@
 
 package ar.edu.unju.edm.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -37,6 +44,19 @@ private Integer puntos;
 	@Column
 private String rol;
 	//agregados password y puntos
+	
+	@OneToMany(mappedBy = "tur", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Turistas_Pois> comentarios;
+
+	
+		
+	@OneToMany(mappedBy = "turista", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<PoI> pois;
+
+
+	
 public Turista() {
 	//constructor
 }
