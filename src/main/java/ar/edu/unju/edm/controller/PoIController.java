@@ -149,15 +149,17 @@ import ar.edu.unju.edm.service.IValoracionService;
 		}
 		
 		//modal peticiones
-		@GetMapping("/poi/eliminarPoi/{idPoi}")
-		public String eliminarPoi(Model model, @PathVariable(name="idPoi") int id) {		
+		@GetMapping("/turista/eliminarPoi/{idPoi}")
+		public String eliminarPoi(Model model, @PathVariable(name="idPoi") Integer id) {		
+			LOGGER.info("METHOD: ingresando el metodo Eliminar");
 			try {				
-							iPoiService.eliminarPoi(id);
+			
+				iPoiService.eliminarPoi(id);
 			}
 			catch(Exception e){
 				model.addAttribute("listErrorMessage",e.getMessage());
 			}			
-			return "redirect:/poi/mostrar";
+			return "redirect:/turista/perfil";
 		}
 		
 		
