@@ -78,7 +78,7 @@ public class FotoController {
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
 		    model.addAttribute("valoracion",valoracion);
-	    //
+	    /*
 			if(iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi())==null) {
 				System.out.println("no hay comentarios cargados");
 				 model.addAttribute("loscom",iValoracion.valoracionBasica());
@@ -94,7 +94,7 @@ public class FotoController {
 					  model.addAttribute("loscom", loscom);
 				  }
 			}
-		    //ayuda a maii
+		    */
 		   
 		    		
 		}
@@ -114,18 +114,30 @@ public class FotoController {
 	    iValoracion.guardarValoracion(unaValoracion);
 	    //esto manda el id del poi, y actualiza cantidad de comentarios
 	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());
+	    turistaService.puntosPorValoracion(unaValoracion.getTurista());
 		return("redirect:/poi/foto");
 	}
 	
-	
-	@GetMapping("/poi/com/{idPoi}")	
-	public String verComentarios(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
-		   LOGGER.info("METHOD: Entrando a Ver comentarios, GetMapping ");
+	@GetMapping("/poi/comentar/{idPoi}")	
+	public String realizarComentario(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
+		//Turistas_Pois valoracion = new Turistas_Pois();		
 		try {	
-			
-		    LOGGER.info("METHOD: Entrando a Ver comentarios ");
-			//Manda el id del poi, y debe devolver sus comentarios
+	//parte de formulario para cargar comentario nuevo		
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
+			Turistas_Pois valoracion = iValoracion.crearValoracion();	
+			
+			valoracion.setPoi(poiSeleccionado);			
+			Authentication auth = SecurityContextHolder
+		            .getContext()
+		            .getAuthentication();
+		    UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		   
+		    Turista turistaEnSesion =  turistaService.encontrarConCorreo(userDetail.getUsername());
+		    
+		    valoracion.setTurista(turistaEnSesion);
+		    valoracion.setTur(turistaEnSesion.getEmail());
+		    model.addAttribute("valoracion",valoracion);
+//ahora la parte de mostrar comentarios
 			if(iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi())==null) {
 				System.out.println("no hay comentarios cargados");
 				 model.addAttribute("loscom",iValoracion.valoracionBasica());
@@ -141,18 +153,28 @@ public class FotoController {
 					  model.addAttribute("loscom", loscom);
 				  }
 			}
-		 
-		
-		   LOGGER.info("METHOD: Saliendo de Ver comentarios ");
-
 		   
 		    		
 		}
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
 		}		
-		
-		return "modal-comentarios";	
+		return "comentarios";
 	}
 	
+	@PostMapping("/poi/comentar")
+	public String guardarNuevoCom(@ModelAttribute("valoracion") Turistas_Pois unaValoracion, Model model) throws Exception{
+		
+	    LOGGER.error("METHOD: La valoracion: "+unaValoracion.getValoracion_user());
+	    LOGGER.error("METHOD: id turistas:pois: "+unaValoracion.getIdTuristas_Pois());
+	    LOGGER.error("METHOD: Email de usuario que valora: "+unaValoracion.getTur());
+
+	    iValoracion.guardarValoracion(unaValoracion);
+	    //esto manda el id del poi, y actualiza cantidad de comentarios
+	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());
+	    turistaService.puntosPorComentario(unaValoracion.getTurista());
+		return("redirect:/poi/foto");
+	}
+	
+
 }
