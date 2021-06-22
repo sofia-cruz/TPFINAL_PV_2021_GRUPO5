@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<div class="modal-header">
+	<h3 class="modal-title" id="editarModalTitulo">Valoración de Usuario
+	<label  th:object="${valoracion}" th:text="*{tur}" class="col-form-label">
+	 </h3>
+		
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<form id="formProducto" th:object="${valoracion}">
+		<div class="form-group row">
+
+	
+			<div class="nopuede">
+		<h3>Ya ha valorado <label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label" readonly></label></h3>
+			</div>
+			<h4>Le agradecemos su valoracion</h4>
+			
+
+
+
+
+
+
+		</div>
+		
+
+	</form>
+	<!--	<div>
+			<h3>Comentarios anteriores</h3>
+	<form id="formProducto" th:object="${loscom}" method="post">
+		<div class="cont-comentarios">
+
+			<div th:each="com : ${loscom}" class="casilla-comentarios">
+			<div class="header-comentarios">
+			<span>El usuario </span><label th:text="${com.tur}"></label><span> dijo:</span>
+			</div>
+		
+			<div class="footer-comentarios">
+			<label th:text="${com.comentario}" class="elcom"></label>
+				<div class="footer-laval">
+			<input th:text="${com.valoracion_user}"  class="inval" id="radio3" type="radio" name="estrellas"></input>
+		    <label class="val" for="radio1">★</label><span> /5</span><label class="val" for="radio1">★</label>
+				</div>
+			
+			</div>
+			
+			
+			</div>
+			
+			
+		
+			</div>
+
+		</div>-->
+
+	
+	</form>
+		</div>
+</div>
+
+
+</body>
+
+</html>
