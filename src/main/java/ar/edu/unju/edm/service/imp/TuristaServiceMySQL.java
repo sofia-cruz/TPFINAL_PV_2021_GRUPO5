@@ -32,7 +32,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 		String pw = unTurista.getPassword();
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		unTurista.setPassword(bCryptPasswordEncoder.encode(pw));
-		
+		unTurista.setPuntos(0);
 		turistaDAO.save(unTurista);
 	}
 

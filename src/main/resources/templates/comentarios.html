@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Comentarios</title>
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+	<link th:href="@{/css/estilos_valoracion.css}" rel="stylesheet" type="text/css"
+		href="/static/css/estilos_valoracion.css">
+	<link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css" />
+	<!-- Referencias para probar fuentes e íconos-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        
+</head>
+
+<body>
+
+	<div class="container">
+		<!--Este es el header-->
+		<div th:insert="layout/header :: header" class="cabeza"></div>
+		<!--Fin de el header-->
+		
+		
+		
+		 <div class="card-header justify-content-center">
+                    <h2>Todos los puntos de <span class="text-primary">Interés</span></h2> 
+          </div>
+          
+          
+		<div class="col-lg-12 my-sm-4 d-md-flex">
+			<h3>Comentarios anteriores</h3>
+	<form id="formProducto" th:object="${loscom}" method="post">
+		<div class="cont-comentarios">
+
+			<div th:each="com : ${loscom}" class="casilla-comentarios">
+			<div class="header-comentarios">
+			<span>El usuario </span><label th:text="${com.tur}"></label><span> dijo:</span>
+			</div>
+		
+			<div class="footer-comentarios">
+			<label th:text="${com.comentario}" class="elcom"></label>
+				<div class="footer-laval">
+			<input th:text="${com.valoracion_user}"  class="inval" id="radio3" type="radio" name="estrellas"></input>
+		    <label class="val" for="radio1">★</label><span> /5</span><label class="val" for="radio1">★</label>
+				</div>
+			<!--sdsaads-->
+				
+				<!--sdsaads-->
+			</div>
+		
+			
+			</div>
+			
+			
+		
+			</div>
+	</form>
+
+<div class="micomentario-1">
+	<form id="formProducto" th:object="${valoracion}" th:action="@{/poi/comentar}" method="post">
+		<div class="form-group row">
+
+					<input type="hidden" id="tur" th:field="*{tur}" class="col-form-label">
+		<input type="hidden" id="turista" th:field="*{turista}" class="col-form-label">
+
+			<input type="hidden" id="elid" th:field="*{poi.idPoi}" class="col-form-label">
+			<label for="numdoc" class="col-sm-2 col-form-label">Nombre de Poi</label>
+			<div class="col-sm-10">
+				<label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label" readonly>
+			</div>
+		
+			<div class="col-sm-10">
+			<p class="calificacion">
+		<input th:field="*{valoracion_user}" class="inval" id="radio1" type="hidden" name="estrellas" value="0">
+					
+				</p>
+			</div>
+
+
+			<label for="comentario" class="col-sm-2 col-form-label">Comentario</label>
+			<div class="col-sm-10">
+				<input type="text" id="comentario" th:field="*{comentario}" class="form-control">
+			</div>
+
+
+
+		</div>
+		<div class="modal-footer">
+		
+			<button type="button" class="cancelar btn-secondary" data-dismiss="modal">Cancelar</button>
+			<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
+		</div>
+
+
+	</form>
+
+</div>
+
+	</div>
+	
+
+	
+
+
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
+		src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
+		src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
+		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>

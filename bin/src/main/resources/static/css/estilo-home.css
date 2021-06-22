@@ -1,0 +1,119 @@
+.comentario-logo{
+color: gray;
+  float: right;
+
+}
+
+.sub-titulo{
+	text-align: center;
+	margin: 30px auto;
+    padding: 1cm;
+    
+}
+.img-sl-1{
+width: 700px;	
+text-align: center;
+}
+
+.titulo-con-imagen{
+	color: white;
+    margin:0 auto;
+	width: 100%;
+	height: 400px;
+	background-image: url(/img/paisaje1.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+/*	background-attachment: fixed;*/
+	background-size: cover;	
+}
+.titulo-home{
+	text-align: center;
+	}
+	 
+	 
+.contenedor-de-imagenes{
+text-align: center;
+}
+.duo1, .duo2, .duo3, .duo4{
+	width: 50%;
+	height: 330px;
+  text-align: center;
+  display: inline;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*background-attachment: fixed;*/
+	background-size: cover;		
+}
+.duo1:hover, .duo2:hover, .duo3:hover, .duo4:hover{
+	color: gray;
+	opacity: 90%;
+	transition: .4s;
+	
+}
+.duo1 h4:hover, .duo2 h4:hover, .duo3 h4:hover, .duo4 h4:hover{
+	   background-color: #86615C;
+	   opacity: 30%;
+	   color: #FFEDDF;
+	transition: 1s;
+	 text-decoration: underline;
+	opacity: 80%;
+	border-radius: .1cm;
+	}
+.duo1{
+
+   float: left;
+  text-align: center;
+  display: inline;
+  background-image: url(/img/p_sanmartin.jpg);
+	
+}
+.duo2{
+
+  float: right;
+  text-align: center;
+  display: inline;
+ background-image: url(/img/yun.jpg);
+	
+}
+.duo3{
+
+float: left;
+  text-align: center;
+ display: inline;
+  background-image: url(/img/salinas-agua.jpg);
+	 margin-bottom: 2cm;
+}
+.duo4{
+ float: right;
+  text-align: center;
+  display: inline;
+ background-image: url(/img/norte.jpg);
+ margin-bottom: 2cm;
+		
+}
+
+
+.mini-titulo{
+	text-align: center;
+	color: #FFEDDF;
+  padding:30px;
+	margin-top: 30px;
+}
+
+.uno-t{color: #09D4BF;}
+.dos-t{color: #D73338;}
+.tres-t{color: #5A3B79;}
+.cuatro-t{color: #F6CB04;}
+.cinco-t{color: #004A70;}
+
+
+.imagen-sola{
+	margin: 30px auto;
+	width: 700px;
+	height: 400px;
+	background-image: url(/img/pastel.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}

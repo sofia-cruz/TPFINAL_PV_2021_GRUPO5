@@ -2,58 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Crea tu poi</title>
 <link th:rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 <link th:rel="stylesheet"
 	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
 	
 	 <link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css"/>
+	 <link th:href="@{/css/estilos-foto.css}" rel="stylesheet" type="text/css" href="/css/estilos-foto.css"/>
+	 <!-- Referencias para probar fuentes e íconos-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        
+
 </head>
 <body>
 	<div class="container">
 	<!--Este es el header-->
 <div th:insert="layout/header :: header" class="cabeza"></div>
     <!--Fin de el header-->
-	
-	<form id="formProducto" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
+	<h1 class="mb-0">Crea tu <span class="text-primary">POI</span></h1>
+		<br>
+		<section>
+	    <form id="formPoi" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
 			 method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 
 				    <input type="hidden" th:field="*{idPoi}"th:if="${editMode}">
-			<label for="name" class="col-sm-2 col-form-label">Nombre</label> 
-			<div class="col-sm-10">
+			<label for="name" class="col-sm-3 col-form-label">Nombre</label> 
+			<div class="col-sm-9">
 			<input type="text"id="name" th:field="*{nombrePoi}"class="form-control" placeholder="ej: Hornocal">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="calle" class="col-sm-2 col-form-label">calle</label> 
-			<div class="col-sm-10">
+			<label for="calle" class="col-sm-3 col-form-label">calle</label> 
+			<div class="col-sm-9">
 			<input type="text"id="calle" th:field="*{calle}"class="form-control" placeholder="">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="numero" class="col-sm-2 col-form-label">numero</label> 
-			<div class="col-sm-10">
+			<label for="numero" class="col-sm-3 col-form-label">numero</label> 
+			<div class="col-sm-9">
 			<input type="number"id="numero" th:field="*{numero}"class="form-control" placeholder="">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="barrio" class="col-sm-2 col-form-label">barrio</label> 
-			<div class="col-sm-10">
+			<label for="barrio" class="col-sm-3 col-form-label">barrio</label> 
+			<div class="col-sm-9">
 			<input type="text"id="barrio" th:field="*{barrio}"class="form-control" placeholder="">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="localidad" class="col-sm-2 col-form-label">localidad</label> 
-			<div class="col-sm-10">
+			<label for="localidad" class="col-sm-3 col-form-label">localidad</label> 
+			<div class="col-sm-9">
 			<input type="text"id="localidad" th:field="*{localidad}"class="form-control" placeholder="">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="descripcion" class="col-sm-2 col-form-label">descripcion</label> 
-			<div class="col-sm-10">
+			<label for="descripcion" class="col-sm-3 col-form-label">descripcion</label> 
+			<div class="col-sm-9">
 			<input type="text"id="descripcion" th:field="*{descripcion}"class="form-control" placeholder="">
+		
 			</div>
 			</div>
 			<!--  
@@ -65,8 +75,8 @@
 			-->
 			
 			<div class="form-group row">
-				<label for="etiquetas" class="col-sm-2 col-form-label">Etiquetas</label> 
-				<div class="col-sm-10">
+				<label for="etiquetas" class="col-sm-3 col-form-label">Etiquetas</label> 
+				<div class="col-sm-9">
 				<select id="etiquetas" th:field="*{etiqueta}" class="form-control">
 					<option value="cultura">Cultura</option>
 					<option value="naturaleza">Naturaleza</option>
@@ -77,42 +87,44 @@
 				</div>
 			</div>
 			<div class="form-group row">
-			<label for="web" class="col-sm-2 col-form-label">Sitio web</label> 
-			<div class="col-sm-10">
+			<label for="web" class="col-sm-3 col-form-label">Sitio web</label> 
+			<div class="col-sm-9">
 			<input type="url"id="web" th:field="*{sitioWeb}"class="form-control" placeholder="">
 			</div>
 			</div>
 			
 			<div class="form-group row">
-			<label for="latitud" class="col-sm-2 col-form-label">Latitud</label> 
-			<div class="col-sm-10">
+			<label for="latitud" class="col-sm-3 col-form-label">Latitud</label> 
+			<div class="col-sm-9">
 			<input type="number"id="latitud" th:field="*{latitud}"class="form-control" placeholder="">
 			</div>
 			</div>
 			<div class="form-group row">
-			<label for="longitud" class="col-sm-2 col-form-label">Longitud</label> 
-			<div class="col-sm-10">
+			<label for="longitud" class="col-sm-3 col-form-label">Longitud</label> 
+			<div class="col-sm-9">
 			<input type="number"id="longitud" th:field="*{longitud}"class="form-control" placeholder="">
 			</div>
 			</div>
 			
+			
 			<div class="form-group row">
-										<label for="file" class="col-sm-4 col-form-label">Subir Imagen </label>
-										<div class="col-sm-10">
+										<label for="file" class="col-sm-3 col-form-label">Subir Imagen </label>
+										<div class="col-sm-9">
 											<input type="file" name="file" class="form-control-file" id="file"accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"onchange="loadFile(event)">
 											<img id="output" style="padding-top: 2px; width: 146px;" />
 										</div>
+										
 			</div>
 			<div class="form-group row">
-										<label for="file1" class="col-sm-4 col-form-label">Subir Imagen </label>
-										<div class="col-sm-10">
+										<label for="file1" class="col-sm-3 col-form-label">Subir Imagen </label>
+										<div class="col-sm-9">
 											<input type="file" name="file1" class="form-control-file" id="file1"accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"onchange="loadFile(event)">
 											<img id="output" style="padding-top: 2px; width: 146px;" />
 										</div>
 			</div>
 			<div class="form-group row">
-										<label for="file2" class="col-sm-4 col-form-label">Subir Imagen </label>
-										<div class="col-sm-10">
+										<label for="file2" class="col-sm-3 col-form-label">Subir Imagen </label>
+										<div class="col-sm-9">
 											<input type="file" name="file2" class="form-control-file" id="file2"accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"onchange="loadFile(event)">
 											<img id="output" style="padding-top: 2px; width: 146px;" />
 										</div>
@@ -128,10 +140,14 @@
 				</div>
 			</div>
 			-->
-			 <input type="submit" class="btn btn-danger btn-block"  th:value="${editMode}?'Modificar Poi':'Crear Poi'">
+			<div class="d-flex justify-content-center my-4">
+			 <input type="submit" class="btn btn-primary"  th:value="${editMode}?'Modificar Poi':'CREAR POI'">
 			 <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+			</div>
 	</form>
-	</div>
+	
+		</section>
+			</div>
 	
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
@@ -140,5 +156,12 @@
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>	
+		
+		
 </body>
 </html>

@@ -41,9 +41,40 @@
 .inval[type="radio"]:checked ~ .val {
   color: orange;
 }
-.btn{
+.casilla-comentarios{
+	display:block;
+	background-color: #C5D86D;
+	margin: 4px;
+	border-radius: .7rem;
+	
+}
+.header-comentarios{
+	/*background-color: #FFEDDF;*/
+	font-size: 18px;
+	height: 40px;
+	padding:10px;
+}
+.elcom{
+	font-size: 17px;
+}
+.footer-comentarios{
+	padding-top: 10px;
+	padding-bottom: 0;
+	padding-left:10px;
+	background-color: #FFEDDF;
+	border-radius: .2rem;
+}
+.footer-laval{
+text-align: right;	
+padding-right: 3px;
+}
+.cont-comentarios{
+	margin: 3px;
+	
+}
+/*.btn{
 	background-color: lightblue;
 }
 .btn:hover{
 	color: white;
-}
+}*/
