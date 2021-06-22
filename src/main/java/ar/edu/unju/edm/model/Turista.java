@@ -45,7 +45,7 @@ private Integer puntos;
 private String rol;
 	//agregados password y puntos
 	
-	@OneToMany(mappedBy = "tur", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
+/*	@OneToMany(mappedBy = "tur", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Turistas_Pois> comentarios;
 
@@ -55,7 +55,7 @@ private String rol;
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<PoI> pois;
 
-
+*/
 	
 public Turista() {
 	//constructor
