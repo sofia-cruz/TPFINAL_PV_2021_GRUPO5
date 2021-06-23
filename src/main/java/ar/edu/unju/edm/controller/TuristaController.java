@@ -58,7 +58,7 @@ public class TuristaController {
 
 
 	@PostMapping("/turista/modificar")
-	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod){
+	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod) throws Exception{
 		turistaService.modificarTurista(turistaMod);
 		BELLA.info("Turista "+ turistaMod.getIdTurista()+ "modificado");
 		return "redirect:/turista/perfil";
