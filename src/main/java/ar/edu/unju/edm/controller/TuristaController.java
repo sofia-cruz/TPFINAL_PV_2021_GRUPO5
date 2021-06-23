@@ -2,12 +2,15 @@ package ar.edu.unju.edm.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,14 +31,22 @@ public class TuristaController {
 	
 	
 		
-	@PostMapping("/turista/guardar")
-	public String guardarTurista (@ModelAttribute("unTurista") Turista nuevoTurista, Model model) {
+	@PostMapping(value="/turista/guardar")
+	public String guardarTurista (@Valid @ModelAttribute("unTurista") Turista nuevoTurista,BindingResult resultado, Model model) {
+		if (resultado.hasErrors()) 
+		{
+			model.addAttribute("unTurista", nuevoTurista);
+			model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
+			return("turista");
+		}
+		else {
 		BELLA.info("METHOD: Ingresando al metodo Guardar");
 		turistaService.guardarTurista(nuevoTurista);
 		BELLA.info("Tamaño del listado: "+ turistaService.obtenerTodosTuristas().size());
 		return "redirect:/";
 	}
-	
+		//modificado el guardar turista para las restricciones
+	}
 	
 	@GetMapping("/turista/mostrar")
 	public String crearTurista(Model model) {
@@ -45,14 +56,22 @@ public class TuristaController {
 		return "turista";
 	}
 
-
-	@PostMapping("/turista/modificar")
-	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod) throws Exception{
+	@PostMapping(value="/turista/modificar") 
+	public String modificarTurista(@Valid @ModelAttribute("turistaModificado") Turista turistaMod, BindingResult resultado, Model model) throws Exception{
+		if (resultado.hasErrors()) 
+		{
+			model.addAttribute("unTurista", turistaMod);
+			model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
+			return("editar-turista");
+		}
+		else {
 		turistaService.modificarTurista(turistaMod);
 		BELLA.info("Turista "+ turistaMod.getIdTurista()+ "modificado");
 		return "redirect:/turista/perfil";
 	}
+	}
 
+	
 	
 	
 	@GetMapping("/turista/eliminar/{idTurista}")

@@ -34,21 +34,25 @@
 					<div class="form-row my-2">
                         <div class="form-group col-md-4">
                             <label class="form-label user-select-none " for="nombre">Nombre <span class="text-danger">*</span></label>
-                            <input class="form-control mx-sm-3" type="text" id="nombre" th:field="*{nombre}">
+                            <input class="form-control mx-sm-3" type="text" id="nombre" th:field="*{nombre}" placeholder="ej: Cesar" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid': ''">
+                               <div class="invalid-feedback" th:errors="*{nombre}"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="form-label user-select-none mx-sm-2" for="apellido">Apellido <span class="text-danger">*</span></label>
-                            <input class="form-control mx-sm-3" type="text" id="apellido" th:field="*{apellido}">
+                            <input class="form-control mx-sm-3" type="text" id="apellido" th:field="*{apellido}" placeholder="ej: Solis" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid': ''">
+                           <div class="invalid-feedback" th:errors="*{Apellido}"></div>
                         </div>
                     </div>
                     <div class="form-row my-2">
                         <div class="form-group col-md-4">
                             <label class="form-label user-select-none " for="email">Correo electrónico <span class="text-danger">*</span></label>
-                            <input class="form-control mx-sm-3" type="email" id="email" th:field="*{email}">
+                            <input class="form-control mx-sm-3" type="email" id="email" th:field="*{email}" placeholder="ej: Chezar@gmail.com" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid': ''">
+                          <div class="invalid-feedback" th:errors="*{email}"></div>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="form-label user-select-none mx-sm-2" for="password">Contraseña <span class="text-danger">*</span></label>
-                            <input class="form-control mx-sm-3" type="password" id="password" th:field="*{password}">
+                            <input class="form-control mx-sm-3" type="password" id="password" th:field="*{password}" placeholder="ej: 3884694499A*a" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid': ''">
+                          <div class="invalid-feedback" th:errors="*{password}"></div>
                         </div>
                     </div>
 					<div class="form-row my-2">
