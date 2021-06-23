@@ -103,6 +103,8 @@ public class PoiServiceMySQL implements IPoiService{
 	@Override
 	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception {
 	
+		int contador=0;
+		Integer idpoi=0;
 		//esta va a ser la lista de todos los pois, para revisar uno por uno
 		ArrayList<PoI> losPois= (ArrayList<PoI>) poiDAO.findAll();
 		//esta va a ser la lista de los poi mas  comentados
@@ -112,19 +114,18 @@ public class PoiServiceMySQL implements IPoiService{
 		if(poiDAO.count()==0) {
 			
 			losmasc=null;
-		}else if(poiDAO.count()==1){
-			losmasc.add(0, poiDAO.findById(1).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-	System.out.println("Solo habia un poi cargado");
 		}
-		else if(poiDAO.count()==2){
-			losmasc.add(0, poiDAO.findById(1).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			losmasc.add(1, poiDAO.findById(2).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			System.out.println("Solo hay 2 pois cargados");
-		}
-		else if(poiDAO.count()==3){
-			losmasc.add(0, poiDAO.findById(1).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			losmasc.add(1, poiDAO.findById(2).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			losmasc.add(2, poiDAO.findById(3).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+		else if(poiDAO.count()<=3){
+			for(int i=0;i<poiDAO.count();i++) {
+				if(losPois.get(i).getNumeroDeComentarios()!=0) {
+					idpoi=losPois.get(i).getIdPoi();
+					losmasc.add(contador, poiDAO.findById(idpoi).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+				contador++;
+				}
+			}
+			
+			//losmasc.add(1, poiDAO.findById(2).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+			//losmasc.add(2, poiDAO.findById(3).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
 			System.out.println("Justo tres pois cargados");
 		}
 		else{
