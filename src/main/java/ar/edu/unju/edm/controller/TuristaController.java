@@ -56,14 +56,22 @@ public class TuristaController {
 		return "turista";
 	}
 
-
-	@PostMapping("/turista/modificar")
-	public String modificarTurista(@ModelAttribute("turistaModificado") Turista turistaMod) throws Exception{
+	@PostMapping(value="/turista/modificar") 
+	public String modificarTurista(@Valid @ModelAttribute("turistaModificado") Turista turistaMod, BindingResult resultado, Model model) throws Exception{
+		if (resultado.hasErrors()) 
+		{
+			model.addAttribute("unTurista", turistaMod);
+			model.addAttribute("turistas", turistaService.obtenerTodosTuristas());
+			return("editar-turista");
+		}
+		else {
 		turistaService.modificarTurista(turistaMod);
 		BELLA.info("Turista "+ turistaMod.getIdTurista()+ "modificado");
 		return "redirect:/turista/perfil";
 	}
+	}
 
+	
 	
 	
 	@GetMapping("/turista/eliminar/{idTurista}")
