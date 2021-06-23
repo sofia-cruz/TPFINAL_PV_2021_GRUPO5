@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ar.edu.unju.edm.model.PoI;
+import ar.edu.unju.edm.model.Turista;
 import ar.edu.unju.edm.service.IPoiService;
 import ar.edu.unju.edm.service.ITuristaService;
 import ar.edu.unju.edm.service.IValoracionService;
@@ -24,6 +25,8 @@ public class HomeController {
 	@Autowired
 	PoI unPoi;
 
+	@Autowired
+	Turista unTurista;
 	
 	@Autowired 
 	@Qualifier("impmysql")
@@ -38,10 +41,14 @@ public class HomeController {
 	public String cargarHome(Model model) throws Exception{
 		if(iPoiService.encontrarPoisMasComentados()==null) {
 		//en caso de no haber pois	
+			
 			model.addAttribute("pois", iPoiService.poiPorDefecto());
+			model.addAttribute("turistas", iTuristaService.encontrarTuristasPodio());
 		}	
 	    else{
 		model.addAttribute("pois", iPoiService.encontrarPoisMasComentados());
+		model.addAttribute("turistas", iTuristaService.encontrarTuristasPodio());
+
 		}
 		return ("home");	
 	}
