@@ -63,21 +63,21 @@
 			<div class="form-group row">
 			<label for="barrio" class="col-sm-3 col-form-label">barrio</label> 
 			<div class="col-sm-9">
-			<input type="text"id="barrio" th:field="*{barrio}"class="form-control" placeholder="" th:classappend="${#fields.hasErrors('barrio')} ? 'is-invalid' : ''">
+			<input type="text"id="barrio" th:field="*{barrio}"class="form-control" placeholder="ej:Costa Negra" th:classappend="${#fields.hasErrors('barrio')} ? 'is-invalid' : ''">
 			<div class="invalid-feedback" th:errors="*{barrio}"></div>
 			</div>
 			</div>
 			<div class="form-group row">
 			<label for="localidad" class="col-sm-3 col-form-label">localidad</label> 
 			<div class="col-sm-9">
-			<input type="text"id="localidad" th:field="*{localidad}"class="form-control" placeholder="" th:classappend="${#fields.hasErrors('localidad')} ? 'is-invalid' : ''">
+			<input type="text"id="localidad" th:field="*{localidad}"class="form-control" placeholder="ej:San Salvador de Jujuy" th:classappend="${#fields.hasErrors('localidad')} ? 'is-invalid' : ''">
 			<div class="invalid-feedback" th:errors="*{localidad}"></div>
 			</div>
 			</div>
 			<div class="form-group row">
 			<label for="descripcion" class="col-sm-3 col-form-label">descripcion</label> 
 			<div class="col-sm-9">
-			<input type="text"id="descripcion" th:field="*{descripcion}"class="form-control" placeholder="" th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid' : ''">
+			<input type="text"id="descripcion" th:field="*{descripcion}"class="form-control" placeholder="ej: Es un lugar llano y esta repleto de llamas" th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid' : ''">
 			<div class="invalid-feedback" th:errors="*{descripcion}"></div>
 		
 			</div>
@@ -105,7 +105,7 @@
 			<div class="form-group row">
 			<label for="web" class="col-sm-3 col-form-label">Sitio web</label> 
 			<div class="col-sm-9">
-			<input type="url"id="sitioWeb" th:field="*{sitioWeb}"class="form-control" placeholder="" th:classappend="${#fields.hasErrors('sitioWeb')} ? 'is-invalid' : ''">
+			<input type="url"id="sitioWeb" th:field="*{sitioWeb}"class="form-control" placeholder="https://www.youtube.com" th:classappend="${#fields.hasErrors('sitioWeb')} ? 'is-invalid' : ''">
 						<div class="invalid-feedback" th:errors="*{sitioWeb}"></div>
 			</div>
 			</div>

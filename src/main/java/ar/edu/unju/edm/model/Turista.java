@@ -12,6 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -25,10 +30,13 @@ public class Turista {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 private Integer idTurista;
+	@NotBlank(message="Ingrese un correo electronico valido")
 	@Column
 private String email;
+	@NotBlank(message="Debe ingresar su nombre de usuario")
 	@Column
 private String nombre;
+	@NotBlank(message="Debe ingresar su apellido de usuario")
 	@Column
 private String apellido;
 	@Column
@@ -37,6 +45,7 @@ private String paisProcedencia;
 private Double latitud;
 	@Column
 private Double longitud;
+	@NotBlank(message="Debe ingresar una contraseña")
 	@Column
 private String password; 
 	@Column
