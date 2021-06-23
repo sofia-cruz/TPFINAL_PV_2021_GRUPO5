@@ -14,7 +14,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.URL;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -25,20 +32,27 @@ public class PoI {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
     private Integer idPoi;
+	@NotBlank( message = "Ingrese el nombre de su POI")
 	@Column
 	private String nombrePoi;
+	@NotBlank( message = "Ingrese el nombre de la Calle")
 	@Column
 	private String calle;
+	@Min(value = 1, message = "El N° debe ser mayor que cero")
 	@Column
 	private int numero;
+	@NotBlank( message = "Ingrese el nombre del Barrio")
 	@Column
 	private String barrio;
+	@NotBlank( message = "Ingrese el nombre de la Localidad")
 	@Column
 	private String localidad;
+	@NotBlank( message = "Ingrese Descripcion de su POI")
 	@Column
 	private String descripcion;
 	@Column
 	private String etiqueta;
+	@NotBlank(message="La dirección del sitio web debe ser una url válida.")
 	@Column
 	private String sitioWeb;
 	@Column
