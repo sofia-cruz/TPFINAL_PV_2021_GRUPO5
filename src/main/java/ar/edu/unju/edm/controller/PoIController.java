@@ -81,7 +81,7 @@ import ar.edu.unju.edm.service.IValoracionService;
 		}
 		else {
 		//deberia haber try
-			if(!file.isEmpty()|| file==null)
+			if(!file.isEmpty())
 			{	//obtenemos los bite que el usuario va mandando
 				byte[] content = file.getBytes();
 				///ruta del achivo o get crea el archivo y colocal los bite en el nuevo archivo a la  ruta 
@@ -89,14 +89,14 @@ import ar.edu.unju.edm.service.IValoracionService;
 				
 				nuevoPoi.setImagen(base64);
 			}
-			if(!file.isEmpty()|| file==null)
+			if(!file1.isEmpty())
 			{
 				
 				byte[] content1 = file1.getBytes();
 				String base641 = Base64.getEncoder().encodeToString(content1);
 				nuevoPoi.setImagen2(base641);
 			}
-			if(!file.isEmpty()|| file==null)
+			if(!file2.isEmpty())
 			{
 			byte[] content2 = file2.getBytes();
 			String base642 = Base64.getEncoder().encodeToString(content2);
@@ -118,9 +118,9 @@ import ar.edu.unju.edm.service.IValoracionService;
 			return "redirect:/poi/mostrar";
 			 }
 		}
-	 
-		@PostMapping("/poi/modificar")
-		public String modificarPoi(@ModelAttribute("unPoi") PoI poiModificado, Model model) {
+	 ///
+		@PostMapping(value="/poi/modificar",consumes="multipart/form-data")
+		public String modificarPoi(@ModelAttribute("unPoi") PoI poiModificado,@RequestParam(name="file") MultipartFile file,@RequestParam(name="file1") MultipartFile file1,@RequestParam(name="file2") MultipartFile file2, Model model) {
 			LOGGER.error("METHOD: ingresando el metodo modificar, id: "+poiModificado.getIdPoi());
 			LOGGER.error("METHOD: ingresando el metodo modificar, nombre: "+poiModificado.getNombrePoi());
 			LOGGER.info("METHOD: ingresando el metodo modificar, numero: "+poiModificado.getNumero());
@@ -130,6 +130,28 @@ import ar.edu.unju.edm.service.IValoracionService;
 				iPoiService.modificarPoi(poiModificado);
 				model.addAttribute("unPoi", new PoI());
 				model.addAttribute("editMode", "false");
+				
+				if(!file.isEmpty())
+				{	//obtenemos los bite que el usuario va mandando
+					byte[] content = file.getBytes();
+					///ruta del achivo o get crea el archivo y colocal los bite en el nuevo archivo a la  ruta 
+					String base64 = Base64.getEncoder().encodeToString(content);
+					
+					poiModificado.setImagen(base64);
+				}
+				if(!file1.isEmpty())
+				{
+					
+					byte[] content1 = file1.getBytes();
+					String base641 = Base64.getEncoder().encodeToString(content1);
+					poiModificado.setImagen2(base641);
+				}
+				if(!file2.isEmpty())
+				{
+				byte[] content2 = file2.getBytes();
+				String base642 = Base64.getEncoder().encodeToString(content2);
+				poiModificado.setImagen3(base642);
+				}
 			}
 			catch(Exception e)
 			{

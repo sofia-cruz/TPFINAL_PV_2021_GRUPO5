@@ -25,8 +25,11 @@
 	<h1 class="mb-0">Crea tu <span class="text-primary">POI</span></h1>
 		<br>
 		<section>
-	    <form id="formPoi" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}" 
-			 method="post" enctype="multipart/form-data">
+	    <form id="formPoi" th:object="${unPoi}" th:action="${editMode}?@{/poi/modificar}:@{/poi/guardar}"  method="post" enctype="multipart/form-data" >
+			 
+			 <input type="hidden"  th:field="*{imagen}" th:if="${editMode}">
+			  <input type="hidden"  th:field="*{imagen2}"th:if="${editMode}" >
+			   <input type="hidden"  th:field="*{imagen3}"th:if="${editMode}" >
 			<div class="form-group row">
 
 				    <input type="hidden" th:field="*{idPoi}"th:if="${editMode}">
