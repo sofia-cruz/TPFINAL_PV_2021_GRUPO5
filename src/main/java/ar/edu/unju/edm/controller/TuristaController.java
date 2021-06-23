@@ -45,7 +45,7 @@ public class TuristaController {
 		BELLA.info("Tamaño del listado: "+ turistaService.obtenerTodosTuristas().size());
 		return "redirect:/";
 	}
-		
+		//modificado el guardar turista para las restricciones
 	}
 	
 	@GetMapping("/turista/mostrar")

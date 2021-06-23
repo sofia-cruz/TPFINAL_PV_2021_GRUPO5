@@ -45,7 +45,7 @@ private String paisProcedencia;
 private Double latitud;
 	@Column
 private Double longitud;
-	@NotBlank(message="Debe ingresar una contraseña")
+	@NotBlank(message="Debe ingresar una contraseña")//restriccion especial
 	@Column
 private String password; 
 	@Column
