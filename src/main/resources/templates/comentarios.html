@@ -10,27 +10,28 @@
 		href="/static/css/estilos_valoracion.css">
 	<link th:href="@{/css/estilo-largo.css}" rel="stylesheet" type="text/css" href="/css/estilo-largo.css" />
 	<!-- Referencias para probar fuentes e íconos-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-        
+	<script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+		type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
 
-	
+
 	<div class="container">
 		<!--Este es el header-->
 		<div th:insert="layout/header :: header" class="cabeza"></div>
 		<!--Fin de el header-->
-		
-		
-		
-		 <div class="card-header justify-content-center">
-                    <h2>Comenta este punto de <span class="text-primary">Interés</span></h2> 
-          </div>
-          
-          <div class="col-md-12 my-sm-4 col-xxl-5 d-md-flex">
+
+
+
+		<div class="card-header justify-content-center">
+			<h2>Comenta este punto de <span class="text-primary">Interés</span></h2>
+		</div>
+
+		<div class="col-md-12 my-sm-4 col-xxl-5 d-md-flex">
 			<div class="mb-5" th:each="c : ${poiPorComentar}">
 				<div class="col-md-4 mb-5">
 					<div class="card-body" style="width: 18rem;">
@@ -49,115 +50,122 @@
 									<img th:src="*{'data:;base64,'+c.imagen3}" class="d-block w-100" alt="Third slide">
 								</div>
 							</div>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							<a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+								data-slide="prev">
 								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
 							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							<a class="carousel-control-next" href="#carouselExampleControls" role="button"
+								data-slide="next">
 								<span class="carousel-control-next-icon" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
 
 						</div>
-						
-						
-					<div class="micomentario-1">
-	<form id="formProducto" th:object="${valoracion}" th:action="@{/poi/comentar}" method="post">
-		<div class="form-group row">
-
-					<input type="hidden" id="tur" th:field="*{tur}" class="col-form-label">
-		<input type="hidden" id="turista" th:field="*{turista}" class="col-form-label">
-
-			
-			<input type="hidden" id="elid" th:field="*{poi.idPoi}" class="col-form-label">
-			<div>
-			<label for="numdoc" class="col-form-label h6">Dejá tu opinion de:</label>
-			&nbsp;
-				<label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label h6 text-primary" readonly>
-			</div>
-		
-			<div class="col-sm-10">
-			<p class="calificacion">
-		<input th:field="*{valoracion_user}" class="inval" id="radio1" type="hidden" name="estrellas" value="0">
-					
-				</p>
-			</div>
-
-			<div>
-			<label for="comentario" class="col-form-label h6">Comentario</label>
-			
-				<input type="text" id="comentario" th:field="*{comentario}" class="form-control">
-			</div>
 
 
+						<div class="micomentario-1">
+							<form id="formProducto" th:object="${valoracion}" th:action="@{/poi/comentar}"
+								method="post">
+								<div class="form-group row">
 
-		</div>
-		<div class="modal-footer">
-					<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
+									<input type="hidden" id="tur" th:field="*{tur}" class="col-form-label">
+									<input type="hidden" id="turista" th:field="*{turista}" class="col-form-label">
 
-			<button type="button" class="cancelar btn-secondary" data-dismiss="modal">Cancelar</button>
-		</div>
-</form>
-	</div>	
-						
+
+									<input type="hidden" id="elid" th:field="*{poi.idPoi}" class="col-form-label">
+									<div>
+										<label for="numdoc" class="col-form-label h6">Dejá tu opinion de:</label>
+										&nbsp;
+										<label type="text" id="numdoc" th:text="*{poi.nombrePoi}"
+											class="col-form-label h6 text-primary" readonly>
+									</div>
+
+									<div class="col-sm-10">
+										<p class="calificacion">
+											<input th:field="*{valoracion_user}" class="inval" id="radio1" type="hidden"
+												name="estrellas" value="0">
+
+										</p>
+									</div>
+
+									<div>
+										<label for="comentario" class="col-form-label h6">Comentario</label>
+
+										<input type="text" id="comentario" th:field="*{comentario}"
+											class="form-control">
+									</div>
+
+
+
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
+
+									<button type="submit" class="cancelar btn-secondary"  th:href="@{/poi/foto}">Cancelar</button>
+								</div>
+							</form>
 						</div>
-						</div>
-						</div>
-						
-	
-	
-	
-	
-          
-		<div class="col-lg-12 my-sm-4 col-xxl-6 d-md-flex">
-		<div class="card-header justify-content-center">
-			<h3>Comentarios anteriores</h3>
-			</div>
-	<form id="formProducto" th:object="${loscom}" method="post">
-		<div class="cont-comentarios">
-
-			<div th:each="com : ${loscom}" class="casilla-comentarios">
-			<div class="header-comentarios h5">
-			<span>➳ &nbsp;</span><label th:text="${com.tur}"></label><span> comentó:</span>
-			</div>
-		
-			<div class="footer-comentarios">
-			<label th:text="${com.comentario}" class="elcom"></label>
-				<div class="footer-laval">
-			<input th:text="${com.valoracion_user}"  class="inval" id="radio3" type="radio" name="estrellas"></input>
-		    <label class="val" for="radio1">★</label><span> /5</span><label class="val" for="radio1">★</label>
+					</div>
 				</div>
-			<!--sdsaads-->
-				
-				<!--sdsaads-->
 			</div>
-		
-			
+
+
+
+
+
+
+			<div class="col-lg-12 my-sm-4 col-xxl-6 d-md-flex">
+				<div class="card-header justify-content-center">
+					<h3>Comentarios anteriores</h3>
+				</div>
+				<form id="formProducto" th:object="${loscom}" method="post">
+					<div class="cont-comentarios">
+
+						<div th:each="com : ${loscom}" class="casilla-comentarios">
+							<div class="header-comentarios h5">
+								<span>➳ &nbsp;</span><label th:text="${com.tur}"></label><span> comentó:</span>
+							</div>
+
+							<div class="footer-comentarios">
+								<label th:text="${com.comentario}" class="elcom"></label>
+								<div class="footer-laval">
+									<input th:text="${com.valoracion_user}" class="inval" id="radio3" type="radio"
+										name="estrellas"></input>
+									<label class="val" for="radio1">★</label><span> /5</span><label class="val"
+										for="radio1">★</label>
+								</div>
+								<!--sdsaads-->
+
+								<!--sdsaads-->
+							</div>
+
+
+						</div>
+
+
+
+					</div>
+				</form>
+
+
+
+
+
 			</div>
-			
-			
-		
-			</div>
-	</form>
+
+		</div>
 
 
 
-	
-
-</div>
-
-	</div>
-	
-
-	
 
 
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
-		src="webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
-		src="webjars/popper.js/1.16.0/popper.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
-		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
+			src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
+			src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
+			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 
 
