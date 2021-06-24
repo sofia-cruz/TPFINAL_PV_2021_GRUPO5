@@ -74,7 +74,8 @@ public class PoI {
 	@Column
 	private Integer numeroDeComentarios=0;
 	
-	
+	@OneToMany(mappedBy = "poi", cascade = CascadeType.ALL)
+	private List<Turistas_Pois> valoracionesComentarios;
 	
 	public PoI() {
 		// TODO Auto-generated constructor stub
@@ -172,7 +173,14 @@ public class PoI {
 		this.turista = turista;
 	}
 	
-	// esto se actualiza cada vez que valoro un poi
+	
+	public List<Turistas_Pois> getValoracionesComentarios() {
+		return valoracionesComentarios;
+	}
+	public void setValoracionesComentarios(List<Turistas_Pois> valoracionesComentarios) {
+		this.valoracionesComentarios = valoracionesComentarios;
+	}
+		// esto se actualiza cada vez que valoro un poi
 		public Integer getNumeroDeComentarios() {
 			return numeroDeComentarios;
 		}

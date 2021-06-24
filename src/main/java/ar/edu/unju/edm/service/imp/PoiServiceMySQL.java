@@ -67,12 +67,17 @@ public class PoiServiceMySQL implements IPoiService{
 	private void cambiarPoi(PoI poiModificado, PoI poiAModificar) {
 		// TODO Auto-generated method stub
 		poiAModificar.setNombrePoi(poiModificado.getNombrePoi());
+		poiAModificar.setNumero(poiModificado.getNumero());
 		poiAModificar.setSitioWeb(poiModificado.getSitioWeb());
 		poiAModificar.setDescripcion(poiModificado.getDescripcion());
+		poiAModificar.setCalle(poiModificado.getCalle());
+		poiAModificar.setBarrio(poiModificado.getBarrio());
+		poiAModificar.setLocalidad(poiModificado.getLocalidad());
 		poiAModificar.setEtiqueta(poiModificado.getEtiqueta());
 		poiAModificar.setImagen(poiModificado.getImagen());
 		poiAModificar.setImagen2(poiModificado.getImagen2());
 		poiAModificar.setImagen3(poiModificado.getImagen3());
+		//Latitud y Longitud se modifican solos.
 	}
 
 	@Override

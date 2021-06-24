@@ -49,7 +49,7 @@ private Double longitud;
 	@Column
 private String password; 
 	@Column
-private Integer puntos;
+private Integer puntos=0;
 	@Column
 private String rol;
 	//agregados password y puntos
@@ -57,15 +57,12 @@ private String rol;
 /*	@OneToMany(mappedBy = "tur", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Turistas_Pois> comentarios;
-
-	
+*/	
 		
-	@OneToMany(mappedBy = "turista", fetch = FetchType.EAGER,cascade =  CascadeType.ALL)
-	@Fetch(value = FetchMode.SUBSELECT)
+	@OneToMany(mappedBy = "turista", cascade =  CascadeType.ALL)
 	private List<PoI> pois;
 
-*/
-	
+
 public Turista() {
 	//constructor
 }
@@ -149,6 +146,14 @@ public String getPaisProcedencia() {
 }
 public void setPaisProcedencia(String paisProcedencia) {
 	this.paisProcedencia = paisProcedencia;
+}
+
+public List<PoI> getPois() {
+	return pois;
+}
+
+public void setPois(List<PoI> pois) {
+	this.pois = pois;
 }
 
 }

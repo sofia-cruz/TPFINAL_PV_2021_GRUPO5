@@ -127,7 +127,7 @@ import ar.edu.unju.edm.service.IValoracionService;
 			try {
 				LOGGER.info("METHOD: ingresando a modificar Poi, id Poi: "+poiModificado.getIdPoi());
 				
-				iPoiService.modificarPoi(poiModificado);
+				
 				model.addAttribute("unPoi", new PoI());
 				model.addAttribute("editMode", "false");
 				
@@ -152,6 +152,7 @@ import ar.edu.unju.edm.service.IValoracionService;
 				String base642 = Base64.getEncoder().encodeToString(content2);
 				poiModificado.setImagen3(base642);
 				}
+				iPoiService.modificarPoi(poiModificado);
 			}
 			catch(Exception e)
 			{
