@@ -165,15 +165,9 @@ public class FotoController {
 				 model.addAttribute("loscom",iValoracion.valoracionBasica());
 				
 			}else {
-				 LOGGER.info("METHOD: Entrando a Ver comentarios, con mas de 1 comentario ");
-				//  model.addAttribute("comentarios",iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi()));	
-				  LOGGER.info("METHOD: saliendo de Ver comentarios, con mas de 1 comentario ");
 				  List<Turistas_Pois> loscom = iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi());	
-				  for(int i=0;i<3;i++) {
-					  System.out.println("contenido: "+loscom.get(i).getComentario());
-					 // model.addAttribute(loscom);
-					  model.addAttribute("loscom", loscom);
-				  }
+
+				  model.addAttribute("loscom", loscom);
 			}
 		   
 		    		
@@ -190,7 +184,7 @@ public class FotoController {
 	    LOGGER.error("METHOD: La valoracion: "+unaValoracion.getValoracion_user());
 	    LOGGER.error("METHOD: id turistas:pois: "+unaValoracion.getIdTuristas_Pois());
 	    LOGGER.error("METHOD: Email de usuario que valora: "+unaValoracion.getTur());
-
+        unaValoracion.setValoracion_user(0);
 	    iValoracion.guardarValoracion(unaValoracion);
 	    //esto manda el id del poi, y actualiza cantidad de comentarios
 	    iValoracion.contarValoraciones(unaValoracion.getPoi().getIdPoi());

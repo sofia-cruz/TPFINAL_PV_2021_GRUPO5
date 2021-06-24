@@ -76,12 +76,12 @@
 				<label type="text" id="numdoc" th:text="*{poi.nombrePoi}" class="col-form-label h6 text-primary" readonly>
 			</div>
 		
-			<div class="col-sm-10">
+			<!--<div class="col-sm-10">
 			<p class="calificacion">
 		<input th:field="*{valoracion_user}" class="inval" id="radio1" type="hidden" name="estrellas" value="0">
 					
 				</p>
-			</div>
+			</div>-->
 
 			<div>
 			<label for="comentario" class="col-form-label h6">Comentario</label>
@@ -89,13 +89,11 @@
 				<input type="text" id="comentario" th:field="*{comentario}" class="form-control">
 			</div>
 
-
-
 		</div>
 		<div class="modal-footer">
 					<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
 
-			<button type="button" class="cancelar btn-secondary" data-dismiss="modal">Cancelar</button>
+		<!--	<button type="button" class="cancelar btn-secondary" data-dismiss="modal">Cancelar</button>-->
 		</div>
 </form>
 	</div>	
@@ -123,13 +121,13 @@
 		
 			<div class="footer-comentarios">
 			<label th:text="${com.comentario}" class="elcom"></label>
-				<div class="footer-laval">
+			<!--	<div class="footer-laval">
 			<input th:text="${com.valoracion_user}"  class="inval" id="radio3" type="radio" name="estrellas"></input>
 		    <label class="val" for="radio1">★</label><span> /5</span><label class="val" for="radio1">★</label>
-				</div>
-			<!--sdsaads-->
+				</div>	-->
+		
 				
-				<!--sdsaads-->
+		
 			</div>
 		
 			

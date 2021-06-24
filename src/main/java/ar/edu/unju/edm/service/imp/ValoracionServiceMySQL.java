@@ -153,6 +153,7 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 		// TODO Auto-generated method stub
 System.out.println("haciendo valoracion básica, serviceimp");
 		valoracion.setComentario("aun no hay comentarios");
+		valoracion.getTurista().setEmail("jujuyEnLlamas@gmail.com");
 		valoracion.setValoracion_user(0);
 		return valoracion;
 	}
