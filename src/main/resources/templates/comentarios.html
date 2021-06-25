@@ -112,7 +112,7 @@
 
 
 
-
+		
 
 
 			<div class="col-lg-12 my-sm-4 col-xxl-6 d-md-flex">
@@ -129,12 +129,16 @@
 
 							<div class="footer-comentarios">
 								<label th:text="${com.comentario}" class="elcom"></label>
+								
 								<div class="footer-laval">
 									<input th:text="${com.valoracion_user}" class="inval" id="radio3" type="radio"
 										name="estrellas"></input>
 									<label class="val" for="radio1">★</label><span> /5</span><label class="val"
 										for="radio1">★</label>
 								</div>
+								
+								<label th:text="${com.tiempo}" class="elcom"></label>
+								<label th:text="${com.date}" class="elcom"></label>
 								<!--sdsaads-->
 
 								<!--sdsaads-->
@@ -147,16 +151,18 @@
 
 					</div>
 				</form>
+			<div><label th:text="${promedio}" class="elcom"></label></div>
+							<!--	 <label th:text="${promedio}" class="elcom"></label>-->
+								
 
 
-
-
+				
 
 			</div>
 
 		</div>
 
-
+	
 
 
 
