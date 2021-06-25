@@ -49,6 +49,7 @@ public class FotoController {
 	@GetMapping("/poi/foto")
 	public String cargarPoi(Model model) {
 		model.addAttribute("pois", iPoiService.obtenerTodosPoi());
+	
 		return("foto");
 	}
 	
@@ -104,6 +105,7 @@ public class FotoController {
 	@GetMapping("/poi/comentar/{idPoi}")	
 	public String realizarComentario(Model model, @PathVariable(name="idPoi") Integer id) throws Exception {
 		//Turistas_Pois valoracion = new Turistas_Pois();		
+		
 		try {	
 	//parte de formulario para cargar comentario nuevo		
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
@@ -116,11 +118,13 @@ public class FotoController {
 		    UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		   
 		    Turista turistaEnSesion =  turistaService.encontrarConCorreo(userDetail.getUsername());
-		    
+		   
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
+		  
 		    model.addAttribute("valoracion",valoracion);
 		    model.addAttribute("poiPorComentar", poiSeleccionado);
+		 //  model.addAttribute("promedio",iValoracion.promediovaloraciones(id));
 		    
 		    /*Turista existente = turistaService.encontrarConCorreo(principal.getName());
 			BELLA.info("Turista " + existente.getIdTurista() + "encontrado");
@@ -143,12 +147,13 @@ public class FotoController {
 					  model.addAttribute("loscom", loscom);
 				  }
 			}
-		   
+			 
 		    		
 		}
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());		
 		}		
+		
 		return "comentarios";
 	}
 	

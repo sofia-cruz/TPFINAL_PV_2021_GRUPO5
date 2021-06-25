@@ -19,5 +19,5 @@ public interface IValoracionService {
 	public  void contarValoraciones(Integer idDeLaValoracion) throws Exception;
 	public ArrayList<Turistas_Pois> obtenerComentariosDeUnPoi(Integer idPoi) throws Exception;
 	public  Turistas_Pois valoracionBasica();
-	public Turistas_Pois promediovaloraciones(Integer id);
+	public Integer promediovaloraciones(Integer id);
 }

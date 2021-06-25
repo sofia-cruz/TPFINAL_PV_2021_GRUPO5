@@ -1,7 +1,9 @@
 package ar.edu.unju.edm.model;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 
@@ -37,22 +39,29 @@ public class Turistas_Pois {
 	private Integer valoracion_user;
 	@Column
 	private String comentario;
+	
 	@Column
-	private LocalDateTime comentime;
-/*	@Column
-	private LocalDateTime valortime;
-	*/
+	private LocalTime tiempo;
+	@Column
+	private LocalDate date;
 	
-	
+	public LocalTime getTiempo() {
+		return tiempo;
+	}
+	public void setTiempo(LocalTime tiempo) {
+		this.tiempo = tiempo;
+	}
+	public LocalDate getDate() {
+		return date;
+	}
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 	public String getTur() {
 		return tur;
 	}
-	public LocalDateTime getComentime() {
-		return comentime;
-	}
-	public void setComentime(LocalDateTime comentime) {
-		this.comentime = comentime;
-	}
+
+	
 	public void setTur(String tur) {
 		this.tur = tur;
 	}
