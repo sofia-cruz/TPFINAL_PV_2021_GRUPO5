@@ -10,6 +10,10 @@ color: gray;
     padding: 1cm;
     
 }
+h2{
+		text-align: center;
+font-size: 100px;
+}
 .img-sl-1{
 width: 700px;	
 text-align: center;
@@ -20,6 +24,7 @@ text-align: center;
     margin:0 auto;
 	width: 100%;
 	height: 400px;
+	
 	background-image: url(/img/paisaje1.jpg);
 	background-position: center center;
 	background-repeat: no-repeat;

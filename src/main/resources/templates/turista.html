@@ -40,7 +40,7 @@
                         <div class="form-group col-md-4">
                             <label class="form-label user-select-none mx-sm-2" for="apellido">Apellido <span class="text-danger">*</span></label>
                             <input class="form-control mx-sm-3" type="text" id="apellido" th:field="*{apellido}" placeholder="ej: Solis" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid': ''">
-                           <div class="invalid-feedback" th:errors="*{Apellido}"></div>
+                           <div class="invalid-feedback" th:errors="*{apellido}"></div>
                         </div>
                     </div>
                     <div class="form-row my-2">

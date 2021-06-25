@@ -58,15 +58,6 @@ public class FotoController {
 		//Turistas_Pois valoracion = new Turistas_Pois();
 		String vista="modal-valoracion";
 		try {	
-			/// solo es una prueba		
-			//Manda el id del poi, y debe contar cuantas valoraciones tiene
-			//int cantidadValoraciones = iValoracion.contarValoraciones(id);
-			//System.out.println("Este poi tiene: "+cantidadValoraciones);
-			//poiSeleccionado.setNumeroDeComentarios(cantidadValoraciones);
-		
-			//System.out.println("cantidad de comentarios guardao: "+ poiSeleccionado.getNumeroDeComentarios());
-	      // iValoracion.contarValoraciones(id);
-			//fin de la actualizacion de poi
 			
 			poiSeleccionado = iPoiService.obtenerPoiID(id);			
 			Turistas_Pois valoracion = iValoracion.crearValoracion();	
@@ -80,36 +71,13 @@ public class FotoController {
 		    Turista turistaEnSesion =  turistaService.encontrarConCorreo(userDetail.getUsername());
 		    //no tocar esto, es para verificar cuantas veces valoró un turista un PoI
 		    Integer permiso= iVerif.verificarValoracionAnterio(turistaEnSesion,id);
-		   if(permiso>0) {
+		   if(permiso!=0) {
 		    	vista="modal-no";
 		    	System.out.println("este poi ya fue valorado por este usuario");
 		    }
-		  /*  else {
-		    	vista="modal-valoracion";
-		    }*/
-		   
-		    //
 		    valoracion.setTurista(turistaEnSesion);
 		    valoracion.setTur(turistaEnSesion.getEmail());
 		    model.addAttribute("valoracion",valoracion);
-	    /*
-			if(iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi())==null) {
-				System.out.println("no hay comentarios cargados");
-				 model.addAttribute("loscom",iValoracion.valoracionBasica());
-				
-			}else {
-				 LOGGER.info("METHOD: Entrando a Ver comentarios, con mas de 1 comentario ");
-				//  model.addAttribute("comentarios",iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi()));	
-				  LOGGER.info("METHOD: saliendo de Ver comentarios, con mas de 1 comentario ");
-				  List<Turistas_Pois> loscom = iValoracion.obtenerComentariosDeUnPoi(poiSeleccionado.getIdPoi());	
-				  for(int i=0;i<3;i++) {
-					  System.out.println("contenido: "+loscom.get(i).getComentario());
-					 // model.addAttribute(loscom);
-					  model.addAttribute("loscom", loscom);
-				  }
-			}
-		    */
-		   
 		    		
 		}
 		catch (Exception e) {
