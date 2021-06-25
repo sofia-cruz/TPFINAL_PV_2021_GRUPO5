@@ -36,9 +36,13 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 	@Override
 	public void guardarValoracion(Turistas_Pois unaValoracion) {
 		// TODO Auto-generated method stub
-		LocalDateTime fechaHoy = LocalDateTime.now();
-		unaValoracion.setComentime(fechaHoy);
-		System.out.println("dias: "+ fechaHoy );
+		
+		LocalDate DATE = LocalDate.now();
+		LocalTime Hoy = LocalTime.now();
+	
+		unaValoracion.setTiempo(Hoy);
+		unaValoracion.setDate(DATE);
+		
 	
 		valoracionDAO.save(unaValoracion);
 	}
@@ -156,13 +160,32 @@ System.out.println("haciendo valoracion básica, serviceimp");
 		valoracion.setValoracion_user(0);
 		return valoracion;
 	}
-
 	@Override
-	public Turistas_Pois promediovaloraciones(Integer id) {
+	public Integer promediovaloraciones(Integer id) {
 		
 		// TODO Auto-generated method stub
+		lasValoraciones= (ArrayList<Turistas_Pois>) valoracionDAO.findAll();
+		//private List<Turistas_Pois> listaDeValoraciones = ;
 		
-		return null;
+	int contador=0;
+	int promedio=0;
+		for(int i=0; i<valoracionDAO.count();i++) {
+			//aquí retorno l cantidad de comentarios que tiene este poi que se manda
+		//System.out.println( lasValoraciones.get(i).getComentario());
+		if(lasValoraciones.get(i).getPoi().getIdPoi()==id)
+		{
+			if(lasValoraciones.get(i).getValoracion_user()>0)
+		{
+			contador=contador+1;
+			promedio=lasValoraciones.get(i).getValoracion_user()+promedio;
+			
+		}
+		
+		}
+		}
+		
+		return promedio/contador;
+		
 	}
 
 }
