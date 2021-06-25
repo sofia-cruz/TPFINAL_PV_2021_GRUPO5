@@ -106,7 +106,6 @@ import ar.edu.unju.edm.service.ITuristaService;
 				Turista turistaActual = turistaService.encontrarConCorreo(principal.getName());
 				if (turistaActual != null) {
 					
-					//turistaActual.setPuntos(turistaActual.getPuntos() + 10);
 					nuevoPoi.setTurista(turistaActual);
 					iPoiService.guardarPoi(nuevoPoi);
 					turistaService.puntosPorPoi(turistaActual);
