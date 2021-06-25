@@ -25,7 +25,7 @@ import java.util.Base64;
 import ar.edu.unju.edm.model.Turista;
 import ar.edu.unju.edm.service.IPoiService;
 import ar.edu.unju.edm.service.ITuristaService;
-import ar.edu.unju.edm.service.IValoracionService;
+//import ar.edu.unju.edm.service.IValoracionService;
 
 	@Controller
 	public class PoIController {
