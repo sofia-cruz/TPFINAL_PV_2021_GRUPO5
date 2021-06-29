@@ -79,6 +79,8 @@ public class TuristaServiceMySQL implements ITuristaService {
 		// TODO Auto-generated method stub
 		Turista turistaAEliminar= turistaDAO.findById(id).orElseThrow(()->new Exception("El turista No Fue encontrado"));
 		turistaDAO.delete(turistaAEliminar);
+		// para corregir el problema de id
+		CorreccionIdTuristas();
 	}
 	/*
 	@Override
@@ -151,25 +153,8 @@ public class TuristaServiceMySQL implements ITuristaService {
 		List<Turista> podio = new ArrayList<>();
 		
 		// TODO Auto-generated method stub
-		if(turistaDAO.count()==1) {
-			
-			podio.add(0, turistaDAO.findById(1).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-	System.out.println("Solo existe el turista actual");
-		}
-		else if(turistaDAO.count()==2){
-			podio.add(0, turistaDAO.findById(1).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-			podio.add(1, turistaDAO.findById(2).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-			System.out.println("Solo hay 2 turistas");
-		}
-		else if(turistaDAO.count()==3){
-			podio.add(0, turistaDAO.findById(1).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-			podio.add(1, turistaDAO.findById(2).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-			podio.add(2, turistaDAO.findById(3).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-			System.out.println("Existen 3 turistas exactos");
-		}
-		else{
-			//las id uno,dos y tres inician en 1, para que no de error al buscar id=0
-		int uno=1,dos=1, tres=1, pri=0, sec=0, ter=0, max=0;
+				//las id uno,dos y tres inician en 1, para que no de error al buscar id=0
+		int uno=0,dos=0, tres=0, pri=0, sec=0, ter=0, max=0;
 		System.out.println("mas de tres cuentas de turistas");
 				
 				for(int i=0; i<turistaDAO.count();i++) {
@@ -200,38 +185,41 @@ public class TuristaServiceMySQL implements ITuristaService {
 				System.out.println("id de turistas en podio por puntos con id: uno: "+uno+" ,dos: "+dos+" ,tres: "+tres);
 				
 				int id=uno;
+				int cTuristas=0;
+				if(uno>0) {
+					cTuristas=1;
+					if(dos>0) {
+						cTuristas=2;
+						if(tres>0) {
+							cTuristas=3;
+						}
+						
+					}
+				}
 				
-				int cTuristas=(int) turistaDAO.count();
+			//	int cTuristas=(int) turistaDAO.count();
 				if(cTuristas==1) {
-					 max=1;
+					podio.add(0, turistaDAO.findById(uno).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
 				}
 				else if(cTuristas==2) {
-					 max=2;
-				}
-				else if(cTuristas>=3)
-				{
-					 max=3;
-				}
-
-				for(int i=0; i<max;i++) {
+					podio.add(0, turistaDAO.findById(uno).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
+					podio.add(1, turistaDAO.findById(dos).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
 			
-					podio.add(i, turistaDAO.findById(id).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
-					if(id==uno) {
-						System.out.println("Entrando a id==uno, id: "+id);
-						id=dos;			
-						System.out.println("Saliendo de id==uno, id: "+id);
-					}
-					else if(id==dos){
-						System.out.println("Entrando a id==dos, id: "+id);
-						id=tres;
-						System.out.println("Saliendo de id==dos, id: "+id);
-					}
-					System.out.println("["+i+"]"+"el id a buscar es: "+id);
-						
+				}
+				else if(cTuristas==3)
+				{
+					podio.add(0, turistaDAO.findById(uno).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
+					podio.add(1, turistaDAO.findById(dos).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
+					podio.add(2, turistaDAO.findById(tres).orElseThrow(()->new Exception("El Turista No Fue encontrado, turistaserviceimp")));
+					
 				}
 				
+System.out.println("aqui da error");
+
+			
 				
-			}
+				
+			
 		
 
 		
@@ -240,7 +228,27 @@ public class TuristaServiceMySQL implements ITuristaService {
 		return (ArrayList<Turista>) podio;
 	
 
-} 
+}
+
+	@Override
+	public void CorreccionIdTuristas() throws Exception {
+		System.out.println("entrando a coregir id de turistas");
+		// TODO Auto-generated method stub
+		int idTurista, posicionLista;
+		ArrayList<Turista> losTuristas= (ArrayList<Turista>) turistaDAO.findAll();
+		
+	
+		for (posicionLista=0; posicionLista<turistaDAO.count();posicionLista++) {
+		
+		idTurista=losTuristas.get(posicionLista).getIdTurista();
+		System.out.println("el id del turista: "+idTurista);
+		Turista eltur=turistaDAO.findById(idTurista).orElseThrow(()->new Exception("El turista No Existe"));
+		eltur.setIdTurista(posicionLista);
+		System.out.println("Nuevo id del turista: "+eltur.getIdTurista());
+		turistaDAO.save(eltur);
+	}
+		
+	} 
 	  
 	 
 	 

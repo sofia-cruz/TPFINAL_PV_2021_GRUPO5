@@ -16,6 +16,7 @@ import ar.edu.unju.edm.model.Turistas_Pois;
 import ar.edu.unju.edm.repository.IPoiDAO;
 import ar.edu.unju.edm.service.IPoiService;
 
+
 @Service
 @Qualifier("impmysqlpoi")
 public class PoiServiceMySQL implements IPoiService{
@@ -104,7 +105,7 @@ public class PoiServiceMySQL implements IPoiService{
 		//poiAModificar.setNumeroDeComentarios(poiModificado.getNumeroDeComentarios());
 		
 	}
-	@SuppressWarnings("null")
+
 	@Override
 	public ArrayList<PoI> encontrarPoisMasComentados () throws Exception {
 	
@@ -119,6 +120,7 @@ public class PoiServiceMySQL implements IPoiService{
 		if(poiDAO.count()==0) {
 			
 			losmasc=null;
+			System.out.println("no hay pois cargados");
 		}
 		else if(poiDAO.count()<=3){
 			for(int i=0;i<poiDAO.count();i++) {
@@ -128,16 +130,11 @@ public class PoiServiceMySQL implements IPoiService{
 				contador++;
 				}
 			}
-			
-			//losmasc.add(1, poiDAO.findById(2).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			//losmasc.add(2, poiDAO.findById(3).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-			System.out.println("Justo tres pois cargados");
 		}
 		else{
 			//las id uno,dos y tres inician en 1, para que no de error al buscar id=0
-		int uno=1,dos=1, tres=1, pri=0, sec=0, ter=0, max=0;
-		System.out.println("mas de tres pois cargados");
-				
+		int uno=0,dos=0, tres=0, pri=0, sec=0, ter=0, max=0;
+		
 				for(int i=0; i<poiDAO.count();i++) {
 					for(int j=0; j<poiDAO.count();j++) {
 						if(losPois.get(j).getNumeroDeComentarios()>pri) {
@@ -162,39 +159,38 @@ public class PoiServiceMySQL implements IPoiService{
 						}	
 					}
 				}		
-				//seria util una variable que dependiendo de la cantidad de pois, cmabie de 1 a 3
-				System.out.println("id de pos mas valorados con id: uno: "+uno+" ,dos: "+dos+" ,tres: "+tres);
-				
+			
+				int cPois=0;
 				int id=uno;
 				
-				int cPois=(int) poiDAO.count();
-				if(cPois==1) {
-					 max=1;
+				//int cPois=(int) poiDAO.count();
+				if(uno>0) {
+					cPois=1;
+					if(dos>0) {
+						cPois=2;
+						if(tres>0) {
+							cPois=3;
+						}
+						
+					}
+				}
+			
+				System.out.println("aqui no debería fallar");
+			if(cPois==1) {
+				    losmasc.add(0, poiDAO.findById(uno).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
 				}
 				else if(cPois==2) {
-					 max=2;
+					losmasc.add(0, poiDAO.findById(uno).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+					losmasc.add(1, poiDAO.findById(dos).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+				
 				}
 				else if(cPois>=3)
 				{
-					 max=3;
+					losmasc.add(0, poiDAO.findById(uno).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+					losmasc.add(1, poiDAO.findById(dos).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
+					losmasc.add(2, poiDAO.findById(tres).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
 				}
-
-				for(int i=0; i<max;i++) {
-			
-					losmasc.add(i, poiDAO.findById(id).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
-					if(id==uno) {
-						System.out.println("Entrando a id==uno, id: "+id);
-						id=dos;			
-						System.out.println("Saliendo de id==uno, id: "+id);
-					}
-					else if(id==dos){
-						System.out.println("Entrando a id==dos, id: "+id);
-						id=tres;
-						System.out.println("Saliendo de id==dos, id: "+id);
-					}
-					System.out.println("["+i+"]"+"el id a buscar es: "+id);
-						
-				}
+		
 				
 				
 			}
