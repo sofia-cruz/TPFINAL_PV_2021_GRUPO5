@@ -78,7 +78,10 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 		//System.out.println( lasValoraciones.get(i).getComentario());
 		if(lasValoraciones.get(i).getPoi().getIdPoi()==idDeLaValoracion)
 		{
-			contador=contador+1;
+			if(lasValoraciones.get(i).getComentario()!=null) {
+				contador=contador+1;		
+			}
+		
 			
 		}
 		}
@@ -155,10 +158,11 @@ private ArrayList<Turistas_Pois> lasValoraciones;
 	@Override
 	public Turistas_Pois valoracionBasica() {
 		// TODO Auto-generated method stub
-System.out.println("haciendo valoracion básica, serviceimp");
+        /*System.out.println("haciendo valoracion básica, serviceimp");
 		valoracion.setComentario("aun no hay comentarios");
 		valoracion.setValoracion_user(0);
-		return valoracion;
+		return valoracion;*/
+		return null;
 	}
 	@Override
 	public Integer promediovaloraciones(Integer id) {
