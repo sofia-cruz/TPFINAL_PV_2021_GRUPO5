@@ -93,16 +93,17 @@
 										<label for="comentario" class="col-form-label h6">Comentario</label>
 
 										<input type="text" id="comentario" th:field="*{comentario}"
-											class="form-control">
+											class="form-control" required>
 									</div>
 
 
 
 								</div>
 								<div class="modal-footer">
-									<button type="submit" class="agregar btn-primary">Confirmar valoracion</button>
-
-									<button type="submit" class="cancelar btn-secondary"  th:href="@{/poi/foto}">Cancelar</button>
+									<div><button type="submit" class="agregar btn-primary">Confirmar valoracion</button></div>
+									
+	                            <!--    <button type="submit" class="cancelar btn-secondary"  th:href="@{/poi/foto}">Cancelar</button>-->
+									<div><button type="reset">Cancelarizacion</button></div>
 								</div>
 							</form>
 						</div>
@@ -153,8 +154,8 @@
 
 					</div>
 				</form>
-			<div><label th:text="${promedio}" class="elcom"></label></div>
-							<!--	 <label th:text="${promedio}" class="elcom"></label>-->
+		<!--		<div><label th:text="${promedio}" class="elcom"></label></div>
+							 <label th:text="${promedio}" class="elcom"></label>-->
 								
 
 
