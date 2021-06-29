@@ -24,6 +24,7 @@ public interface ITuristaService {
 	public void puntosPorValoracion(Turista unTurista);
 	public void puntosPorComentario(Turista unTurista);
 	public ArrayList<Turista> encontrarTuristasPodio() throws Exception;
-
+    //prueba
+	public void CorreccionIdTuristas() throws Exception;
 
 }
