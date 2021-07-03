@@ -143,7 +143,7 @@ public class TuristaServiceMySQL implements ITuristaService {
 	}
 	
 	
-	 @SuppressWarnings("null")
+
 	@Override
 	public ArrayList<Turista> encontrarTuristasPodio() throws Exception {
 	
@@ -214,7 +214,6 @@ public class TuristaServiceMySQL implements ITuristaService {
 					
 				}
 				
-System.out.println("aqui da error");
 
 			
 				
