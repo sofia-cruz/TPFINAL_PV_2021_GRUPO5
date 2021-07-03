@@ -131,27 +131,39 @@ public class PoiServiceMySQL implements IPoiService{
 				}
 			}
 		}
-		else{
-			//las id uno,dos y tres inician en 1, para que no de error al buscar id=0
-		int uno=0,dos=0, tres=0, pri=0, sec=0, ter=0, max=0;
-		
+		else{		int uno=0,dos=0, tres=0, pri=0, sec=0, ter=0, max=0;
 				for(int i=0; i<poiDAO.count();i++) {
 					for(int j=0; j<poiDAO.count();j++) {
 						if(losPois.get(j).getNumeroDeComentarios()>pri) {
+							//prueba
+						//	/*
+							tres=dos;
+							ter=sec;	
+							System.out.println("nuevo tres: "+ter);
+							dos=uno;
+							sec=pri;	
+							System.out.println("nuevo dos: "+sec);
+							//fin prueba 
+						//	  */
 							uno=losPois.get(j).getIdPoi();
 							pri=losPois.get(j).getNumeroDeComentarios();
+							System.out.println("guardando un uno // poi mas comentado"+pri);
 						}
 						if(losPois.get(j).getNumeroDeComentarios()>sec) {
 							if(losPois.get(j).getNumeroDeComentarios()<pri) {
+						//	prueba	/*
+								tres=dos;
+								ter=sec;	//fin prueba
+							//	 */
 								dos=losPois.get(j).getIdPoi();
 								sec=losPois.get(j).getNumeroDeComentarios();
-							}
-							
-						}
-						
-						if(losPois.get(j).getIdPoi()>ter) {
+								System.out.println("guardando un dos // poi mas comentado"+sec);
+							}	
+						}		
+					if(losPois.get(j).getIdPoi()>ter) {
 							if(losPois.get(j).getIdPoi()<pri) {
 								if(losPois.get(j).getIdPoi()<sec) {
+									System.out.println("guardando un tres // poi mas comentado"+ter);
 									tres=losPois.get(j).getIdPoi();
 									ter=losPois.get(j).getNumeroDeComentarios();
 								}
@@ -175,7 +187,7 @@ public class PoiServiceMySQL implements IPoiService{
 					}
 				}
 			
-				System.out.println("aqui no debería fallar");
+				System.out.println("cantidad de pois: "+cPois);
 			if(cPois==1) {
 				    losmasc.add(0, poiDAO.findById(uno).orElseThrow(()->new Exception("El poi No Fue encontrado, poiserviceimp")));
 				}
